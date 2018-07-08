@@ -1,0 +1,21 @@
+{
+  "name": "lucky_block",
+  "version": "1.0.0",
+  "description": "Blockchain quiz",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git4@127.0.0.6:misha/lucky_block.git"
+  },
+  "keywords": [
+    "node.js",
+    "express",
+    "react",
+    "redux"
+  ],
+  "author": "mishanya",
+  "license": "ISC"
+}

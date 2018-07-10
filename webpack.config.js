@@ -9,8 +9,9 @@ const htmlWebpackPlugin = new HtmlWebPackPlugin({
 module.exports = {
      entry: "./src/index.js",
   output: {
-    path: __dirname,
-    filename: 'bundled.js'
+     filename: "bundled.js",
+    path: path.resolve(__dirname, "./dist"),
+    publicPath: '/'
   },   watchOptions: {
         poll: true
     },

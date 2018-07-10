@@ -4,12 +4,7 @@ import * as reducers  from '../reducers'
 
 
 const getProfile = (user, token, deviceId) => {
-  let cookies = new Cookies;
-  user.token = token || cookies.get('token')
-  user.deviceId = deviceId  || cookies.get('deviceId');
-  if (!cookies.get('refId')){
-    cookies.set('refId',  user.id ** 2,  {expires: plusOneYear(), path: '/'})
-  }
+
   return ({
     type: 'GOT_USER',
     payload: user

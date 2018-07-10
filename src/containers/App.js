@@ -4,13 +4,19 @@ import {  BrowserRouter }   from 'react-router-dom';
 import { connect }            from 'react-redux'
 import { bindActionCreators }    from 'redux'
 import * as userActions          from './../actions/userActions'
+import {getCodeFromUrl, addOneYear}        from './../constants/constantsApp'
 import Routes               from './routes'
 import css                  from './style.css'
 
 class App extends Component {
 
-	
-	
+	componentDidMount(){
+		let ref = getCodeFromUrl('ref', '?')
+		if (ref && typeof(ref) != 'object'){
+			let cookies = new Cookies;
+      cookies.set('ref',  ref, {expires: addOneYear(), path: '/'})		
+    }
+	}
 
 
 	render(){
@@ -18,13 +24,11 @@ class App extends Component {
 		token = cookies.get('token');
 		return (
 			<BrowserRouter>
-				<Routes updateApp={() => this.forceUpdate()}/>
+				<Routes {...this.props}/>
 			</BrowserRouter>
 				
 		)
 	}
-
-
 }
 
 
@@ -39,8 +43,6 @@ function mapDispatchToProps(dispatch) {
     userActions:   bindActionCreators(userActions,   dispatch)
   }
 }
-
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
 

@@ -185,10 +185,12 @@ iframe {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  background: #1d004f;
 }
 
 .wrap-login100 {
   width: 500px;
+  position: relative;
   background: #fff;
   border-radius: 10px;
   overflow: hidden;
@@ -256,7 +258,6 @@ iframe {
 }
 
 .focus-input100::after {
-  content: attr(data-symbol);
   font-family: Material-Design-Iconic-Font;
   color: #adadad;
   font-size: 22px;
@@ -277,7 +278,6 @@ iframe {
 }
 
 .focus-input100::before {
-  content: "";
   display: block;
   position: absolute;
   bottom: -2px;
@@ -373,6 +373,7 @@ iframe {
   padding: 0 20px;
   width: 100%;
   height: 50px;
+  background: none;
 }
 
 .wrap-login100-form-btn:hover .login100-form-bgbtn {

@@ -1,5 +1,8 @@
 import React, {Component} from 'react'
 import  {Cookies}            from "react-cookie"
+import SocialLogin            from './SocialLogin'
+import {API_URL}          from './../../../constants/constantsAPI' 
+
 
 
 import style              from './style.css'
@@ -18,7 +21,7 @@ class SignUp extends Component {
  		let headers = new Headers();
  			    headers.append('Content-Type', 'application/json')
 
- 		let user  = await fetch(`http://localhost:5000/api/v1/signup`,{
+ 		let user  = await fetch(`${API_URL}/api/v1/signup`,{
  			method: 'POST',
  			headers: headers,
  			body: JSON.stringify({
@@ -45,8 +48,10 @@ class SignUp extends Component {
 
   render(){
 
-  	return(<div className="container-login100" style={{backgroundImage: 'url("/src/img/bg-01.jpg")'}}>
+  	return(<div className="container-login100" >
 			    <div className="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+			    			      				<div className='popup__close' onClick={() => this.props.closePopup()}>×</div>
+
 			      <form className="login100-form validate-form" autoComplete='off' onSubmit={(e) => this.signUp(e)}>
 			        <span className="login100-form-title p-b-49">
 			          Sign up
@@ -66,16 +71,19 @@ class SignUp extends Component {
 			        </div>
 			        <div className="container-login100-form-btn">
 			          <div className="wrap-login100-form-btn">
-			            <div className="login100-form-bgbtn" />
-			            <input type='submit' className="login100-form-btn" value='Login'/>
+			            <input type='submit' className="btn btn--green header-main__right-btn" value='Sign up'/>
 			          </div>
 			        </div>
 			    		{this.state.success && <div className='label-input100'>Регистрация успешна</div>}
-			        <div className="flex-col-c p-t-155">
+			        
+			       <SocialLogin />
+
+
+			        <div className="flex-col-c p-t-25">
 			          <span className="txt1 p-b-17">
 			            already have an account?
 			          </span>
-			          <a href="#" className="txt2" onClick={() => this.props.switch()}>
+			          <a  className="txt2" onClick={() => this.props.switch()}>
 			            Sign in
 			          </a>
 			        </div>

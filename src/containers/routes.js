@@ -2,8 +2,10 @@ import React, { Component }         from 'react'
 import {  Route, Switch, Redirect } from 'react-router-dom'
 import { withCookies, Cookies }     from 'react-cookie'
 import FBRedirect                   from './../components/stuff/FBRedirect'
+import TwRedirect                   from './../components/stuff/TwRedirect'
 import Main                         from './../components/main/Main'
 import IndexPage                    from './../components/main/public/index_page/IndexPage'
+import Winners                      from './../components/main/public/winners/Winners'
 import Profile                      from './../components/main/private/profile/Profile'
 import ActivationPage               from './../components/stuff/ActivationPage'
 
@@ -12,14 +14,16 @@ class Routes extends Component {
     let cookies = new Cookies;
     return (
     	<Switch>
-    		<Main {...this.props}>
-    			< Route exact path='/'  render={(props)  => < IndexPage  {...props}  {...this.props} /> }  key='IndexPage'/ >
-	 				{	this.props.user &&
+            < Route path='/fb'       render={(props)  => < FBRedirect      {...props}  {...this.props} /> }  key='FBRedirect'/ >
+            < Route path='/tw'       render={(props)  => < TwRedirect      {...props}  {...this.props} /> }  key='TwRedirect'/ >           
+            <Main {...this.props}>
+    			< Route exact path='/'  render={(props)  => < IndexPage {...props}  {...this.props} /> } key='IndexPage'/ >
+	 			< Route path='/winners'  render={(props)  => < Winners  {...props}  {...this.props} /> } key='Winners'/ >                              
+                	{	this.props.user &&
 	 					< Route exact path='/profile'  render={(props)  => < Profile  {...props}  {...this.props} /> }  key='Profile'/ >
 	 				}
                     < Route path='/sign/activate'  render={(props)  => < ActivationPage  {...props}  {...this.props} /> }  key='ActivationPage'/ >
-	 				< Route path='/fb'             render={(props)  => < FBRedirect  {...props}  {...this.props} /> }  key='FBRedirect'/ >
-	 				< Route path='* '              render={(props)  => '404' }/ >   	
+                    < Route path='* '              render={(props)  => '404' }/ >   	
     		</Main>
     	</Switch>
     )

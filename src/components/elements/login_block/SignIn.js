@@ -2,9 +2,9 @@ import React, {Component} from 'react'
 import { connect }            from 'react-redux'
 import * as userActions       from './../../../actions/userActions'
 import { bindActionCreators } from 'redux'
-
 import style                  from './style.css'
-import constantsAPI          from './../../../constants/constantsAPI' 
+import {API_URL}              from './../../../constants/constantsAPI' 
+import SocialLogin            from './SocialLogin'
 
 class SignIn extends Component {
 
@@ -16,9 +16,9 @@ class SignIn extends Component {
  	async signIn(e){
  		e.preventDefault()
  		let headers = new Headers();
- 			    headers.append('Content-Type', 'application/json')
+ 		headers.append('Content-Type', 'application/json')
 
- 		let user  = await fetch(`http://localhost:5000/api/v1/signin`,{
+ 		let user  = await fetch(`${API_URL}/api/v1/signin`,{
  			method: 'POST',
  			headers: headers,
  			body: JSON.stringify({
@@ -43,11 +43,13 @@ class SignIn extends Component {
 
   render(){
 
-  	return(<div className="container-login100" style={{backgroundImage: 'url("/src/img/bg-01.jpg")'}}>
+  	return(<div className="container-login100">
 			    <div className="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+			      				<div className='popup__close' onClick={() => this.props.closePopup()}>×</div>
+
 			      <form className="login100-form validate-form" autoComplete='off' onSubmit={(e)=> this.signIn(e)}>
 			        <span className="login100-form-title p-b-49">
-			          Login
+			          Login.
 			        </span>
 			        <div className="wrap-input100 validate-input m-b-23" data-validate="Username is reauired">
 			          <span className="label-input100">Email</span>
@@ -65,17 +67,17 @@ class SignIn extends Component {
 			        </div>
 			        <div className="container-login100-form-btn">
 			          <div className="wrap-login100-form-btn">
-			            <div className="login100-form-bgbtn" />
-			            <input className="login100-form-btn" type='submit' value='Login'/>
+			            <input className="btn btn--green header-main__right-btn" type='submit' value='Login'/>
 			              
 			          </div>
 			        </div>
-			    
-			        <div className="flex-col-c p-t-155">
+			       <SocialLogin />
+
+			        <div className="flex-col-c p-t-25">
 			          <span className="txt1 p-b-17">
 			            or sign up
 			          </span>
-			          <a href="#" className="txt2" onClick={() => this.props.switch()}>
+			          <a  className="txt2" onClick={() => this.props.switch()}>
 			            Sign up
 			          </a>
 			        </div>

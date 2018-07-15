@@ -4,9 +4,8 @@ import { connect }            from 'react-redux'
 import * as userActions       from './../../actions/userActions'
 import { bindActionCreators } from 'redux'
 import {getCodeFromUrl}         from './../../constants/constantsApp'
-import {API_URL}               from './../../constants/constantsAPI' 
 
-class FBRedirect extends Component {
+class GoogleRedirect extends Component {
 
 	componentDidMount(){
 		let accessToken =  getCodeFromUrl('access_token')
@@ -15,7 +14,7 @@ class FBRedirect extends Component {
 
 	componentWillReceiveProps(nextProps){
 		if (nextProps.user){
-			// close();
+			//close();
 		}
 	}
 
@@ -33,17 +32,26 @@ class FBRedirect extends Component {
 		console.log(fbProfile)
  		let headers = new Headers();
 		headers.append('Content-Type', 'application/json')
+
 		if (fbProfile){
-			let cookies = new Cookies;
-			let user  = await fetch(`${API_URL}/api/v1/soc_auth`,{
+
+			let user = {	
+				name:    fbProfile.first_name,
+ 					surname: fbProfile.last_name,
+ 					img:     fbProfile.picture.data.url,
+ 					email:   fbProfile.email
+ 				}
+				return user && this.props.userActions.getProfile(user) 
+
+			user  = await fetch(`http://localhost:5000/api/v1/soc_auth`,{
 		 			method: 'POST',
 		 			headers: headers,
 		 			body: JSON.stringify({
 		 					provider: 'fb', 
-		 					soc_id:  fbProfile.id,
+		 					id:  fbProfile.id,
 		 					name:    fbProfile.first_name,
 		 					surname: fbProfile.last_name,
-		 					refed_by: cookies.get('ref') ? Math.sqrt(cookies.get('ref')) : null
+		 					img:     encodeURIComponent(fbProfile.picture.data.url)
 		 			})
 		 		})
 		 		.then(
@@ -81,6 +89,6 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(FBRedirect)
+export default connect(mapStateToProps, mapDispatchToProps)(GoogleRedirect)
 
 

@@ -6,9 +6,10 @@ class IndexPage extends Component {
 
     render(){
         let cookies = new Cookies,
-        token = cookies.get('token');
+        token = cookies.get('token')
+
         return (
-          <div className="container">
+          <div className="container index-page">
             <div className="greed">
               <div className="greed__sec">
                 <div className="blc blc--table">
@@ -43,182 +44,23 @@ class IndexPage extends Component {
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>
-                            <div className="table__user">
-                              <div className="table__user-icn"><img src="/src/img/example/ava.png" alt /></div>
-                              <div className="table__user-nane">CyberBigDaddy</div>
-                            </div>
-                          </td>
-                          <td>$120</td>
-                          <td>15%</td>
-                          <td><div className="table__circle table__circle--viol" /></td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div className="table__user">
-                              <div className="table__user-icn"><img src="/src/img/example/ava.png" alt /></div>
-                              <div className="table__user-nane">CyberBigDaddy</div>
-                            </div>
-                          </td>
-                          <td>$120</td>
-                          <td>15%</td>
-                          <td><div className="table__circle table__circle--green" /></td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div className="table__user">
-                              <div className="table__user-icn"><img src="/src/img/example/ava.png" alt /></div>
-                              <div className="table__user-nane">CyberBigDaddy</div>
-                            </div>
-                          </td>
-                          <td>$120</td>
-                          <td>15%</td>
-                          <td><div className="table__circle table__circle--blue" /></td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div className="table__user">
-                              <div className="table__user-icn"><img src="/src/img/example/ava.png" alt /></div>
-                              <div className="table__user-nane">CyberBigDaddy</div>
-                            </div>
-                          </td>
-                          <td>$120</td>
-                          <td>15%</td>
-                          <td><div className="table__circle table__circle--black" /></td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div className="table__user">
-                              <div className="table__user-icn"><img src="/src/img/example/ava.png" alt /></div>
-                              <div className="table__user-nane">CyberBigDaddy</div>
-                            </div>
-                          </td>
-                          <td>$120</td>
-                          <td>15%</td>
-                          <td><div className="table__circle table__circle--viol" /></td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div className="table__user">
-                              <div className="table__user-icn"><img src="/src/img/example/ava.png" alt /></div>
-                              <div className="table__user-nane">CyberBigDaddy</div>
-                            </div>
-                          </td>
-                          <td>$120</td>
-                          <td>15%</td>
-                          <td><div className="table__circle table__circle--green" /></td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div className="table__user">
-                              <div className="table__user-icn"><img src="/src/img/example/ava.png" alt /></div>
-                              <div className="table__user-nane">CyberBigDaddy</div>
-                            </div>
-                          </td>
-                          <td>$120</td>
-                          <td>15%</td>
-                          <td><div className="table__circle table__circle--blue" /></td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div className="table__user">
-                              <div className="table__user-icn"><img src="/src/img/example/ava.png" alt /></div>
-                              <div className="table__user-nane">CyberBigDaddy</div>
-                            </div>
-                          </td>
-                          <td>$120</td>
-                          <td>15%</td>
-                          <td><div className="table__circle table__circle--black" /></td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div className="table__user">
-                              <div className="table__user-icn"><img src="/src/img/example/ava.png" alt /></div>
-                              <div className="table__user-nane">CyberBigDaddy</div>
-                            </div>
-                          </td>
-                          <td>$120</td>
-                          <td>15%</td>
-                          <td><div className="table__circle table__circle--viol" /></td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div className="table__user">
-                              <div className="table__user-icn"><img src="/src/img/example/ava.png" alt /></div>
-                              <div className="table__user-nane">CyberBigDaddy</div>
-                            </div>
-                          </td>
-                          <td>$120</td>
-                          <td>15%</td>
-                          <td><div className="table__circle table__circle--green" /></td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div className="table__user">
-                              <div className="table__user-icn"><img src="/src/img/example/ava.png" alt /></div>
-                              <div className="table__user-nane">CyberBigDaddy</div>
-                            </div>
-                          </td>
-                          <td>$120</td>
-                          <td>15%</td>
-                          <td><div className="table__circle table__circle--blue" /></td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div className="table__user">
-                              <div className="table__user-icn"><img src="/src/img/example/ava.png" alt /></div>
-                              <div className="table__user-nane">CyberBigDaddy</div>
-                            </div>
-                          </td>
-                          <td>$120</td>
-                          <td>15%</td>
-                          <td><div className="table__circle table__circle--black" /></td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div className="table__user">
-                              <div className="table__user-icn"><img src="/src/img/example/ava.png" alt /></div>
-                              <div className="table__user-nane">CyberBigDaddy</div>
-                            </div>
-                          </td>
-                          <td>$120</td>
-                          <td>15%</td>
-                          <td><div className="table__circle table__circle--viol" /></td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div className="table__user">
-                              <div className="table__user-icn"><img src="/src/img/example/ava.png" alt /></div>
-                              <div className="table__user-nane">CyberBigDaddy</div>
-                            </div>
-                          </td>
-                          <td>$120</td>
-                          <td>15%</td>
-                          <td><div className="table__circle table__circle--green" /></td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div className="table__user">
-                              <div className="table__user-icn"><img src="/src/img/example/ava.png" alt /></div>
-                              <div className="table__user-nane">CyberBigDaddy</div>
-                            </div>
-                          </td>
-                          <td>$120</td>
-                          <td>15%</td>
-                          <td><div className="table__circle table__circle--blue" /></td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div className="table__user">
-                              <div className="table__user-icn"><img src="/src/img/example/ava.png" alt /></div>
-                              <div className="table__user-nane">CyberBigDaddy</div>
-                            </div>
-                          </td>
-                          <td>$120</td>
-                          <td>15%</td>
-                          <td><div className="table__circle table__circle--black" /></td>
-                        </tr>
+                        {Array(16).fill(0).map((item, i) =>  {
+                          let percent = (Math.random()  * (10 - 0.1)  + 10).toFixed(0),
+                          cash        = (Math.random()  * (1000 - 50) + 50).toFixed(0)
+                          return (
+                              <tr key={i}>
+                              <td>
+                                <div className="table__user">
+                                  <div className="table__user-icn"><img src="/src/img/example/ava.png" alt /></div>
+                                  <div className="table__user-nane">CyberBigDaddy</div>
+                                </div>
+                              </td>
+                              <td>${cash}</td>
+                              <td>{percent}%</td>
+                              <td><div className="table__circle table__circle--viol" /></td>
+                            </tr>
+                          )
+                        })}
                       </tbody>
                     </table>
                   </div>

@@ -1,5 +1,3 @@
-
-
 import React, { Component } from "react"
 import {Cookies}            from "react-cookie"
 import {Link}               from 'react-router-dom'
@@ -29,12 +27,23 @@ class HeaderInner extends Component {
 			      <div className="header__bar">
 			        <nav className="header__menu" id="js-menu">
 			          <ul>
-			            <li><a href="#">F.A.Q.</a></li>
-			            <li><a href="#">RULES</a></li>
-			            <li><a href="#">WINNERS</a></li>
+			            <li><a className='disabled'>F.A.Q.</a></li>
+			            <li><a className='disabled'>RULES</a></li>
+			            <li><Link to="/winners">WINNERS</Link></li>
 			          </ul>                            
 			        </nav>
-			        <a href="#" className="user-btn"><img src="/src/img/example/ava.png" alt /></a>
+			        { this.props.user
+			        	?	<Link to='/profile' class="user-btn">
+										<img src="/src/img/example/ava.png"/>
+									</Link>
+
+			        	: [<a  className="user-btn" onClick={() => this.setState({popup: true})}/>,
+				        	this.state.popup &&
+				        		<Popup closePopup={() => this.setState({popup: false})} scrollable>
+				        			<LoginBlock  closePopup={() => this.setState({popup: false})}/>
+				        		</Popup>
+				        	]
+			        }
 			      </div>
 			    </div>
 			  </div>

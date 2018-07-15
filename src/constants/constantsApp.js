@@ -10,7 +10,7 @@
 	      params[ parts[ 0 ] ] = parts[ 1 ];
 	  } );
 
-	  return ( prop && prop in params ) ? params[ prop ] : params;
+	  return ( prop && prop in params ) ? params[ prop ] : null;
 	}
 	function openSocAuthModal(name, url, config = null) {
 		config = config || "menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes"

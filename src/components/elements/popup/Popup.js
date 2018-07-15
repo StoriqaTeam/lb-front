@@ -47,7 +47,6 @@ class Popup extends Component {
 
   	return(
 			<div className="limiter" id='lucky-popup'>
-				<div className='popup__placeholder' onClick={() => this.props.closePopup()}/>
 			  {this.props.children}
 			</div>
 

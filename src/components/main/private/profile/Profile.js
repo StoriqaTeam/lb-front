@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import {Cookies}            from "react-cookie"
+import {API_URL}          from './../../../../constants/constantsAPI' 
 import css                  from './style.css'
 
 class Profile extends Component {
@@ -10,6 +11,31 @@ class Profile extends Component {
       method: 'share',
       href: `http://yandex.ru/?ref=${Math.pow(this.props.user.id, 2)}`
     }, function(response){});
+  }
+
+  async sendRef(e){
+    e.preventDefault()
+    console.log( ({
+    'lb-front.stq.cloud': 'http://lb-back.stq.cloud',
+    'localhost':      'http://localhost:5000'
+  })[window.location.hostname])
+    let sentRef  = await fetch(`${API_URL}/api/v1/send_ref`,{
+      method: 'POST',
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      }),
+      body: JSON.stringify({
+        email: this.refs.email.value, 
+        id:    this.props.user.id  
+      })
+    })
+    .then(
+      res => res.json(),
+      err => err
+    )
+    .then (json => {
+      return json.status === 'success' ? json.message : null
+    })
   }
 
   render(){
@@ -24,11 +50,11 @@ class Profile extends Component {
           <div className="greed__sec">
             <div className="blc">
               <div className="profile">
-                <div className="profile__img"><img src="/src/img/example/ava-big.png" alt /></div>
+                <div className="profile__img"><img src={this.props.user.img || "/src/img/example/ava-big.png"} alt /></div>
                 <div className="profile__main">
                   <div className="profile__title">Nickname:</div>
-                  <div className="profile__name">CyberBigDaddy</div>
-                  <div className="profile__balance">Balance: <strong>$1,274</strong></div>
+                  <div className="profile__name">{this.props.user.name || 'CyberBigDaddy'}</div>
+                  <div className="profile__balance">Balance: <strong>${this.props.user ? '0,00' : '1,274'}</strong></div>
                   <div className="profile__row">
                     <div className="profile__title profile__title--row">Wallet:</div>
                     <div className="profile__val">0x7cB57B5A97eAbe94205Cv63h67</div>
@@ -54,15 +80,15 @@ class Profile extends Component {
                 <div className="referal__txt">Give your friends 3% of probability for winning jackpot. And get your 2% lucky bonus.</div>
                 <form action="#" method="post" className="referal__form">
                   <div className="referal__form-name">Share your Referral</div>
-                  <div className="referal__form-row">
-                    <input type="email" name="email" className="input referal__input" placeholder="Write an email of your friend" />
-                    <button className="btn referal__form-submit" type="submit">Send</button>
-                  </div>
+                  <form className="referal__form-row"onSubmit={(e) => this.sendRef(e)}>
+                    <input type="email" name="email" required ref='email' className="input referal__input" placeholder="Write an email of your friend" />
+                    <input className="btn referal__form-submit" type="submit" value='Send'/>
+                  </form>
                 </form>
                 <div className="referal__bar">
                   <div class="btn btn--facebook referal__facebook" 
                     onClick={()=> this.shareFB()}
-                    data-href={`http://yandex.ru/?ref=${Math.pow(this.props.user.id, 2)}`} 
+                    data-href={`http://lb-front.stq.cloud/?ref=${Math.pow(this.props.user.id, 2)}`} 
                     data-size='large'
                     data-layout="button">Share referral via Facebook
                   </div>

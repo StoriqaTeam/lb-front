@@ -1,7 +1,8 @@
 
-export default {
 
-	API_URL(hostname = window.location.hostname){
-		return '127.0.0.1:5000'
-	}
-}
+const API_URL = ({
+		'lb-front.stq.cloud': 'http://lb-back.stq.cloud',
+		'localhost':      'http://localhost:5000'
+	})[window.location.hostname]
+
+export  {API_URL}

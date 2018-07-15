@@ -17,8 +17,8 @@ class LoginBlock extends Component  {
 
 		return 	(
 				this.state.action === 'signIn'
-				? <SignIn switch = {() => this.setState({action: 'signUp'})}/>
-				: <SignUp switch = {() => this.setState({action: 'signIn'})}/>
+				? <SignIn switch = {() => this.setState({action: 'signUp'})} closePopup={() => this.props.closePopup()}/>
+				: <SignUp switch = {() => this.setState({action: 'signIn'})} closePopup={() => this.props.closePopup()}/>
 		)			
 	}
 	

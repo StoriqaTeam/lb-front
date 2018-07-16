@@ -70,8 +70,8 @@ class SignUp extends Component {
 
 			        </div>
 			        <div className="container-login100-form-btn">
-			          <div className="wrap-login100-form-btn">
-			            <input type='submit' className="btn btn--green header-main__right-btn" value='Sign up'/>
+			          <div >
+			            <input type='submit' className="btn btn--green header-main__right-btn popup__confirm" value='Sign up'/>
 			          </div>
 			        </div>
 			    		{this.state.success && <div className='label-input100'>Регистрация успешна</div>}

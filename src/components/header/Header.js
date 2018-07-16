@@ -37,7 +37,7 @@ class Header extends Component {
 										<img src="/src/img/example/ava.png"/>
 									</Link>
 
-			        	: [<a  className="user-btn" onClick={() => this.setState({popup: true})}/>,
+			        	: [<a  className="user-btn" onClick={() => this.setState({popup: true})} id='login'/>,
 				        	this.state.popup &&
 				        		<Popup closePopup={() => this.setState({popup: false})} scrollable>
 				        			<LoginBlock  closePopup={() => this.setState({popup: false})}/>

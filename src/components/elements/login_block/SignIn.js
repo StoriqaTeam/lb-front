@@ -66,8 +66,9 @@ class SignIn extends Component {
 
 			        </div>
 			        <div className="container-login100-form-btn">
-			          <div className="wrap-login100-form-btn">
-			            <input className="btn btn--green header-main__right-btn" type='submit' value='Login'/>
+			          <div >
+
+			             <input type='submit' className="btn btn--green header-main__right-btn popup__confirm" type='submit' value='Login'/>
 			              
 			          </div>
 			        </div>

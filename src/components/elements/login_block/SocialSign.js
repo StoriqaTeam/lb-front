@@ -2,12 +2,11 @@ import React, {Component} from 'react'
 import  {Cookies}            from "react-cookie"
 import TwitterLogin             from 'react-twitter-auth'
 import {fbAppId}             from './../../../constants/constantsApp' 
-
-
+import {API_URL}             from './../../../constants/constantsAPI' 
+import { TwitterLoginButton } from "react-social-login-buttons";
 import style              from './style.css'
 
-class SocialLogin extends Component {
-
+class SocialSign extends Component {
 
 
  	async getTwitterToken(e){
@@ -41,25 +40,25 @@ class SocialLogin extends Component {
   			<div className='social-login'>
     					<div className="txt1 text-center p-t-54 p-b-20">
 				          <span>
-				            login via
+				            Or Sign Up Using
 				          </span>
 				        </div>
 				        <div className="flex-c-m">
-				          <a href={`https://www.facebook.com/v3.0/dialog/oauth?client_id=${fbAppId}&&response_type=token&redirect_uri=http://localhost:3000/fb&state=testString`} className="login100-social-item" target='_blank'>
-				            <img src="/src/img/icons/fb2.png" className='popup__button_fb'/>
+				          <a href={`https://www.facebook.com/v3.0/dialog/oauth?client_id=${fbAppId}&&response_type=token&redirect_uri=http://localhost:3000/fb&state=testString`} className="login100-social-item bg1" target='_blank'>
+				            f
 				          </a>
-				           
-				          <a onClick={(e) => this.getTwitterToken(e)} href="#" className="login100-social-item">
-				            <img src="/src/img/icons/tw.png" className='popup__button_tw'/>
+
+				          <a onClick={(e) => this.getTwitterToken(e)} href="#" className="login100-social-item bg2">
+				            B
 				          </a>
-				          <a href={`https://accounts.google.com/o/oauth2/v2/auth?scope=openid%20email&include_granted_scopes=${true}&redirect_uri=${window.location.origin}/google&response_type=token&client_id=836131905097-k989bkib5nu42ksclkqgr05q97g62b33.apps.googleusercontent.com`} target='_blank' className="login100-social-item">
-				            <img src="/src/img/icons/google.svg" />
+				          <a href={`https://accounts.google.com/o/oauth2/v2/auth?scope=openid%20email&include_granted_scopes=${true}&redirect_uri=${window.location.origin}/google&response_type=token&client_id=836131905097-k989bkib5nu42ksclkqgr05q97g62b33.apps.googleusercontent.com`} target='_blank' className="login100-social-item bg3">
+				            g
 				          </a>
 			        	</div>
 			        </div>	
   	)}
 }
-export default SocialLogin
+export default SocialSign
 
 // <TwitterLogin loginUrl="https://api.twitter.com/oauth/request_token"
 //               onFailure={this.onFailed}

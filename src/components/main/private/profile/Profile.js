@@ -112,42 +112,19 @@ class Profile extends Component {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>02 Feb 2018</td>
-                      <td>$450,200</td>
-                      <td>$500</td>
-                      <td>$300</td>
-                    </tr>
-                    <tr>
-                      <td>02 Feb 2018</td>
-                      <td>$450,200</td>
-                      <td>$500</td>
-                      <td>$300</td>
-                    </tr>
-                    <tr>
-                      <td>02 Feb 2018</td>
-                      <td>$450,200</td>
-                      <td>$500</td>
-                      <td>$300</td>
-                    </tr>
-                    <tr>
-                      <td>02 Feb 2018</td>
-                      <td>$450,200</td>
-                      <td>$500</td>
-                      <td>$300</td>
-                    </tr>
-                    <tr>
-                      <td>02 Feb 2018</td>
-                      <td>$450,200</td>
-                      <td>$500</td>
-                      <td>$300</td>
-                    </tr>
-                    <tr>
-                      <td>02 Feb 2018</td>
-                      <td>$450,200</td>
-                      <td>$500</td>
-                      <td>$300</td>
-                    </tr>
+                   {Array(5).fill(0).map((item, i) =>  {
+                      let jackpot = (Math.random()  * (250 - 100) + 50).toFixed(0),
+                      bet         = (Math.random()  * (250 - 100) + 50).toFixed(0),
+                      won         = Number(bet) + Number((Math.random()  * (250 - 100) + 50))
+                      return (
+                        <tr key={i} >
+                          <td>02 Feb 2018</td>
+                          <td>${jackpot},200</td>
+                          <td>${bet}</td>
+                          <td>${won.toFixed(0)}</td>
+                        </tr>
+                      )
+                    })}
                   </tbody>
                 </table>
               </div>
@@ -166,66 +143,22 @@ class Profile extends Component {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>
-                        <div className="table__user">
-                          <div className="table__user-icn"><img src="/src/img/example/ava.png" alt /></div>
-                          <div className="table__user-nane">CyberBigDaddy</div>
-                        </div>
-                      </td>
-                      <td>$120</td>
-                      <td>$3.6</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div className="table__user">
-                          <div className="table__user-icn"><img src="/src/img/example/ava.png" alt /></div>
-                          <div className="table__user-nane">CyberBigDaddy</div>
-                        </div>
-                      </td>
-                      <td>$120</td>
-                      <td>$3.6</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div className="table__user">
-                          <div className="table__user-icn"><img src="/src/img/example/ava.png" alt /></div>
-                          <div className="table__user-nane">CyberBigDaddy</div>
-                        </div>
-                      </td>
-                      <td>$120</td>
-                      <td>$3.6</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div className="table__user">
-                          <div className="table__user-icn"><img src="/src/img/example/ava.png" alt /></div>
-                          <div className="table__user-nane">CyberBigDaddy</div>
-                        </div>
-                      </td>
-                      <td>$120</td>
-                      <td>$3.6</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div className="table__user">
-                          <div className="table__user-icn"><img src="/src/img/example/ava.png" alt /></div>
-                          <div className="table__user-nane">CyberBigDaddy</div>
-                        </div>
-                      </td>
-                      <td>$120</td>
-                      <td>$3.6</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div className="table__user">
-                          <div className="table__user-icn"><img src="/src/img/example/ava.png" alt /></div>
-                          <div className="table__user-nane">CyberBigDaddy</div>
-                        </div>
-                      </td>
-                      <td>$120</td>
-                      <td>$3.6</td>
-                    </tr>
+                    {Array(5).fill(0).map((item, i) =>  {
+                      let bet =   (Math.random()  * (400 - 100) + 50).toFixed(0),
+                      bonus         = bet / 25
+                      return (
+                        <tr key={i}>
+                          <td>
+                            <div className="table__user">
+                              <div className="table__user-icn"><img src="/src/img/example/ava.png" alt /></div>
+                              <div className="table__user-nane">CyberBigDaddy</div>
+                            </div>
+                          </td>
+                          <td>${bet}</td>
+                          <td>${bonus.toFixed(2)}</td>
+                        </tr>
+                      )
+                    })}
                   </tbody>
                 </table>
               </div>

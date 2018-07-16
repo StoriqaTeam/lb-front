@@ -4,22 +4,23 @@ import { connect }            from 'react-redux'
 import * as userActions       from './../../actions/userActions'
 import { bindActionCreators } from 'redux'
 import {getCodeFromUrl}         from './../../constants/constantsApp'
+import {API_URL}         from './../../constants/constantsAPI'
 
 class GoogleRedirect extends Component {
 
 	componentDidMount(){
-		let accessToken =  getCodeFromUrl('access_token')
+		let accessToken =  getCodeFromUrl('access_token', '#')
 		return accessToken ? this.getUser(accessToken) : close();
 	}
 
 	componentWillReceiveProps(nextProps){
 		if (nextProps.user){
-			//close();
+			close();
 		}
 	}
 
 	async getUser(accessToken){
-		let fbProfile =	await fetch(`https://graph.facebook.com/me?fields=id,first_name,last_name,birthday,picture.width(250).height(250),email&access_token=${accessToken}`,{
+		let googleProfile =	await fetch(`https://www.googleapis.com/plus/v1/people/me?access_token=${accessToken}&scope=https://www.googleapis.com/auth/userinfo.email`,{
 			method: 'GET'
 		})
 		.then(
@@ -29,30 +30,22 @@ class GoogleRedirect extends Component {
 		.then(json => {
 			return json.id && json	
 		})
-		console.log(fbProfile)
- 		let headers = new Headers();
-		headers.append('Content-Type', 'application/json')
+		console.log(googleProfile)
 
-		if (fbProfile){
-
-			let user = {	
-				name:    fbProfile.first_name,
- 					surname: fbProfile.last_name,
- 					img:     fbProfile.picture.data.url,
- 					email:   fbProfile.email
- 				}
-				return user && this.props.userActions.getProfile(user) 
-
-			user  = await fetch(`http://localhost:5000/api/v1/soc_auth`,{
+		if (googleProfile){
+			let user  = await fetch(`${API_URL}/api/v1/soc_auth`,{
 		 			method: 'POST',
-		 			headers: headers,
-		 			body: JSON.stringify({
-		 					provider: 'fb', 
-		 					id:  fbProfile.id,
-		 					name:    fbProfile.first_name,
-		 					surname: fbProfile.last_name,
-		 					img:     encodeURIComponent(fbProfile.picture.data.url)
-		 			})
+		 			headers: new Headers({
+						'Content-Type': 'application/json'		 				
+		 			}),
+		 			body: JSON.stringify( {	
+						name:     googleProfile.name.givenName,
+						surname:  googleProfile.name.familyName,
+						id:       googleProfile.id,
+						email:    googleProfile.emails[0].value,
+						provider: 'google',
+						soc_id:   googleProfile.id
+					})
 		 		})
 		 		.then(
 		 			res => res.json(),
@@ -66,6 +59,8 @@ class GoogleRedirect extends Component {
 		 		return user && this.props.userActions.getProfile(user) 
 		 	} 		
 
+
+ 
 
 	}
 

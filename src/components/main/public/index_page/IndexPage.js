@@ -4,6 +4,11 @@ import {Cookies}            from "react-cookie"
 
 class IndexPage extends Component {
 
+    openSignModal(){
+      let button = document.getElementById('login')
+      button && !this.props.user && button.click()
+    }
+
     render(){
         let cookies = new Cookies,
         token = cookies.get('token')
@@ -52,7 +57,7 @@ class IndexPage extends Component {
                               <td>
                                 <div className="table__user">
                                   <div className="table__user-icn"><img src="/src/img/example/ava.png" alt /></div>
-                                  <div className="table__user-nane">CyberBigDaddy</div>
+                                  <div className="table__user-nane">{i === 1 ? 'Nagibator' :  Math.random().toString(36).substring(2, 10) + Math.random().toString(36).substring(2, 10)}</div>
                                 </div>
                               </td>
                               <td>${cash}</td>
@@ -145,7 +150,7 @@ class IndexPage extends Component {
                   </div>
                   <div className="register">
                     <div className="register__main">REGISTER FOR CHAT</div>
-                    <button className="btn register__btn">Join</button>
+                    <button className="btn register__btn" onClick={() => this.openSignModal()}>Join</button>
                   </div>
                 </div>
               </div>                  

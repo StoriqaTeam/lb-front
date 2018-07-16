@@ -468,10 +468,20 @@ iframe {
   margin: 5px;
 }
 
-.login100-social-item:hover {
+.popup__button_fb{
+      max-width: unset;
+    width: 76px;
+}
+
+.popup__button_tw{
+  width: 81px;
+  max-width: unset;
+}
+
+/*.login100-social-item:hover {
   color: #fff;
   background-color: #333333;
-}
+}*/
 
 /*//////////////////////////////////////////////////////////////////
 [ Responsive ]*/

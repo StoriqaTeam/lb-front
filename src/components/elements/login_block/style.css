@@ -5,3 +5,8 @@
     font-size: 44px;
     cursor: pointer;
 }
+
+.popup__confirm{
+	padding: 5px 100px !important;
+height: unset !important;
+}

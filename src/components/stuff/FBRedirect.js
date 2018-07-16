@@ -15,7 +15,7 @@ class FBRedirect extends Component {
 
 	componentWillReceiveProps(nextProps){
 		if (nextProps.user){
-			// close();
+			close();
 		}
 	}
 

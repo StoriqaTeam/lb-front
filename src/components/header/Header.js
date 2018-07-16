@@ -12,6 +12,19 @@ class Header extends Component {
 		this.state = {}
 	}
 
+	componentDidMount(){
+		let component = this,
+		{minutes, seconds} = this.refs
+		window.setInterval(() => {
+			let content = minutes.innerHTML != '00' ? minutes.innerHTML - 1  : '59'
+			minutes.innerHTML = content < 10 ? '0' + content : content
+		}, 60000)
+		window.setInterval(() => {
+			let content = seconds.innerHTML != '00' ? seconds.innerHTML - 1  : '59'
+			seconds.innerHTML = content < 10 ? '0' + content : content
+		}, 1000)
+	}
+
 	render(){
 		let cookies = new Cookies,
 		token = cookies.get('token');
@@ -89,12 +102,12 @@ class Header extends Component {
 			                <div className="header-main__timer-dotes">:</div>
 			                <div className="header-main__timer-item">
 			                  <div className="header-main__timer-name">MINUTES</div>
-			                  <div className="header-main__timer-val">28</div>
+			                  <div className="header-main__timer-val"  ref='minutes'>59</div>
 			                </div>
 			                <div className="header-main__timer-dotes">:</div>
 			                <div className="header-main__timer-item">
-			                  <div className="header-main__timer-name">SECONDS</div>
-			                  <div className="header-main__timer-val">05</div>
+			                  <div className="header-main__timer-name" >SECONDS</div>
+			                  <div className="header-main__timer-val" ref='seconds'>59</div>
 			                </div>
 			              </div>
 			            </div>

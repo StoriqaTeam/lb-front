@@ -45,7 +45,7 @@ class SocialLogin extends Component {
 				          </span>
 				        </div>
 				        <div className="flex-c-m">
-				          <a href={`https://www.facebook.com/v3.0/dialog/oauth?client_id=${fbAppId}&&response_type=token&redirect_uri=http://localhost:3000/fb&state=testString`} className="login100-social-item" target='_blank'>
+				          <a href={`https://www.facebook.com/v3.0/dialog/oauth?client_id=${fbAppId}&&response_type=token&redirect_uri=${window.location.origin}/fb&state=testString`} className="login100-social-item" target='_blank'>
 				            <img src="/src/img/icons/fb2.png" className='popup__button_fb'/>
 				          </a>
 				           

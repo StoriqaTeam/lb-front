@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import {Cookies}            from "react-cookie"
 import {  Route, Switch, Redirect } from 'react-router-dom'
-
+import {API_URL}               from './../../constants/constantsAPI' 
 import {getCodeFromUrl}     from './../../constants/constantsApp'
 
 class ActivationPage extends Component {
@@ -16,7 +16,7 @@ class ActivationPage extends Component {
 	async activateEmail(hash){
  		let headers = new Headers();
  		headers.append('Content-Type', 'application/json')
- 		let user  = await fetch(`http://localhost:5000/api/v1/activate`,{
+ 		let user  = await fetch(`${API_URL}/api/v1/activate`,{
  			method: 'POST',
  			headers: headers,
  			body: JSON.stringify({

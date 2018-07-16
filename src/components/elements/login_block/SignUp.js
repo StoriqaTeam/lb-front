@@ -61,9 +61,9 @@ class SignUp extends Component {
 			          <input className="input100" type="email" name="username"  required ref='email' placeholder="Type your email"  required  autoComplete="off"/>
 			          <span className="focus-input100" data-symbol="" />
 			        </div>
-			        <div className="wrap-input100 validate-input"  required ref='password' data-validate="Password is required">
+			        <div className="wrap-input100 validate-input"  required  data-validate="Password is required">
 			          <span className="label-input100">Password</span>
-			          <input className="input100" type="password" name="pass" placeholder="Type your password"   required autoComplete="off"/>
+			          <input className="input100" type="password" name="pass" placeholder="Type your password" ref='password'  required autoComplete="off"/>
 			          <span className="focus-input100" data-symbol="" />
 			        </div>
 			        <div className="text-right p-t-8 p-b-31">

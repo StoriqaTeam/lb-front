@@ -1,0 +1,60 @@
+<!doctype html>
+
+<html lang="ru-RU">
+	<head>
+	  <meta charset="utf-8">
+
+	  <title>The HTML5 template</title>
+	  <meta name="description" content="The HTML5 template">
+	  <meta name="author" content="mishanya">
+		<link rel="stylesheet" type="text/css" href="/src/stylesheets/main.css"/>
+	  <!--[if lt IE 9]>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+	  <![endif]-->
+	<link href="/src/stylesheets/main.css" rel="stylesheet"></head>
+
+	<body>
+	    <div id="app" class="wrapper"/>
+	<script type="text/javascript" src="/main.bundle.js"></script></body>
+	<script key='script'>
+			  window.fbAsyncInit = function() {
+			    FB.init({
+			      appId      : 208605113193116,
+			      cookie     : true,
+			      xfbml      : true,
+			      version    : 'v2.8'
+			    });
+			      
+			    FB.AppEvents.logPageView();   
+			      
+			  };
+
+			  (function(d, s, id){
+			     var js, fjs = d.getElementsByTagName(s)[0];
+			     if (d.getElementById(id)) {return;}
+			     js = d.createElement(s); js.id = id;
+			     js.src = "https://connect.facebook.net/en_US/sdk.js";
+			     fjs.parentNode.insertBefore(js, fjs);
+			   }(document, 'script', 'facebook-jssdk'));
+			</script>
+
+			  <div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : 208605113193116,
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+<script src="/main.bundle.js"></script>
+</html>

@@ -19,13 +19,13 @@ class Routes extends Component {
             < Route path='/tw'       render={(props)  => < TwRedirect      {...props}  {...this.props} /> }  key='TwRedirect'/ >           
             < Route path='/google'   render={(props)  => < GoogleRedirect  {...props}  {...this.props} /> }  key='GoogleRedirect'/ >           
             <Main {...this.props}>
-    			< Route exact path='/'  render={(props)  => < IndexPage {...props}  {...this.props} /> } key='IndexPage'/ >
-	 			< Route path='/winners'  render={(props)  => < Winners  {...props}  {...this.props} /> } key='Winners'/ >                              
-                	{	this.props.user &&
-	 					< Route exact path='/profile'  render={(props)  => < Profile  {...props}  {...this.props} /> }  key='Profile'/ >
-	 				}
-                    < Route path='/sign/activate'  render={(props)  => < ActivationPage  {...props}  {...this.props} /> }  key='ActivationPage'/ >
-                    < Route path='* '              render={(props)  => '404' }/ >   	
+    			< Route exact path='/'        render={(props)  => < IndexPage {...props}  {...this.props} /> } key='IndexPage'/ >
+	 			< Route       path='/winners' render={(props)  => < Winners   {...props}  {...this.props} /> } key='Winners'/ >                              
+            	{	this.props.user &&
+ 					< Route exact path='/profile'  render={(props)  => < Profile  {...props}  {...this.props} /> }  key='Profile'/ >
+ 				}
+                < Route path='/sign/activate' render={(props)  => < ActivationPage  {...props}  {...this.props} /> }  key='ActivationPage'/ >
+                < Route path='* '             render={(props)  => '404' }/ >   	
     		</Main>
     	</Switch>
     )
@@ -33,9 +33,3 @@ class Routes extends Component {
 }
 
 export default Routes;
-
-//todo: разобраться с лишними props
-//             < Route exact path='/'                          render={(props)  => < IndexPage      {...props}  {...this.props} /> }                                                          key='IndexPage'/ >
-//import ScrollToTop                  from './ScrollToTop'
-// import { securityPolicy, 
-//          securityPolicyExtension }  from './../constants/constantsApp'

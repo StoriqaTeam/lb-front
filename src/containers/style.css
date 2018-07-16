@@ -1,7 +1,15 @@
 .hidden{
 	display: none;
 }
-
+.close-launcher{
+  margin-left: 19px;
+}
+.open-launcher{
+  margin-left: 12px;
+}
+.register .header:after{
+  content: none;
+}
 #app input:-webkit-autofill, #app  textarea:-webkit-autofill, #app  select:-webkit-autofill {
     background-color: transparent !important;
     background-image: none !important;

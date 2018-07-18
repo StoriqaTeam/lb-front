@@ -40,7 +40,7 @@ class HeaderInner extends Component {
 			        </nav>
 			        { this.props.user
 			        	?	<Link to='/profile' class="user-btn">
-										<img src="/src/img/example/ava.png"/>
+									  <img src={this.props.user && this.props.user.img ? decodeURIComponent(this.props.user.img) : "/src/img/example/ava-big.png"}/>
 									</Link>
 
 			        	: [<a  className="user-btn" onClick={() => this.setState({popup: true})} id='login'/>,

@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import {Cookies}            from "react-cookie"
-import {API_URL}          from './../../../../constants/constantsAPI' 
+import {API_URL}            from './../../../../constants/constantsAPI' 
+import {copyToClipboard}    from './../../../../constants/constantsApp' 
 import css                  from './style.css'
 
 class Profile extends Component {
@@ -13,12 +14,17 @@ class Profile extends Component {
     }, function(response){});
   }
 
+  copy(id){
+    var copyText = document.getElementById("copyRef");
+    copyText.select();
+    document.execCommand("copy");
+    this.refs[id].innerHTML = 'Link copied'
+    window.setTimeout(()=>    this.refs[id].innerHTML = 'Copy referral link', 3000)
+  }
+
   async sendRef(e){
     e.preventDefault()
-    console.log( ({
-    'lb-front.stq.cloud': 'http://lb-back.stq.cloud',
-    'localhost':      'http://localhost:5000'
-  })[window.location.hostname])
+
     let sentRef  = await fetch(`${API_URL}/api/v1/send_ref`,{
       method: 'POST',
       headers: new Headers({
@@ -34,11 +40,20 @@ class Profile extends Component {
       err => err
     )
     .then (json => {
-      return json.status === 'success' ? json.message : null
+      console.log(json)
+      return json.status === 'success' ? 1 : 0
     })
+
+    if (sentRef){
+      this.refs.email.value = 'Referal link sent'
+      window.setTimeout(()=>    this.refs.email.value = '', 3000)
+
+    }
   }
 
   render(){
+
+    let date = this.props.user.signed_up.split('T')[0].split('-')
 
     return  (
 
@@ -50,10 +65,10 @@ class Profile extends Component {
           <div className="greed__sec">
             <div className="blc">
               <div className="profile">
-                <div className="profile__img"><img src={this.props.user.img || "/src/img/example/ava-big.png"} alt /></div>
+                <div className="profile__img"><img src={this.props.user.img ? decodeURIComponent(this.props.user.img) : "/src/img/example/ava-big.png"} alt /></div>
                 <div className="profile__main">
                   <div className="profile__title">Nickname:</div>
-                  <div className="profile__name">{this.props.user.name || 'CyberBigDaddy'}</div>
+                  <div className="profile__name">{this.props.user.name || `LuckyBlock user ${this.props.user.id}`}</div>
                   <div className="profile__balance">Balance: <strong>${this.props.user ? '0,00' : '1,274'}</strong></div>
                   <div className="profile__row">
                     <div className="profile__title profile__title--row">Wallet:</div>
@@ -61,7 +76,7 @@ class Profile extends Component {
                   </div>
                   <div className="profile__row">
                     <div className="profile__title profile__title--row">Join date:</div>
-                    <div className="profile__val">01 April 2018</div>
+                    <div className="profile__val">{date[2]}.{date[1]}.{date[0]}</div>
                   </div>
                   <div className="profile__row">
                     <div className="profile__title profile__title--row">Email:</div>
@@ -81,7 +96,7 @@ class Profile extends Component {
                 <form action="#" method="post" className="referal__form">
                   <div className="referal__form-name">Share your Referral</div>
                   <form className="referal__form-row"onSubmit={(e) => this.sendRef(e)}>
-                    <input type="email" name="email" required ref='email' className="input referal__input" placeholder="Write an email of your friend" />
+                    <input type="email" ref='email' name="email" required ref='email' className="input referal__input" placeholder="Write an email of your friend" />
                     <input className="btn referal__form-submit" type="submit" value='Send'/>
                   </form>
                 </form>
@@ -93,7 +108,8 @@ class Profile extends Component {
                     data-layout="button">Share referral via Facebook
                   </div>
                   <button className="btn btn--twitter referal__twitter">Share referral via Twitter</button>
-                  <button className="btn btn--green btn--copy referal__copy">Copy referral link</button>
+                  <button className="btn btn--green btn--copy referal__copy" ref='copyRef' onClick={() => this.copy('copyRef')}>Copy referral link</button>
+                  <input style={{opacity: 0, height: 0}} id='copyRef' value={`${window.location.origin}?ref=${Math.pow(this.props.user.id, 2)}`}/>
                 </div>
               </div>
             </div>
@@ -151,7 +167,7 @@ class Profile extends Component {
                           <td>
                             <div className="table__user">
                               <div className="table__user-icn"><img src="/src/img/example/ava.png" alt /></div>
-                              <div className="table__user-nane">CyberBigDaddy</div>
+                              <div className="table__user-nane">LuckyBlock user {(Math.random()  * (1000 - 50)).toFixed(0)}</div>
                             </div>
                           </td>
                           <td>${bet}</td>

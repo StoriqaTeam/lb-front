@@ -41,7 +41,9 @@ class FBRedirect extends Component {
 		 			body: JSON.stringify({
 		 					provider: 'fb', 
 		 					soc_id:  fbProfile.id,
+		 					email:   fbProfile.email,
 		 					name:    fbProfile.first_name,
+		 					img:     encodeURIComponent(fbProfile.picture.data.url),
 		 					surname: fbProfile.last_name,
 		 					refed_by: cookies.get('ref') ? Math.sqrt(cookies.get('ref')) : null
 		 			})

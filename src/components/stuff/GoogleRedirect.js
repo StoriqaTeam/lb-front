@@ -15,12 +15,12 @@ class GoogleRedirect extends Component {
 
 	componentWillReceiveProps(nextProps){
 		if (nextProps.user){
-			close();
+			// close();
 		}
 	}
 
 	async getUser(accessToken){
-		let googleProfile =	await fetch(`https://www.googleapis.com/plus/v1/people/me?access_token=${accessToken}&scope=https://www.googleapis.com/auth/userinfo.email`,{
+		let googleProfile =	await fetch(`https://www.googleapis.com/plus/v1/people/me?access_token=${accessToken}&scope=https://www.googleapis.com/auth/profile`,{
 			method: 'GET'
 		})
 		.then(
@@ -31,7 +31,6 @@ class GoogleRedirect extends Component {
 			return json.id && json	
 		})
 		console.log(googleProfile)
-
 		if (googleProfile){
 			let user  = await fetch(`${API_URL}/api/v1/soc_auth`,{
 		 			method: 'POST',
@@ -43,6 +42,7 @@ class GoogleRedirect extends Component {
 						surname:  googleProfile.name.familyName,
 						id:       googleProfile.id,
 						email:    googleProfile.emails[0].value,
+						img:      encodeURIComponent(`${googleProfile.image.url.split('?')[0]}?sn=250`),
 						provider: 'google',
 						soc_id:   googleProfile.id
 					})
@@ -56,6 +56,7 @@ class GoogleRedirect extends Component {
 		 			return json.status === 'success' ? json.message : null
 		 		})	
 		 		console.log(user)
+
 		 		return user && this.props.userActions.getProfile(user) 
 		 	} 		
 

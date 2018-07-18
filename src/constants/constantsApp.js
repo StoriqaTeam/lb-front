@@ -24,5 +24,19 @@ const addOneYear = () => {
    return date
 }
 
+const copyToClipboard = (id) => {
+	if (document.selection) { 
+	    var range = document.body.createTextRange();
+	    range.moveToElementText(document.getElementById(id));
+	    range.select().createTextRange();
+	    document.execCommand("copy"); 
 
-export  {getCodeFromUrl, openSocAuthModal, fbAppId, addOneYear}
+	} else if (window.getSelection) {
+	    var range = document.createRange();
+	     range.selectNode(document.getElementById(id));
+	     window.getSelection().addRange(range);
+	     document.execCommand("copy");
+	}
+}
+
+export  {getCodeFromUrl, openSocAuthModal, fbAppId, addOneYear, copyToClipboard}

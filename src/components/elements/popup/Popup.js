@@ -20,9 +20,7 @@ class Popup extends Component {
       }
     })
     if (this.props.scrollable){
-      if (window.innerWidth < 990){
-        window.scrollTo(0,0)
-      }
+      window.scrollTo(0,0)
       document.getElementById('main').classList.add('hidden')
     }
     this.setState({ 

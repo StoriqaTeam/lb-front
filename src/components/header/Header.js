@@ -1,9 +1,12 @@
 import React, { Component } from "react"
 import {Cookies}            from "react-cookie"
 import {Link}               from 'react-router-dom'
+import {copyToClipboard}    from './../../constants/constantsApp' 
 import LoginBlock           from './../elements/login_block/LoginBlock'
 import Popup                from './../elements/popup/Popup'
 import css                  from './style.css'
+
+
 
 class Header extends Component {
 
@@ -17,6 +20,13 @@ class Header extends Component {
     this.refs.menuList.classList.toggle('open');
 	}
 
+	copy(id){
+		var copyText = document.getElementById("copyAddress");
+		copyText.select();
+		document.execCommand("copy");
+		this.refs[id].innerHTML = 'ADDRESS COPIED'
+		window.setTimeout(()=> 		this.refs[id].innerHTML = 'COPY ADDRESS', 3000)
+	}
 
 	componentDidMount(){
 		let component = this,
@@ -30,6 +40,9 @@ class Header extends Component {
 			seconds.innerHTML = content < 10 ? '0' + content : content
 		}, 1000)
 	}
+
+
+
 
 	render(){
 		let cookies = new Cookies,
@@ -53,7 +66,7 @@ class Header extends Component {
 			        </nav>
 			        { this.props.user
 			        	?	<Link to='/profile' class="user-btn">
-										<img src="/src/img/example/ava.png"/>
+									  <img src={this.props.user && this.props.user.img ? decodeURIComponent(this.props.user.img) : "/src/img/example/ava-big.png"}/>
 									</Link>
 
 			        	: [<a  className="user-btn" onClick={() => this.setState({popup: true})} id='login'/>,
@@ -71,18 +84,18 @@ class Header extends Component {
 			        <div className="header-main__left-wrap">
 			          <div className="header-main__left-icn"><img src="/src/img/example/ava.png" alt /></div>
 			          <div className="header-main__left-main">
-			            <div className="header-main__left-name">Cryptozadrot16</div>
+			            <div className="header-main__left-name"> LuckyBlock user {(Math.random()  * (1000 - 50)).toFixed(0)}</div>
 			            <div className="header-main__left-code">1KoX6AA5VTdbBTkw27YEqKfAtTe</div>
 			          </div>                            
 			        </div>
 			        <div className="header-main__left-row">
 			          <div className="header-main__left-col">
 			            <div className="header-main__left-col-name">JACKPOT</div>
-			            <div className="header-main__left-col-val">$1,000</div>
+			            <div className="header-main__left-col-val">${(Math.random()  * (10 - 1)).toFixed(0)},000</div>
 			          </div>
 			          <div className="header-main__left-col">
 			            <div className="header-main__left-col-name">WINRATE</div>
-			            <div className="header-main__left-col-val">32%</div>
+			            <div className="header-main__left-col-val">{(Math.random()  * (50 - 10) + 10).toFixed(0)}%</div>
 			          </div>
 			        </div>
 			      </div>
@@ -129,9 +142,12 @@ class Header extends Component {
 			              <div className="header-main__right-title">GET YOUR LUCK!</div>
 			              <div className="header-main__right-code">
 			                Contract address to participate:<span>3fc2e9a9-7f6d-4f0d-b201-df103e7ef240</span>
+			              	<input type='text' style={{opacity: 0, height: 0}} id='copyAddress' value='3fc2e9a9-7f6d-4f0d-b201-df103e7ef240'/>
 			              </div>
 			            </div>
-			            <button className="btn btn--green header-main__right-btn">COPY ADDRESS</button>
+			            <button className="btn btn--green header-main__right-btn" ref='copyAddress' onClick={() => this.copy('copyAddress')}>
+			            	COPY ADDRESS
+			            </button>
 			          </div>
 			        </div>
 			      </div>

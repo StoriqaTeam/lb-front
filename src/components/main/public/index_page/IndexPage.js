@@ -7,12 +7,14 @@ class IndexPage extends Component {
 
   openSignModal(){
     let button = document.getElementById('login')
+    console.log(button, this.props)
     button && !this.props.user && button.click()
   }
 
   render(){
     let cookies = new Cookies,
-    token = cookies.get('token')
+    token       = cookies.get('token'),
+    date        = new Date()
 
     return (
       <div className="container index-page">
@@ -33,7 +35,7 @@ class IndexPage extends Component {
                     </div>
                     <div className="winners-counter">
                       <div className="winners-counter__name">Date of the draw:</div>
-                      <div className="winners-counter__val">2018.04.22</div>
+                      <div className="winners-counter__val">{date.getFullYear()}.{(date.getMonth() + 1).toString().length === 1 ? `0${date.getMonth() + 1}` : date.getMonth()}.{date.getDate() + 1}</div>
                     </div>
                   </div>                                
                   <div className="rainbow" />
@@ -58,7 +60,7 @@ class IndexPage extends Component {
                           <td>
                             <div className="table__user">
                               <div className="table__user-icn"><img src="/src/img/example/ava.png" alt /></div>
-                              <div className="table__user-nane">{i === 1 ? 'Nagibator' :  Math.random().toString(36).substring(2, 10) + Math.random().toString(36).substring(2, 10)}</div>
+                              <div className="table__user-nane">LuckyBlock user {(Math.random()  * (1000 - 50)).toFixed(0)}</div>
                             </div>
                           </td>
                           <td>${cash}</td>
@@ -73,12 +75,12 @@ class IndexPage extends Component {
             </div>
           </div>  
           <div className="greed__sec">
-            <div className="blc register-blc">
+          { !this.props.user &&
               <div className="register">
-                <div className="register__main">REGISTER FOR GET YOUR REFERRAL BONUSES</div>
-                <button className="btn register__btn">Join</button>
-              </div>
+                <div className="register__main">REGISTER FOR CHAT</div>,
+                <button className="btn register__btn" onClick={() => this.openSignModal()}>Join</button>
             </div>
+            }
             <div className="blc chat-blc">
               <div className="chat__wrap">
                 <h3 className="chat__title">CHAT</h3>
@@ -86,7 +88,7 @@ class IndexPage extends Component {
                   <div className="chat__item">
                     <div className="chat__icn"><img src="/src/img/example/ava.png" alt /></div>
                     <div className="chat__main">
-                      <div className="chat__name chat__name--green">Nagibator <img src="/src/img/icons/cup-yello.svg" alt /></div>
+                      <div className="chat__name chat__name--green">LuckyBlock user {(Math.random()  * (1000 - 50)).toFixed(0)} <img src="/src/img/icons/cup-yello.svg" alt /></div>
                       <div className="chat__txt">Может примеры других решений им показать? Тот же PundiX или то решение для алипэй, чью фотку я скидывал</div>
                     </div>
                     <div className="chat__time">12:07</div>
@@ -102,7 +104,7 @@ class IndexPage extends Component {
                   <div className="chat__item">
                     <div className="chat__icn"><img src="/src/img/example/ava.png" alt /></div>
                     <div className="chat__main">
-                      <div className="chat__name chat__name--viol">Nagibator <img src="/src/img/icons/cup-green.svg" alt /></div>
+                      <div className="chat__name chat__name--viol">LuckyBlock user {(Math.random()  * (1000 - 50)).toFixed(0)} <img src="/src/img/icons/cup-green.svg" alt /></div>
                       <div className="chat__txt">Может примеры других решений им показать? Тот же PundiX или то решение для алипэй, чью фотку я скидывал</div>
                     </div>
                     <div className="chat__time">12:07</div>
@@ -110,7 +112,7 @@ class IndexPage extends Component {
                   <div className="chat__item">
                     <div className="chat__icn"><img src="/src/img/example/ava.png" alt /></div>
                     <div className="chat__main">
-                      <div className="chat__name chat__name--red">Nagibator <img src="/src/img/icons/cup-green.svg" alt /></div>
+                      <div className="chat__name chat__name--red">LuckyBlock user {(Math.random()  * (1000 - 50)).toFixed(0)} <img src="/src/img/icons/cup-green.svg" alt /></div>
                       <div className="chat__txt">Может примеры других решений им показать? Тот же PundiX или то решение для алипэй, чью фотку я скидывал</div>
                     </div>
                     <div className="chat__time">12:07</div>
@@ -118,7 +120,7 @@ class IndexPage extends Component {
                   <div className="chat__item">
                     <div className="chat__icn"><img src="/src/img/example/ava.png" alt /></div>
                     <div className="chat__main">
-                      <div className="chat__name chat__name--green">Nagibator <img src="/src/img/icons/cup-yello.svg" alt /></div>
+                      <div className="chat__name chat__name--green">LuckyBlock user {(Math.random()  * (1000 - 50)).toFixed(0)} <img src="/src/img/icons/cup-yello.svg" alt /></div>
                       <div className="chat__txt">Может примеры других решений им показать? Тот же PundiX или то решение для алипэй, чью фотку я скидывал</div>
                     </div>
                     <div className="chat__time">12:07</div>
@@ -134,7 +136,7 @@ class IndexPage extends Component {
                   <div className="chat__item">
                     <div className="chat__icn"><img src="/src/img/example/ava.png" alt /></div>
                     <div className="chat__main">
-                      <div className="chat__name chat__name--viol">Nagibator <img src="/src/img/icons/cup-green.svg" alt /></div>
+                      <div className="chat__name chat__name--viol">LuckyBlock user {(Math.random()  * (1000 - 50)).toFixed(0)} <img src="/src/img/icons/cup-green.svg" alt /></div>
                       <div className="chat__txt">Может примеры других решений им показать? Тот же PundiX или то решение для алипэй, чью фотку я скидывал</div>
                     </div>
                     <div className="chat__time">12:07</div>
@@ -142,7 +144,7 @@ class IndexPage extends Component {
                   <div className="chat__item">
                     <div className="chat__icn"><img src="/src/img/example/ava.png" alt /></div>
                     <div className="chat__main">
-                      <div className="chat__name chat__name--red">Nagibator <img src="/src/img/icons/cup-green.svg" alt /></div>
+                      <div className="chat__name chat__name--red">LuckyBlock user {(Math.random()  * (1000 - 50)).toFixed(0)} <img src="/src/img/icons/cup-green.svg" alt /></div>
                       <div className="chat__txt">Может примеры других решений им показать? Тот же PundiX или то решение для алипэй, чью фотку я скидывал</div>
                     </div>
                     <div className="chat__time">12:07</div>
@@ -153,10 +155,10 @@ class IndexPage extends Component {
                 {
                   this.props.user
                   ? <Widget />
-                  : <div>
-                      <div className="register__main">REGISTER FOR CHAT</div>
+                  : [
+                      <div className="register__main">REGISTER FOR CHAT</div>,
                       <button className="btn register__btn" onClick={() => this.openSignModal()}>Join</button>
-                    </div>
+                    ]
 
                 }
               </div>  

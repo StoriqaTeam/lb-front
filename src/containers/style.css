@@ -1,5 +1,5 @@
 .hidden{
-	display: none;
+	display: none !important;
 }
 .close-launcher{
   margin-left: 19px;

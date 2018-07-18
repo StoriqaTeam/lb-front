@@ -208,7 +208,7 @@ render(){
 					                      <td>
 					                        <div className="table__user">
 					                          <div className="table__user-icn"><img src="/src/img/example/ava.png" alt /></div>
-					                          <div className="table__user-nane">{i === 1 ? 'Nagibator' :  Math.random().toString(36).substring(2, 10) + Math.random().toString(36).substring(2, 10)}</div>
+					                          <div className="table__user-nane">LuckyBlock user {(Math.random()  * (1000 - 50)).toFixed(0)}</div>
 					                        </div>
 					                      </td>
 					                      <td>${cash}</td>
@@ -242,7 +242,7 @@ render(){
 					                      <td>
 					                        <div className="table__user">
 					                          <div className="table__user-icn"><img src="/src/img/example/ava.png" alt /></div>
-					                          <div className="table__user-nane">{i === 3 ? 'CyberBigDaddy' :  Math.random().toString(36).substring(2, 10) + Math.random().toString(36).substring(2, 10)}</div>
+					                          <div className="table__user-nane">LuckyBlock user {(Math.random()  * (1000 - 50)).toFixed(0)}</div>
 					                        </div>
 					                      </td>
 					                      <td>${cash}</td>

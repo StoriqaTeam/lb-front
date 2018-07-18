@@ -11,18 +11,19 @@ class Main extends Component {
     render(){
         let cookies = new Cookies,
         token = cookies.get('token');
-        return ([ 
-    		 this.props.location.pathname == '/' 
+        return (
+          <div id='main'  className="wrapper">
+    		 {this.props.location.pathname == '/' 
                 ? <Header {...this.props}/>
                 : <HeaderInner {...this.props} />
-            ,
+             }
 
-		        <main className="main" id='main'>
-		       			{this.props.children}
-		        </main>,
-		        <Footer />
-
-        ])
+	        <main className="main" >
+	       		{this.props.children}
+	        </main>
+	        <Footer />
+          </div>
+        )
     }
 }
 

@@ -103,7 +103,7 @@ class Profile extends Component {
                 <div className="referal__bar">
                   <div class="btn btn--facebook referal__facebook" 
                     onClick={()=> this.shareFB()}
-                    data-href={`http://lb-front.stq.cloud/?ref=${Math.pow(this.props.user.id, 2)}`} 
+                    data-href={`https://lb-front.stq.cloud/?ref=${Math.pow(this.props.user.id, 2)}`} 
                     data-size='large'
                     data-layout="button">Share referral via Facebook
                   </div>

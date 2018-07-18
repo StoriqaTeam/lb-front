@@ -15,7 +15,7 @@ class GoogleRedirect extends Component {
 
 	componentWillReceiveProps(nextProps){
 		if (nextProps.user){
-			// close();
+			close();
 		}
 	}
 

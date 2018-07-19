@@ -102,7 +102,7 @@ class Chat extends Component {
                 : this.state.messages.reverse().map((message, i) => {
                     return (
                       <div className="chat__item" key={message.id}>
-                        <div className="chat__icn"><img src={decodeURIComponent(message.img)} alt /></div>
+                        <div className="chat__icn"><img src={message.img ? decodeURIComponent(message.img) : "/src/img/example/ava.png"} alt /></div>
                         <div className="chat__main">
                           <div className="chat__name chat__name--green">{message.user_name} <img src="/src/img/icons/cup-yello.svg" alt /></div>
                           <div className="chat__txt">{decodeURIComponent(message.content)}</div>

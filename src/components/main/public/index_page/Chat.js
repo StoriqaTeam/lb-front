@@ -74,6 +74,7 @@ class Chat extends Component {
       this.setState({
         messages: json.message
       })
+      this.refs.message.value = ''
     })
   }
 

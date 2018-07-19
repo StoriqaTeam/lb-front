@@ -2,6 +2,8 @@ import React, { Component } from "react"
 import {Cookies}            from "react-cookie"
 import { Widget } from 'react-chat-widget';
 import 'react-chat-widget/lib/styles.css';
+import Chat from './Chat'
+import css from './style.css'
 
 class IndexPage extends Component {
 
@@ -74,96 +76,7 @@ class IndexPage extends Component {
               </div>
             </div>
           </div>  
-          <div className="greed__sec">
-          { !this.props.user &&
-              <div className="register">
-                <div className="register__main">REGISTER FOR CHAT</div>,
-                <button className="btn register__btn" onClick={() => this.openSignModal()}>Join</button>
-            </div>
-            }
-            <div className="blc chat-blc">
-              <div className="chat__wrap">
-                <h3 className="chat__title">CHAT</h3>
-                <div className="chat__list">
-                  <div className="chat__item">
-                    <div className="chat__icn"><img src="/src/img/example/ava.png" alt /></div>
-                    <div className="chat__main">
-                      <div className="chat__name chat__name--green">LuckyBlock user {(Math.random()  * (1000 - 50)).toFixed(0)} <img src="/src/img/icons/cup-yello.svg" alt /></div>
-                      <div className="chat__txt">Может примеры других решений им показать? Тот же PundiX или то решение для алипэй, чью фотку я скидывал</div>
-                    </div>
-                    <div className="chat__time">12:07</div>
-                  </div>
-                  <div className="chat__item">
-                    <div className="chat__icn"><img src="/src/img/example/ava.png" alt /></div>
-                    <div className="chat__main">
-                      <div className="chat__name chat__name--blue">0x7cB57B5A97eAbe94205C</div>
-                      <div className="chat__txt">Может примеры других решений им показать? Тот же PundiX или то решение для алипэй, чью фотку я скидывал</div>
-                    </div>
-                    <div className="chat__time">12:07</div>
-                  </div>
-                  <div className="chat__item">
-                    <div className="chat__icn"><img src="/src/img/example/ava.png" alt /></div>
-                    <div className="chat__main">
-                      <div className="chat__name chat__name--viol">LuckyBlock user {(Math.random()  * (1000 - 50)).toFixed(0)} <img src="/src/img/icons/cup-green.svg" alt /></div>
-                      <div className="chat__txt">Может примеры других решений им показать? Тот же PundiX или то решение для алипэй, чью фотку я скидывал</div>
-                    </div>
-                    <div className="chat__time">12:07</div>
-                  </div>
-                  <div className="chat__item">
-                    <div className="chat__icn"><img src="/src/img/example/ava.png" alt /></div>
-                    <div className="chat__main">
-                      <div className="chat__name chat__name--red">LuckyBlock user {(Math.random()  * (1000 - 50)).toFixed(0)} <img src="/src/img/icons/cup-green.svg" alt /></div>
-                      <div className="chat__txt">Может примеры других решений им показать? Тот же PundiX или то решение для алипэй, чью фотку я скидывал</div>
-                    </div>
-                    <div className="chat__time">12:07</div>
-                  </div>
-                  <div className="chat__item">
-                    <div className="chat__icn"><img src="/src/img/example/ava.png" alt /></div>
-                    <div className="chat__main">
-                      <div className="chat__name chat__name--green">LuckyBlock user {(Math.random()  * (1000 - 50)).toFixed(0)} <img src="/src/img/icons/cup-yello.svg" alt /></div>
-                      <div className="chat__txt">Может примеры других решений им показать? Тот же PundiX или то решение для алипэй, чью фотку я скидывал</div>
-                    </div>
-                    <div className="chat__time">12:07</div>
-                  </div>
-                  <div className="chat__item">
-                    <div className="chat__icn"><img src="/src/img/example/ava.png" alt /></div>
-                    <div className="chat__main">
-                      <div className="chat__name chat__name--blue">0x7cB57B5A97eAbe94205C</div>
-                      <div className="chat__txt">Может примеры других решений им показать? Тот же PundiX или то решение для алипэй, чью фотку я скидывал</div>
-                    </div>
-                    <div className="chat__time">12:07</div>
-                  </div>
-                  <div className="chat__item">
-                    <div className="chat__icn"><img src="/src/img/example/ava.png" alt /></div>
-                    <div className="chat__main">
-                      <div className="chat__name chat__name--viol">LuckyBlock user {(Math.random()  * (1000 - 50)).toFixed(0)} <img src="/src/img/icons/cup-green.svg" alt /></div>
-                      <div className="chat__txt">Может примеры других решений им показать? Тот же PundiX или то решение для алипэй, чью фотку я скидывал</div>
-                    </div>
-                    <div className="chat__time">12:07</div>
-                  </div>
-                  <div className="chat__item">
-                    <div className="chat__icn"><img src="/src/img/example/ava.png" alt /></div>
-                    <div className="chat__main">
-                      <div className="chat__name chat__name--red">LuckyBlock user {(Math.random()  * (1000 - 50)).toFixed(0)} <img src="/src/img/icons/cup-green.svg" alt /></div>
-                      <div className="chat__txt">Может примеры других решений им показать? Тот же PundiX или то решение для алипэй, чью фотку я скидывал</div>
-                    </div>
-                    <div className="chat__time">12:07</div>
-                  </div>
-                </div>
-              </div>
-              <div className="register">
-                {
-                  this.props.user
-                  ? <Widget />
-                  : [
-                      <div className="register__main">REGISTER FOR CHAT</div>,
-                      <button className="btn register__btn" onClick={() => this.openSignModal()}>Join</button>
-                    ]
-
-                }
-              </div>  
-            </div>
-          </div>                  
+          <Chat user={this.props.user}/>                 
         </div>
       </div>
 

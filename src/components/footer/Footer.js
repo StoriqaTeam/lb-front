@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import {Cookies}            from "react-cookie"
+import {Link}               from 'react-router-dom'
 
 
 class Footer extends Component {
@@ -17,61 +18,9 @@ class Footer extends Component {
         <li><a href="#">TERMS AND CONDITIONS</a></li>
         <li><a href="#">COMPLAINTS</a></li>
         <li><a href="#">CONTACT US</a></li>
-        <li><a href="#">F.A.Q.</a></li>
+        <li><Link to="/faq">F.A.Q.</Link></li>
       </ul>
     </nav>
-    <div className="logos">
-      <div className="logos__group">
-        <div className="logos__group-wrap">
-          <div className="logos__item">
-            <div className="logos__img" />
-          </div>
-          <div className="logos__item">
-            <div className="logos__img" />
-          </div>
-        </div>
-      </div>
-      <div className="logos__group">
-        <div className="logos__group-wrap">
-          <div className="logos__item">
-            <div className="logos__img" />
-          </div>
-          <div className="logos__item">
-            <div className="logos__img" />
-          </div>
-        </div>
-      </div>
-      <div className="logos__group">
-        <div className="logos__group-wrap">
-          <div className="logos__item">
-            <div className="logos__img" />
-          </div>
-          <div className="logos__item">
-            <div className="logos__img" />
-          </div>
-        </div>
-      </div>
-      <div className="logos__group">
-        <div className="logos__group-wrap">
-          <div className="logos__item">
-            <div className="logos__img" />
-          </div>
-          <div className="logos__item">
-            <div className="logos__img" />
-          </div>
-        </div>
-      </div>
-      <div className="logos__group">
-        <div className="logos__group-wrap">
-          <div className="logos__item">
-            <div className="logos__img" />
-          </div>
-          <div className="logos__item">
-            <div className="logos__img" />
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
   <div className="footer__bottom">
     <a href="#" className="footer__logo"><img src="/src/img/header/logo.svg" alt="Lucky Block" /></a>

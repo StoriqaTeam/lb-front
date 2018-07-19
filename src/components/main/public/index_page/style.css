@@ -1,0 +1,4 @@
+.register__btn.btn--green:not(.disabled){
+	background-color: #48d9a7;
+	color: #fff;
+}

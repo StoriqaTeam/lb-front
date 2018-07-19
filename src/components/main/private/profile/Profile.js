@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import {Cookies}            from "react-cookie"
+import CurrencyIframe       from './CurrencyIframe';
 import {API_URL}            from './../../../../constants/constantsAPI' 
 import {copyToClipboard}    from './../../../../constants/constantsApp' 
 import css                  from './style.css'
@@ -114,6 +115,14 @@ class Profile extends Component {
               </div>
             </div>
           </div>
+          <div className="profile__iframes greed__sec">
+            <div className="blc">
+              <div className="referal">
+                <div className="referal__title">DEPOSIT</div>
+                <CurrencyIframe/>
+              </div>
+            </div>
+          </div> 
           <div className="greed__sec">
             <h2 className="greed__sec-title">Game history</h2>
             <div className="blc blc--table">
@@ -146,6 +155,7 @@ class Profile extends Component {
               </div>
             </div>
           </div>
+
           <div className="greed__sec">
             <h2 className="greed__sec-title">Referral history</h2>
             <div className="blc blc--table">

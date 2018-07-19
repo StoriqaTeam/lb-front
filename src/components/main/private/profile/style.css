@@ -8,3 +8,123 @@
 	color: transparent;
 	font-size: 0;
 }
+
+.profile__iframes.greed__sec{
+	width: 100%;
+}
+.currency__tabs{
+}
+.currency__tab_top{
+	width: auto;
+	display: flex;
+	cursor: pointer;
+
+}
+
+.currency__marker{
+
+      display: inline-block;
+    width: 17px;
+    height: 17px;
+    vertical-align: middle;
+    border-radius: 100%;
+    border: 1px solid #c7c6c6;
+    top: -2px;
+    margin-right: 10px;
+
+}
+.react-tabs__tab--selected > .currency__marker:before{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    height: 9px;
+    width: 9px;
+    border-radius: 100px;
+    background: #48d9a7;
+}
+.currency__tab-panel{
+	    position: relative;
+    z-index: 2;
+    background: white;
+    	    box-shadow: 1px 7px 15px 0 rgba(0,0,0,.1);
+
+}
+.currency__tab_li{
+	background:  #F5F5F5;
+	    color: #505050;
+	    display: flex;
+    justify-content: space-between;
+    	width: 320px;
+	        padding: 16px 24px;
+}
+.currency__tab_li > img {
+	filter: grayscale(85%);
+}
+.currency__tab-panel_small:not(.react-tabs__tab-panel--selected){
+	display: none;
+}
+.react-tabs__tab--selected > img {
+	filter: none;
+}
+.position-relative {
+	position: relative;
+}
+
+.currency__tab_small{
+	cursor: pointer;
+		    color: #505050;
+		    margin-top: 20px;
+
+}
+
+.currency__gray{
+		    color: #505050;
+
+}
+.currency__text{
+	font-size: 14px;
+}
+.currency__tab_img{
+	display: inline-block;
+}
+.currency__marker_crypt{
+	vertical-align: unset;
+}
+.currency__tab_curr.react-tabs__tab--selected{
+  box-shadow: 1px 2px 15px 0 rgba(0,0,0,.1);
+  border-top-right-radius: 6px;
+  background: #fff;
+  position: relative;
+  z-index: 2;
+
+}
+
+.currency__tab_crypt.react-tabs__tab--selected{
+  box-shadow: 1px 2px 15px 0 rgba(0,0,0,.1);
+  border-top-left-radius: 6px;
+  background: #fff;
+  position: relative;
+  z-index: 2;
+}
+
+.currency__tab_li:not(.react-tabs__tab--selected) img{
+
+}
+
+.currency__tab,
+.currency__tab-panel_small{
+	display: inline-block;
+	    padding: 16px 24px;
+
+}
+
+.currency__tab-panel_small{
+/*	width: 70%;
+*/}
+.currency__tab{
+	width: 20%;
+	vertical-align: top;
+}
+

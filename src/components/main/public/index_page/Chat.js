@@ -100,7 +100,6 @@ class Chat extends Component {
                     There're no messages here
                   </div>
                 : this.state.messages.reverse().map((message, i) => {
-                    let time = message.created_at.split('T')[1].split(':')
                     return (
                       <div className="chat__item" key={message.id}>
                         <div className="chat__icn"><img src={decodeURIComponent(message.img)} alt /></div>
@@ -108,7 +107,7 @@ class Chat extends Component {
                           <div className="chat__name chat__name--green">{message.user_name} <img src="/src/img/icons/cup-yello.svg" alt /></div>
                           <div className="chat__txt">{decodeURIComponent(message.content)}</div>
                         </div>
-                        <div className="chat__time">{time[0]}:{time[1]}</div>
+                        <div className="chat__time">{message.created_at}</div>
                       </div>
                     )
                   })

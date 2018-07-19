@@ -3,6 +3,7 @@ import {Cookies}            from "react-cookie"
 import {Link}               from 'react-router-dom'
 import LoginBlock           from './../elements/login_block/LoginBlock'
 import Popup                from './../elements/popup/Popup'
+import Logout               from './../elements/logout/Logout'
 import css                  from './style.css'
 
 class HeaderInner extends Component {
@@ -31,17 +32,20 @@ class HeaderInner extends Component {
 			        <span />
 			        <span /></button>
 			      <div className="header__bar">
-			        <nav className="header__menu" id="js-menu" ref='menuList'>
+			        <nav className="header__menu" id="js-menu" ref='menuList'  onClick={() => this.toggleMenu()}>
 			          <ul>
-			            <li><a className='disabled'>F.A.Q.</a></li>
-			            <li><a className='disabled'>RULES</a></li>
-			            <li><Link to="/winners">WINNERS</Link></li>
+			            <li><Link to='/faq'>F.A.Q.</Link></li>
+			            <li><Link to='/rules'>RULES</Link></li>
+			            <li><Link to='/winners'>WINNERS</Link></li>
+			            {this.props.user && <li className='header__logout'><Logout /></li>}
 			          </ul>                            
 			        </nav>
 			        { this.props.user
-			        	?	<Link to='/profile' class="user-btn">
-									  <img src={this.props.user && this.props.user.img ? decodeURIComponent(this.props.user.img) : "/src/img/example/ava-big.png"}/>
-									</Link>
+			        	?	[ <Link to='/profile' class="user-btn">
+									    <img src={this.props.user && this.props.user.img ? decodeURIComponent(this.props.user.img) : "/src/img/example/ava-big.png"}/>
+									  </Link>,
+									  <Logout />
+									 ]
 
 			        	: [<a  className="user-btn" onClick={() => this.setState({popup: true})} id='login'/>,
 				        	this.state.popup &&

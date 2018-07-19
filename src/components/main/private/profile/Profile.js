@@ -96,7 +96,7 @@ class Profile extends Component {
                 <form action="#" method="post" className="referal__form">
                   <div className="referal__form-name">Share your Referral</div>
                   <form className="referal__form-row"onSubmit={(e) => this.sendRef(e)}>
-                    <input type="email" ref='email' name="email" required ref='email' className="input referal__input" placeholder="Write an email of your friend" />
+                    <input type="email" ref='email' name="email" required ref='email' className="input referal__input" placeholder="myfriend@domain.com" />
                     <input className="btn referal__form-submit" type="submit" value='Send'/>
                   </form>
                 </form>

@@ -1,4 +1,29 @@
+.chat__send{
+	padding: 0 10px;
+}
+.chat__input{
+	text-transform: unset !important;
+	width: 100%;
+	padding-right: 15px;
+}
 .register__btn.btn--green:not(.disabled){
 	background-color: #48d9a7;
 	color: #fff;
+}
+.chat__txt{
+	    overflow-wrap: break-word;
+
+}
+@media screen and (max-width: 420px){
+	.chat__form{
+		display: block !important;
+	}	
+	.chat__input{
+		padding: 20px 10px  !important;
+	}
+	.chat__send{
+		width: 100% !important;
+		    margin-bottom: 10px !important;
+
+	}
 }

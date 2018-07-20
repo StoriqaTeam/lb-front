@@ -14,6 +14,14 @@ class CurrencyIframe extends Component {
   }
 
 
+   open_widget(a, e) {
+      e.preventDefault();
+      var link = a.href;
+      window.open(link, 'Changelly', 'width=600,height=470,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=0,left=0,top=0');
+      return false;
+  }
+
+
   render(){
     return  (
 		  <Tabs className='currency__tabs'>
@@ -25,17 +33,29 @@ class CurrencyIframe extends Component {
 		    <TabPanel className='currency__tab-panel'>
 					<Tabs>
 					  <TabList className='currency__tab'>
-				      <Tab className='position-relative currency__tab_small'><i className='position-relative currency__marker'/>USD</Tab>
-				      <Tab className='position-relative currency__tab_small'><i className='position-relative currency__marker'/>EUR</Tab>
+				      <Tab className='position-relative currency__tab_small  currency__tab_curr_small'><i className='position-relative currency__marker'/>EUR</Tab>
+				      <Tab className='position-relative currency__tab_small  currency__tab_curr_small'><i className='position-relative currency__marker'/>USD</Tab>
 				    </TabList>
 
 		    		<TabPanel className='currency__tab-panel_small'>
-							<iframe src="https://changelly.com/widget/v1?auth=email&from=EUR&to=ETH&merchant_id=17cd70c57129&address=0xfa06f1dc467f3398374b59afe92103580115877d&amount=50&ref_id=17cd70c57129&color=48d9a7" width={600} height={400} className="changelly" scrolling="no" style={{overflowY: 'hidden', border: 'none'}}>
+
+
+
+						<a className='currency__exchange' target='_blank' href="https://changelly.com/widget/v1?auth=email&from=EUR&to=ETH&merchant_id=aba39711a80e&address=&amount=1&ref_id=aba39711a80e&color=00cf70">
+						  <img src="https://changelly.com/pay_button_exchange.png" alt="Changelly" />
+						</a>
+
+
+							<iframe src="https://changelly.com/widget/v1?auth=email&from=EUR&to=ETH&merchant_id=17cd70c57129&address=0xfa06f1dc467f3398374b59afe92103580115877d&amount=50&ref_id=17cd70c57129&color=48d9a7" width={600} height={400} className="changelly currency__iframe" scrolling="no" style={{overflowY: 'hidden', border: 'none'}}>
 							  Can't load widget
 							</iframe>	
 						</TabPanel>	
 						<TabPanel className='currency__tab-panel_small'>
-							<iframe src="https://changelly.com/widget/v1?auth=email&from=USD&to=ETH&merchant_id=17cd70c57129&address=0xfa06f1dc467f3398374b59afe92103580115877d&amount=50&ref_id=17cd70c57129&color=48d9a7" width={600} height={400} className="changelly" scrolling="no" style={{overflowY: 'hidden', border: 'none'}}>
+
+						<a className='currency__exchange' target='_blank' href="https://changelly.com/widget/v1?auth=email&from=USD&to=ETH&merchant_id=aba39711a80e&address=&amount=1&ref_id=aba39711a80e&color=00cf70">
+						  <img src="https://changelly.com/pay_button_exchange.png" alt="Changelly" />
+						</a>
+							<iframe src="https://changelly.com/widget/v1?auth=email&from=USD&to=ETH&merchant_id=17cd70c57129&address=0xfa06f1dc467f3398374b59afe92103580115877d&amount=50&ref_id=17cd70c57129&color=48d9a7" width={600} height={400} className="changelly currency__iframe" scrolling="no" style={{overflowY: 'hidden', border: 'none'}}>
 							  Can't load widget
 							</iframe>
 		    		</TabPanel>	  
@@ -43,7 +63,7 @@ class CurrencyIframe extends Component {
 				</TabPanel>
 				<TabPanel className='currency__tab-panel'>
 					<Tabs>
-					  <TabList className='currency__tab'>
+					  <TabList className='currency__tab currency__tab-list_crypt'>
 				      <Tab className='position-relative currency__tab_small'>
 				      	<i className='position-relative currency__marker currency__marker_crypt'/>
 				      	<img src="/src/img/profile/bit.png" className='currency__tab_img' alt />

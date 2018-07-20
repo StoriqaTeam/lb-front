@@ -111,7 +111,7 @@ class Header extends Component {
 			          <div className="header-main__slide">
 			            <div className="header-main__slide-current"><img src="/src/img/header/current.svg" alt="Current" /></div>
 			            <div className="header-main__slide-jackpot"><img src="/src/img/header/WeekJackpot.svg" alt="Week Jackpot" /></div>
-			            <div className="header-main__slide-s600k"><span>$</span> 600,000,000</div>
+			            <div className="header-main__slide-s600k"><span>$</span> 1,000,000,000</div>
 			            <div className="header-main__timer">
 			              <div className="header-main__timer-title">NEXT ROUND IN</div>
 			              <div className="header-main__timer-wrap">

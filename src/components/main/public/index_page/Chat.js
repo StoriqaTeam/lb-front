@@ -3,7 +3,7 @@ import {Cookies}            from "react-cookie"
 import { Widget } from 'react-chat-widget';
 import 'react-chat-widget/lib/styles.css';
 import {API_URL}            from './../../../../constants/constantsAPI' 
-
+import css from './style.css'
 class Chat extends Component {
 
   constructor(){
@@ -88,7 +88,7 @@ class Chat extends Component {
       <div className="greed__sec">
         { !this.props.user &&
           <div className="register">
-            <div className="register__main">REGISTER FOR CHAT</div>,
+            <div className="register__main">REGISTER FOR GET YOUR REFERRAL BONUSES</div>,
             <button className="btn register__btn" onClick={() => this.openSignModal()}>Join</button>
           </div>
         }
@@ -116,10 +116,10 @@ class Chat extends Component {
             </div>
           </div>
           { this.props.user
-            ? <form className="register" onSubmit={(e) => this.sendMessage(e)}>
+            ? <form className="register chat__form" onSubmit={(e) => this.sendMessage(e)}>
                 <Widget />
-                <input type='text' ref='message' className='register__main' onChange={() => this.validateInput()} placeholder='Type your message' />
-                <input className="btn register__btn disabled btn btn--green header-main__right-btn" ref='sendMessage' type='submit' value='SEND'/>
+                <input type='text' ref='message' className='register__main chat__input' onChange={() => this.validateInput()} placeholder='Type your message' />
+                <input className="btn register__btn disabled btn btn--green header-main__right-btn chat__send" ref='sendMessage' type='submit' value='SEND'/>
               </form>
             :  <div className="register">
                 <div className="register__main">REGISTER FOR CHAT</div>

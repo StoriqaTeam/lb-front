@@ -107,7 +107,7 @@ class Header extends Component {
 			      </div>
 			      <div className="header-main__middle">
 			        <div className="header-main__slider">
-			          <button className="btn header-main__prev" title="Prev">Prev</button>
+
 			          <div className="header-main__slide">
 			            <div className="header-main__slide-current"><img src="/src/img/header/current.svg" alt="Current" /></div>
 			            <div className="header-main__slide-jackpot"><img src="/src/img/header/WeekJackpot.svg" alt="Week Jackpot" /></div>
@@ -137,7 +137,7 @@ class Header extends Component {
 			              </div>
 			            </div>
 			          </div>
-			          <button className="btn header-main__next" title="Next">Next</button>
+
 			        </div>
 			      </div>
 			      <div className="header-main__right">
@@ -166,3 +166,8 @@ class Header extends Component {
 }
 
 export default Header
+
+
+			          // <button className="btn header-main__prev" title="Prev">Prev</button>
+
+			          // <button className="btn header-main__next" title="Next">Next</button>

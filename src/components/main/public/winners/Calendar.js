@@ -11,7 +11,10 @@ class Calendar extends Component {
 			year: date.getFullYear(),
 			month: date.getMonth() + 1,
 			week:  null,
-			day:   date.getDate()
+			day:   date.getDate(),
+			hour:  7,
+			clock: 'am'
+
 		}
 	}
 
@@ -23,10 +26,39 @@ class Calendar extends Component {
  		this.props.refresh()
  	}
 
+ 	switchMonth(incr){
+ 		let newDate;
+ 		switch (true){
+ 			case !incr && this.state.month === 1:
+				newDate = {
+	 				year: this.state.year - 1,
+	 				month: 12
+	 			}
+	 			break
+	 		case !incr:
+	 			newDate = {
+	 				month: this.state.month - 1
+	 			}
+	 			break	
+	 		case	incr && this.state.month === 12:
+	 			newDate = {
+	 				year:  this.state.year + 1,
+	 				month: 1
+	 			}
+	 			break	
+	 		default:
+	 			newDate = {
+	 				month:  this.state.month + 1
+	 			}	 					 					
+ 		}
+		return this.update(newDate) 
+ 	}
+
 	render(){
     let cookies = new Cookies,
     token = cookies.get('token'),
     date  = new Date(this.state.year, this.state.month - 1),
+    realDate = new Date(),
     nextDate = new Date(this.state.year, this.state.month ),
     months = [ 'JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'	],
   	longMonth = ((this.state.month <= 7) && (this.state.month % 2 != 0)) || ((this.state.month >= 8) && (this.state.month % 2 == 0)),
@@ -56,19 +88,19 @@ class Calendar extends Component {
 			      <div className="blc">
 			        <div className="calendar">                                
 			          <div className="slider calendar__slider">
-			            <button className="btn slider__arrow slider__arrow--prev" title="Prev">Prev</button>
+			            <button className="btn slider__arrow slider__arrow--prev" title="Prev" onClick={() => this.update({year: this.state.year - 1, month: 1, week: null, day: 1})}>Prev</button>
 			            <div className="calendar__pagination">
-			              <button className="btn calendar__pagination-item" onClick={() => this.update({year: this.state.year - 1})}>{this.state.year - 1}</button>
+			              <button className="btn calendar__pagination-item" onClick={() => this.update({year: this.state.year - 1, week: null, month: 1, day: 1})}>{this.state.year - 1}</button>
 			              <button className="btn calendar__pagination-item active">{this.state.year}</button>
-			              <button className="btn calendar__pagination-item" onClick={() => this.update({year: this.state.year + 1})}>{this.state.year + 1}</button>
+			              <button className={`btn calendar__pagination-item ${this.state.year === realDate.getFullYear() && 'disabled'}`} onClick={() => this.update({year: this.state.year + 1, week: null, month: 1, day: 1})}>{this.state.year + 1}</button>
 			            </div>
 			            <div className="calendar__main">
 			            	{
 			            		months.map((month, i) => {
 				              	return (
-					              	<div 
-					              		className={`calendar__item ${this.state.month == months.indexOf(months[i + 1]) ? 'active' : ''}`} 
-					              		onClick={() =>this.update({month:  months.indexOf(months[i + 1]), day: 1})}>
+					              	<div key={i}
+					              		className={`calendar__item ${this.state.month == i + 1 ? 'active' : ''} ${this.state.year === realDate.getFullYear() && realDate.getMonth() < i && 'disabled'}`} 
+					              		onClick={() =>this.update({month:  i + 1, day: 1, week: null})}>
 					              		{months[i]}
 					              	</div>
 					              )
@@ -76,7 +108,7 @@ class Calendar extends Component {
 				            }
 			              <div className="calendar__item calendar__item--long">SUPER JACKPOT {date.getFullYear()} — ${this.state.year - 2001},000,000</div>
 			            </div>
-			            <button className="btn slider__arrow slider__arrow--next" title="Next">Next</button>
+			            <button className={`btn slider__arrow slider__arrow--next ${this.state.year === realDate.getFullYear() && 'disabled opacity-0'}` } title="Next" onClick={() => this.update({year: this.state.year + 1, month: 1, week: null, day: 1})}>Next</button>
 			          </div>
 			        </div>
 			      </div>
@@ -85,7 +117,7 @@ class Calendar extends Component {
 			      <div className="blc">
 			        <div className="datepicker">
 			          <div className="slider datepicker__slider">
-			            <button className="btn slider__arrow slider__arrow--prev" title="Prev">Prev</button>
+			            <button className="btn slider__arrow slider__arrow--prev" title="Prev" onClick={() => this.switchMonth(0)}> Prev</button>
 			            <div className="datepicker__main">
 			              <div className="datepicker__table">
 			                <table>
@@ -108,7 +140,7 @@ class Calendar extends Component {
 				                    	return (
 					                    	<tr>
 						                      <td 
-						                      	className={`datepicker__table-week ${this.state.week === weekIndex  ? 'active' : ''}`} 
+						                      	className={`datepicker__table-week ${this.state.week === weekIndex  ? 'active' : ''} ${ counter - realDate.getDate() > 0 && this.state.month === realDate.getMonth() + 1  && 'disabled'}`} 
 						                      	onClick={() => this.update({week: weekIndex, day: null})}>
 						                      	{weekIndex + 1}
 						                      </td>
@@ -122,7 +154,7 @@ class Calendar extends Component {
 																			let lastDay = (weekIndex === weeksNum -1 && counter > daysNum )
 																			console.log(lastDay, weeksNum, weekIndex, i, getNextDay)
 						                      		return (
-						                      			<td onClick={() => this.update({day: thisDay, week: null })} className={lastDay || !counter ? 'disabled' : ''}>
+						                      			<td onClick={() => this.update({day: thisDay, week: null })} className={`${lastDay || !counter || (this.state.year === realDate.getFullYear() && this.state.month === realDate.getMonth() + 1 && realDate.getDate() < counter) ? 'disabled' : ''} ${i === 0 && 'weekend'}`}>
 						                      				<span className={this.state.day === counter ? 'active' : ''} >
 						                      					{counter && !lastDay ? counter : ''}
 						                      				</span>
@@ -139,33 +171,34 @@ class Calendar extends Component {
 			              </div>
 			              <div className="datepicker__bar">
 			                <div className="datepicker__hours">
-			                  Hours <b>07</b>
+			                  Hours <b>{this.state.hour}</b>
 			                </div>
-			                  <input type="range" name="points" min="0" max="10" id='lol'/>
-			                <div className="datepicker__sliderbar">
-			                  <div className="datepicker__progress" style={{width: '50%'}} />
-			                  <div className="datepicker__tumbler" style={{left: '50%'}} />
+
+			                <div className='calendar__slider_wrapper'>
+			                 <div className="datepicker__sliderbar">
 			                  <div className="datepicker__hours-mark datepicker__hours-mark--1 active" />
 			                  <div className="datepicker__hours-mark datepicker__hours-mark--2 active" />
 			                  <div className="datepicker__hours-mark datepicker__hours-mark--3 active" />
 			                  <div className="datepicker__hours-mark datepicker__hours-mark--4 active" />
 			                  <div className="datepicker__hours-mark datepicker__hours-mark--5 active" />
 			                  <div className="datepicker__hours-mark datepicker__hours-mark--6 active" />
-			                  <div className="datepicker__hours-mark datepicker__hours-mark--7" />
-			                  <div className="datepicker__hours-mark datepicker__hours-mark--8" />
-			                  <div className="datepicker__hours-mark datepicker__hours-mark--9" />
-			                  <div className="datepicker__hours-mark datepicker__hours-mark--10" />
-			                  <div className="datepicker__hours-mark datepicker__hours-mark--11" />
-			                  <div className="datepicker__hours-mark datepicker__hours-mark--12" />
-			                  <div className="datepicker__hours-mark datepicker__hours-mark--13" />
+			                  <div className="datepicker__hours-mark datepicker__hours-mark--7 active" />
+			                  <div className="datepicker__hours-mark datepicker__hours-mark--8 active" />
+			                  <div className="datepicker__hours-mark datepicker__hours-mark--9 active" />
+			                  <div className="datepicker__hours-mark datepicker__hours-mark--10 active" />
+			                  <div className="datepicker__hours-mark datepicker__hours-mark--11 active" />
+			                  <div className="datepicker__hours-mark datepicker__hours-mark--12 active" />
+			                  <div className="datepicker__hours-mark datepicker__hours-mark--13 active" />
 			                </div>
+			                  <input type="range" name="points" min="0" max="12" id='lol' value={this.state.hour} ref='hour' onChange={() => this.update({hour: this.refs.hour.value})}/>
+			    						</div>
 			                <div className="datepicker__am-pm">
-			                  <button className="btn datepicker__am-pm-btn active">am</button>
-			                  <button className="btn datepicker__am-pm-btn">pm</button>
+			                  <button className={`btn datepicker__am-pm-btn ${this.state.clock === 'am' ? 'active' : ''}`} onClick={() => this.update({clock: 'am'})}>am</button>
+			                  <button className={`btn datepicker__am-pm-btn ${this.state.clock === 'pm' ? 'active' : ''}`} onClick={() => this.update({clock: 'pm'})}>pm</button>
 			                </div>
 			              </div>
 			            </div>
-			            <button className="btn slider__arrow slider__arrow--next" title="Next">Next</button>
+			            <button className={`btn slider__arrow slider__arrow--next ${this.state.year === realDate.getFullYear() && this.state.month  === realDate.getMonth() + 1 && 'disabled opacity-0'}`} title="Next" onClick={() => this.switchMonth(1)}>Next</button>
 			          </div>
 			        </div>
 			      </div>
@@ -176,3 +209,4 @@ class Calendar extends Component {
 }
 
 export default Calendar
+

@@ -72,7 +72,7 @@ class Chat extends Component {
     .then (json => {
       console.log(json)
       this.setState({
-        messages: json.message
+        messages: json.message.reverse()
       })
       this.refs.message.value = ''
     })
@@ -100,7 +100,7 @@ class Chat extends Component {
                 ? <div className="chat__item">
                     There're no messages here
                   </div>
-                : this.state.messages.reverse().map((message, i) => {
+                : this.state.messages.map((message, i) => {
                     return (
                       <div className="chat__item" key={message.id}>
                         <div className="chat__icn"><img src={message.img ? decodeURIComponent(message.img) : "/src/img/example/ava.png"} alt /></div>

@@ -14,3 +14,11 @@ height: unset !important;
 .social-login__twitter{
 	background: #3484F9;
 }
+
+.h__disabled_gray{
+	filter: grayscale(100%);
+}
+
+.h__disabled{
+	pointer-events: none;
+}

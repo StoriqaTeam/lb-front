@@ -108,7 +108,7 @@ class Profile extends Component {
                     data-size='large'
                     data-layout="button">Share referral via Facebook
                   </div>
-                  <button className="btn btn--twitter referal__twitter">Share referral via Twitter</button>
+                  <button className="btn btn--twitter referal__twitter h__disabled_gray h__disabled">Share referral via Twitter</button>
                   <button className="btn btn--green btn--copy referal__copy" ref='copyRef' onClick={() => this.copy('copyRef')}>Copy referral link</button>
                   <input style={{opacity: 0, height: 0}} id='copyRef' value={`${window.location.origin}?ref=${Math.pow(this.props.user.id, 2)}`}/>
                 </div>

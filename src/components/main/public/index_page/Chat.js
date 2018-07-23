@@ -43,7 +43,7 @@ class Chat extends Component {
     )
     .then (json => {
       this.setState({
-        messages: json.message
+        messages: json.message.reverse()
       })
     })
   }

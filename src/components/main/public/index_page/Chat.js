@@ -85,13 +85,7 @@ class Chat extends Component {
     date        = new Date()
 
     return (
-      <div className="greed__sec">
-        { !this.props.user &&
-          <div className="register">
-            <div className="register__main">REGISTER FOR GET YOUR REFERRAL BONUSES</div>,
-            <button className="btn register__btn" onClick={() => this.openSignModal()}>Join</button>
-          </div>
-        }
+
         <div className="blc chat-blc">
           <div className="chat__wrap">
             <h3 className="chat__title">CHAT</h3>
@@ -127,7 +121,6 @@ class Chat extends Component {
               </div>
           }
         </div>
-      </div>                  
     )
   }
 }

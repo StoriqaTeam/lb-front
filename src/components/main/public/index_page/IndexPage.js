@@ -1,9 +1,10 @@
 import React, { Component } from "react"
 import {Cookies}            from "react-cookie"
-import { Widget } from 'react-chat-widget';
+import { Widget }           from 'react-chat-widget';
 import 'react-chat-widget/lib/styles.css';
-import Chat from './Chat'
-import css from './style.css'
+import Referral             from './../../../elements/referral/Referral'
+import Chat                 from './Chat'
+import css                  from './style.css'
 
 class IndexPage extends Component {
 
@@ -76,7 +77,18 @@ class IndexPage extends Component {
               </div>
             </div>
           </div>  
-          <Chat user={this.props.user}/>                 
+         <div className="greed__sec">
+           { this.props.user 
+              ? <div className="blc blc_referral">
+                <Referral user={this.props.user} />
+              </div> 
+              : <div className="register">
+                  <div className="register__main">REGISTER FOR GET YOUR REFERRAL BONUSES</div>,
+                  <button className="btn register__btn" onClick={() => this.openSignModal()}>Join</button>
+                </div>
+            }  
+          <Chat user={this.props.user}/> 
+         </div>                 
         </div>
       </div>
 

@@ -14,7 +14,7 @@ render(){
     return(
 			<div className="container">
 			  <div className="main__header">
-			    <h1>PROFILE</h1>
+			    <h1>WINNERS</h1>
 			  </div>
 			  <div className="greed">
 			   	<Calendar refresh={()=> this.setState({refreshed: true})} />

@@ -44,8 +44,10 @@ class CurrencyIframe extends Component {
 						<a className='currency__exchange' target='_blank' href="https://changelly.com/widget/v1?auth=email&from=EUR&to=ETH&merchant_id=aba39711a80e&address=&amount=1&ref_id=aba39711a80e&color=00cf70">
 						  <img src="https://changelly.com/pay_button_exchange.png" alt="Changelly" />
 						</a>
-<iframe src="https://changelly.com/widget/v1?auth=email&from=EUR&to=ETH&merchant_id=aba39711a80e&address=0xfa06f1dc467f3398374b59afe92103580115877d&amount=50&ref_id=aba39711a80e&color=00cf70" width={600} height={500} className="changelly currency__iframe" scrolling="no" style={{overflowY: 'hidden', border: 'none'}}> Can't load widget </iframe>
 
+					<iframe src="https://changelly.com/widget/v1?auth=email&from=EUR&to=ETH&merchant_id=17cd70c57129&address=0xfa06f1dc467f3398374b59afe92103580115877d&amount=50&ref_id=17cd70c57129&color=48d9a7" width={600} height={400} className="changelly currency__iframe" scrolling="no" style={{overflowY: 'hidden', border: 'none'}}>
+					  Can't load widget
+					</iframe>
 
 						</TabPanel>	
 						<TabPanel className='currency__tab-panel_small'>
@@ -53,9 +55,10 @@ class CurrencyIframe extends Component {
 						<a className='currency__exchange' target='_blank' href="https://changelly.com/widget/v1?auth=email&from=USD&to=ETH&merchant_id=aba39711a80e&address=&amount=1&ref_id=aba39711a80e&color=00cf70">
 						  <img src="https://changelly.com/pay_button_exchange.png" alt="Changelly" />
 						</a>
-							<iframe src="https://changelly.com/widget/v1?auth=email&from=USD&to=ETH&merchant_id=17cd70c57129&address=0xfa06f1dc467f3398374b59afe92103580115877d&amount=50&ref_id=17cd70c57129&color=48d9a7" width={600} height={400} className="changelly currency__iframe" scrolling="no" style={{overflowY: 'hidden', border: 'none'}}>
-							  Can't load widget
-							</iframe>
+						<iframe src="https://changelly.com/widget/v1?auth=email&from=USD&to=ETH&merchant_id=17cd70c57129&address=0xfa06f1dc467f3398374b59afe92103580115877d&amount=50&ref_id=17cd70c57129&color=48d9a7" width={600} height={400} className="changelly currency__iframe" scrolling="no" style={{overflowY: 'hidden', border: 'none'}}>
+						  Can't load widget
+						</iframe>
+
 		    		</TabPanel>	  
 		    	</Tabs>	  
 				</TabPanel>

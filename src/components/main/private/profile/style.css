@@ -159,6 +159,9 @@
 			display: block;
 			margin-top: 20px;
 		}
+		.currency__tab-panel_small{
+			width: 100%;
+		}
 	}
 
 

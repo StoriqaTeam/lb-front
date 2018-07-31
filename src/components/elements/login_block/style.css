@@ -14,6 +14,9 @@ height: unset !important;
 .social-login__twitter{
 	background: #3484F9;
 }
+.social-login__telegram{
+	background: #2E9EE6;
+}
 
 .h__disabled_gray{
 	filter: grayscale(100%);

@@ -1,5 +1,7 @@
 import React, { Component } from "react"
+import ShareLink from 'react-twitter-share-link'
 import {API_URL}            from './../../../constants/constantsAPI' 
+import css          from './style.css'
 
 class Referral extends Component {
 
@@ -63,13 +65,18 @@ class Referral extends Component {
         <div className="referal__bar">
           <div class="btn btn--facebook referal__facebook" 
             onClick={()=> this.shareFB()}
-            data-href={`https://lb-front.stq.cloud/?ref=${Math.pow(this.props.user.id, 2)}`} 
+            data-href={`https://lb-front.stq.cloud/?ref=${Math.pow(this.props.user ?  (this.props.user.id, 2) : 0)}`} 
             data-size='large'
             data-layout="button">Share referral via Facebook
           </div>
-          <button className="btn btn--twitter referal__twitter h__disabled_gray h__disabled">Share referral via Twitter</button>
+          <ShareLink link={`${window.location.origin}/?ref=0`}  >
+             {link => (
+                        <a href={link} target='_blank' className="btn btn--twitter referal__twitter">Share referral via Twitter</a>
+
+             )}
+          </ShareLink>
           <button className="btn btn--green btn--copy referal__copy" ref='copyRef' onClick={() => this.copy('copyRef')}>Copy referral link</button>
-          <input style={{opacity: 0, height: 0}} id='copyRef' value={`${window.location.origin}?ref=${Math.pow(this.props.user.id, 2)}`}/>
+          <input style={{opacity: 0, height: 0}} id='copyRef' value={`${window.location.origin}?ref=${Math.pow(this.props.user && this.props.user.id, 2)}`}/>
         </div>
       </div>
     )

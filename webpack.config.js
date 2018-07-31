@@ -16,12 +16,12 @@ module.exports = {
         poll: true
     },
       devServer: {
-        port: 3000,
+        port: 3022,
         historyApiFallback: true,
 publicPath: '/',
 
         headers: {
-            "Access-Control-Allow-Origin": "http://localhost:3000",
+            "Access-Control-Allow-Origin": "http://localhost:3022",
             "Access-Control-Allow-Credentials": "true"
         }
     },

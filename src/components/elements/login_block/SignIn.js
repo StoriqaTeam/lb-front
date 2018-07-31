@@ -31,6 +31,7 @@ class SignIn extends Component {
  			err => err
  		)
  		.then (json => {
+ 			console.log(json)
  			if (json.status === 'success'){
  			 return json.message 
  			} else {  

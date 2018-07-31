@@ -11,16 +11,16 @@ const devFlagPlugin = new webpack.DefinePlugin({
 });
 module.exports = {
     mode: 'development',
-    entry: ['webpack-dev-server/client?http://0.0.0.0:3000',
+    entry: ['webpack-dev-server/client?http://0.0.0.0:3022',
         'webpack/hot/only-dev-server', // WebpackDevServer host and port
         // "only" prevents reload on syntax errors
         "./src/index.js"
     ],
     devtool: "inline-source-map",
     devServer: {
-        port: 3000,
+        port: 3022,
         headers: {
-            "Access-Control-Allow-Origin": "http://localhost:3000",
+            "Access-Control-Allow-Origin": "http://localhost:3022",
             "Access-Control-Allow-Credentials": "true"
         }
     },

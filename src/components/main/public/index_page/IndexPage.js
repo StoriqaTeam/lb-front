@@ -78,7 +78,7 @@ class IndexPage extends Component {
             </div>
           </div>  
          <div className="greed__sec">
-           { this.props.user 
+           { !this.props.user 
               ? <div className="blc blc_referral">
                 <Referral user={this.props.user} />
               </div> 

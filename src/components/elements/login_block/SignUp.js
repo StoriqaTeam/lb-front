@@ -21,7 +21,7 @@ class SignUp extends Component {
  		let headers = new Headers();
  			    headers.append('Content-Type', 'application/json')
 
- 		let user  = await fetch(`${API_URL}/api/v1/signup`,{
+ 		let response  = await fetch(`${API_URL}/api/v1/signup`,{
  			method: 'POST',
  			headers: headers,
  			body: JSON.stringify({
@@ -35,14 +35,14 @@ class SignUp extends Component {
  			err => err
  		)
  		.then (json => {
- 			return json.status === 'success' ? json.message : null
+ 			return json
  		})
 
- 		if (user){
- 			this.setState({
- 				success: true
- 			})
- 		}
+ 		return response.token
+ 			? this.setState({
+ 				  success: true
+ 			  })
+ 			: this.refs.error.innerHTML = response.error
  	}
 
 
@@ -66,9 +66,8 @@ class SignUp extends Component {
 			          <input className="input100" type="password" name="pass" placeholder="Type your password" ref='password'  required autoComplete="off"/>
 			          <span className="focus-input100" data-symbol="" />
 			        </div>
-			        <div className="text-right p-t-8 p-b-31">
+			        <small className='text-danger d-block error' ref='error'></small>
 
-			        </div>
 			        <div className="container-login100-form-btn">
 			          <div >
 			            <input type='submit' className="btn btn--green header-main__right-btn popup__confirm" value='Sign up'/>

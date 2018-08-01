@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import { connect }            from 'react-redux'
+import {Cookies}            from "react-cookie"
+
 import * as userActions       from './../../../actions/userActions'
 import { bindActionCreators } from 'redux'
 import {API_URL, GET_USER}              from './../../../constants/constantsAPI' 

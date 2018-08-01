@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
-import  {Cookies}            from "react-cookie"
+import { connect }            from 'react-redux'
+import * as userActions       from './../../../actions/userActions'
+import { bindActionCreators } from 'redux'
+import style                  from './style.css'
+import {API_URL, GET_USER}              from './../../../constants/constantsAPI' 
 import SocialLogin            from './SocialLogin'
-import {API_URL}          from './../../../constants/constantsAPI' 
-
-
-
 import style              from './style.css'
 
 class SignUp extends Component {
@@ -38,11 +38,8 @@ class SignUp extends Component {
  			return json
  		})
 
- 		return response.token
- 			? this.setState({
- 				  success: true
- 			  })
- 			: this.refs.error.innerHTML = response.error
+ 		user = response && response.token ? await GET_USER(response) : this.refs.error.innerHTML = response.error
+ 		return response.token ? this.props.userActions.getProfile(user) : null
  	}
 
 

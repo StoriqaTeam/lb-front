@@ -30,7 +30,7 @@ class Referral extends Component {
       }),
       body: JSON.stringify({
         email: this.refs.email.value, 
-        id:    this.props.user.id  
+        id:    this.props.user.ref_code  
       })
     })
     .then(
@@ -69,14 +69,14 @@ class Referral extends Component {
             data-size='large'
             data-layout="button">Share referral via Facebook
           </div>
-          <ShareLink link={`${window.location.origin}/?ref=0`}  >
+          <ShareLink link={`${window.location.origin}/?ref=${this.props.user.ref_code}`}  >
              {link => (
                         <a href={link} target='_blank' className="btn btn--twitter referal__twitter">Share referral via Twitter</a>
 
              )}
           </ShareLink>
           <button className="btn btn--green btn--copy referal__copy" ref='copyRef' onClick={() => this.copy('copyRef')}>Copy referral link</button>
-          <input style={{opacity: 0, height: 0}} id='copyRef' value={`${window.location.origin}?ref=${Math.pow(this.props.user && this.props.user.id, 2)}`}/>
+          <input style={{opacity: 0, height: 0}} id='copyRef' value={`${window.location.origin}?ref=${this.props.user.ref_code}`}/>
         </div>
       </div>
     )

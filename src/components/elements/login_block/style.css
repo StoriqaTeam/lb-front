@@ -25,3 +25,16 @@ height: unset !important;
 .h__disabled{
 	pointer-events: none;
 }
+
+.error{
+	height: 15px;
+	display: block;
+	color: #000;
+	text-align: center;
+	    margin: 20px auto;
+
+}
+
+.text-danger{
+	color: #e02b2b;
+}

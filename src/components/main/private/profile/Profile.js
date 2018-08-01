@@ -9,7 +9,7 @@ class Profile extends Component {
 
   render(){
 
-    let date = this.props.user.signed_up.split('T')[0].split('-')
+    let date = this.props.user.createdAt.split('T')[0].split('-')
 
     return  (
 

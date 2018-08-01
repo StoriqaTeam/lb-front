@@ -3,7 +3,7 @@ import { connect }            from 'react-redux'
 import * as userActions       from './../../../actions/userActions'
 import { bindActionCreators } from 'redux'
 import style                  from './style.css'
-import {API_URL}              from './../../../constants/constantsAPI' 
+import {API_URL, GET_USER}              from './../../../constants/constantsAPI' 
 import SocialLogin            from './SocialLogin'
 
 class SignIn extends Component {
@@ -18,7 +18,7 @@ class SignIn extends Component {
  		let headers = new Headers();
  		headers.append('Content-Type', 'application/json')
 
- 		let user  = await fetch(`${API_URL}/api/v1/signin`,{
+ 		let response  = await fetch(`${API_URL}/api/v1/signin`,{
  			method: 'POST',
  			headers: headers,
  			body: JSON.stringify({
@@ -32,14 +32,10 @@ class SignIn extends Component {
  		)
  		.then (json => {
  			console.log(json)
- 			if (json.status === 'success'){
- 			 return json.message 
- 			} else {  
- 				this.setState({error: json.message})
- 				return null
- 			}
- 		})
- 		return user && this.props.userActions.getProfile(user) 
+ 			return json
+ 		}),
+		user = response && response.token ? await GET_USER(response) : this.refs.error.innerHTML = response.error
+ 		return response.token ? this.props.userActions.getProfile(user) : null
  	}
 
   render(){
@@ -62,15 +58,11 @@ class SignIn extends Component {
 			          <input className="input100" type="password" name="pass" ref='password' placeholder="Type your password" required  autoComplete="off"/>
 			          <span className="focus-input100" data-symbol="" />
 			        </div>
-			        <div className="text-right p-t-8 p-b-31">
-			    		{this.state.error && <div className='label-input100'>{this.state.error}</div>}
-
-			        </div>
 			        <div className="container-login100-form-btn">
 			          <div >
+			             <small className='text-danger d-block error' ref='error'></small>
 
 			             <input type='submit' className="btn btn--green header-main__right-btn popup__confirm" type='submit' value='Login'/>
-			              
 			          </div>
 			        </div>
 			       <SocialLogin />

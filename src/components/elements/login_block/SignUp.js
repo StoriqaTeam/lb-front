@@ -37,10 +37,10 @@ class SignUp extends Component {
  		)
  		.then (json => {
  			return json
- 		}),
+ 		})
+ 		console.log(response)
 
- 		user = response && response.token ? await GET_USER(response) : this.refs.error.innerHTML = response.error
- 		return response.token ? this.props.userActions.getProfile(user) : null
+ 		return response && response.id ? this.props.userActions.getProfile(response) : this.refs.error.innerHTML = response.error
  	}
 
 
@@ -90,4 +90,19 @@ class SignUp extends Component {
 			  )
 			}
 }
-			export default SignUp
+
+function mapStateToProps(state) {
+  return {
+    
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    userActions:   bindActionCreators(userActions, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp)
+
+

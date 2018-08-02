@@ -4,17 +4,6 @@ export default function userReducer( state = initialState, action) {
   let payload = action.payload
   switch (action.type ){
     case 'GOT_USER':
-    	let emailVerification, 
-    	{activated} = payload
-    	activated == 1         ? emailVerification = 'verified' : emailVerification = 'unverified'
-      let day   = payload.birth_day, 
-          month = payload.birth_month;
-      if (payload.birth_day){
-        day   = day.toString(), 
-        month = month.toString();
-        day   = (day.length == 2) ? day : `0${day}`;
-        month =  (month.length == 2) ? month : `0${month}`;
-      }
       return Object.assign({}, state, {
         ...payload
       })

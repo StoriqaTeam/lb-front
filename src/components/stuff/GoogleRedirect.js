@@ -48,7 +48,7 @@ class GoogleRedirect extends Component {
 		 		)
 		 		.then (json => {
 		 			console.log(json)
-		 			return json.status === 'success' ? json.message : null
+		 			return json.user || null
 		 		})	
 		 		console.log(user)
 

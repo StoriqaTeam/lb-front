@@ -8,8 +8,7 @@ class Profile extends Component {
 
 
   render(){
-
-    let date = this.props.user.createdAt.split('T')[0].split('-')
+    let  date = this.props.user.createdAt && this.props.user.createdAt.split('T')[0].split('-')  
 
     return  (
 
@@ -32,7 +31,7 @@ class Profile extends Component {
                   </div>
                   <div className="profile__row">
                     <div className="profile__title profile__title--row">Join date:</div>
-                    <div className="profile__val">{date[2]}.{date[1]}.{date[0]}</div>
+                    <div className="profile__val">{date ? `${date[2]}.${date[1]}.${date[0]}`: ''}</div>
                   </div>
                   <div className="profile__row">
                     <div className="profile__title profile__title--row">Email:</div>

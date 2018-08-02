@@ -50,7 +50,7 @@ class SignIn extends Component {
 			        </span>
 			        <div className="wrap-input100 validate-input m-b-23" data-validate="Username is reauired">
 			          <span className="label-input100">Email</span>
-			          <input className="input100" type="text" name="username" ref='email' placeholder="Type your email"  required autoComplete="off"/>
+			          <input className="input100" type="email" name="username" ref='email' placeholder="Type your email"  required autoComplete="off"/>
 			          <span className="focus-input100" data-symbol="" />
 			        </div>
 			        <div className="wrap-input100 validate-input" data-validate="Password is required">

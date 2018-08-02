@@ -9,57 +9,52 @@ import {API_URL, GET_USER}         from './../../constants/constantsAPI'
 class GoogleRedirect extends Component {
 
 	componentDidMount(){
-		let accessToken =  getCodeFromUrl('code', '?')
-		return accessToken ? GET_USER(accessToken) : true /*close()*/;
+		let accessToken =  getCodeFromUrl('access_token', '#')
+		return accessToken ? this.getUser(accessToken) : true /*close()*/;
 	}
 
 	componentWillReceiveProps(nextProps){
 		if (nextProps.user){
-			// close();
+			close();
 		}
 	}
 
-	// async getUser(accessToken){
-	// 	let googleProfile =	await fetch(`https://www.googleapis.com/plus/v1/people/me?access_token=${accessToken}&scope=https://www.googleapis.com/auth/profile`,{
-	// 		method: 'GET'
-	// 	})
-	// 	.then(
-	// 		res => res.json(),
-	// 		err => err
-	// 	)
-	// 	.then(json => {
-	// 		return json.id && json	
-	// 	})
-	// 	console.log(googleProfile)
-	// 	if (googleProfile){
-	// 		let user  = await fetch(`${API_URL}/api/v1/soc_auth`,{
-	// 	 			method: 'POST',
-	// 	 			headers: new Headers({
-	// 					'Content-Type': 'application/json'		 				
-	// 	 			}),
-	// 	 			body: JSON.stringify( {	
-	// 					name:     googleProfile.name.givenName,
-	// 					surname:  googleProfile.name.familyName,
-	// 					id:       googleProfile.id,
-	// 					email:    googleProfile.emails[0].value,
-	// 					img:      encodeURIComponent(`${googleProfile.image.url.split('?')[0]}?sn=250`),
-	// 					provider: 'google',
-	// 					soc_id:   googleProfile.id
-	// 				})
-	// 	 		})
-	// 	 		.then(
-	// 	 			res => res.json(),
-	// 	 			err => err
-	// 	 		)
-	// 	 		.then (json => {
-	// 	 			console.log(json)
-	// 	 			return json.status === 'success' ? json.message : null
-	// 	 		})	
-	// 	 		console.log(user)
+	async getUser(accessToken){
+		let googleProfile =	await fetch(`https://www.googleapis.com/plus/v1/people/me?access_token=${accessToken}&scope=https://www.googleapis.com/auth/profile`,{
+			method: 'GET'
+		})
+		.then(
+			res => res.json(),
+			err => err
+		)
+		.then(json => {
+			return json.id && json	
+		})
+		console.log(googleProfile)
+		if (googleProfile){
+			let user  = await fetch(`${API_URL}/api/v1/auth-social`,{
+		 			method: 'POST',
+		 			headers: new Headers({
+						'Content-Type': 'application/json'		 				
+		 			}),
+		 			body: JSON.stringify( {	
+						profile:   googleProfile,
+						provider: 'google'
+					})
+		 		})
+		 		.then(
+		 			res => res.json(),
+		 			err => err
+		 		)
+		 		.then (json => {
+		 			console.log(json)
+		 			return json.status === 'success' ? json.message : null
+		 		})	
+		 		console.log(user)
 
-	// 	 		return user && this.props.userActions.getProfile(user) 
-	// 	 	} 		
-	// }
+		 		return user && this.props.userActions.getProfile(user.user) 
+		 	} 		
+	}
 
 	render(){
 		let cookies = new Cookies,

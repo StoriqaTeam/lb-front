@@ -34,7 +34,7 @@ class SignIn extends Component {
  			console.log(json)
  			return json
  		}),
-		user = response && response.token ? await GET_USER(response) : this.refs.error.innerHTML = response.error
+		user = response && response.token ? await GET_USER(response.token) : this.refs.error.innerHTML = response.error
  		return response.token ? this.props.userActions.getProfile(user) : null
  	}
 

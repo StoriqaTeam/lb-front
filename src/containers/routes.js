@@ -20,7 +20,7 @@ class Routes extends Component {
     	<Switch>
             < Route path='/fb'       render={(props)  => < FBRedirect      {...props}  {...this.props} /> }  key='FBRedirect'/ >
             < Route path='/tw'       render={(props)  => < TwRedirect      {...props}  {...this.props} /> }  key='TwRedirect'/ >           
-            < Route path='/auth/google/callback'   render={(props)  => < GoogleRedirect  {...props}  {...this.props} /> }  key='GoogleRedirect'/ >           
+            < Route path='/google'   render={(props)  => < GoogleRedirect  {...props}  {...this.props} /> }  key='GoogleRedirect'/ >           
             <Main {...this.props}>
     			< Route exact path='/'        render={(props)  => < IndexPage {...props}  {...this.props} /> } key='IndexPage'/ >
 	 			< Route       path='/winners' render={(props)  => < Winners   {...props}  {...this.props} /> } key='Winners'/ >                              
@@ -30,7 +30,7 @@ class Routes extends Component {
             	{	this.props.user &&
  					< Route exact path='/profile'  render={(props)  => < Profile  {...props}  {...this.props} /> }  key='Profile'/ >
  				}
-                < Route path='/sign/activate' render={(props)  => < ActivationPage  {...props}  {...this.props} /> }  key='ActivationPage'/ >
+                < Route path='/user/activate' render={(props)  => < ActivationPage  {...props}  {...this.props} /> }  key='ActivationPage'/ >
                 < Route path='* '             render={(props)  => '404' }/ >   	
     		</Main>
     	</Switch>

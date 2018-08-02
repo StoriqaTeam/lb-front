@@ -35,17 +35,12 @@ class FBRedirect extends Component {
 		headers.append('Content-Type', 'application/json')
 		if (fbProfile){
 			let cookies = new Cookies;
-			let user  = await fetch(`${API_URL}/api/v1/soc_auth`,{
+			let user  = await fetch(`${API_URL}/api/v1/auth-social`,{
 		 			method: 'POST',
 		 			headers: headers,
 		 			body: JSON.stringify({
-		 					provider: 'fb', 
-		 					soc_id:  fbProfile.id,
-		 					email:   fbProfile.email,
-		 					name:    fbProfile.first_name,
-		 					img:     encodeURIComponent(fbProfile.picture.data.url),
-		 					surname: fbProfile.last_name,
-		 					refed_by: cookies.get('ref') ? Math.sqrt(cookies.get('ref')) : null
+		 					provider: 'facebook', 
+		 					profile: fbProfile
 		 			})
 		 		})
 		 		.then(
@@ -57,7 +52,7 @@ class FBRedirect extends Component {
 		 			return json.status === 'success' ? json.message : null
 		 		})	
 		 		console.log(user)
-		 		return user && this.props.userActions.getProfile(user) 
+		 		return user && this.props.userActions.getProfile(user.user) 
 		 	} 		
 
 

@@ -7,7 +7,7 @@ import {getCodeFromUrl}     from './../../constants/constantsApp'
 class ActivationPage extends Component {
 
 	componentDidMount(){
-		let hash = getCodeFromUrl('hash', '?')
+		let hash = getCodeFromUrl('key', '?')
 		if (hash) {
 			this.activateEmail(hash)
 		}
@@ -16,7 +16,7 @@ class ActivationPage extends Component {
 	async activateEmail(hash){
  		let headers = new Headers();
  		headers.append('Content-Type', 'application/json')
- 		let user  = await fetch(`${API_URL}/api/v1/activate`,{
+ 		let user  = await fetch(`${API_URL}/api/v1/user/activate`,{
  			method: 'POST',
  			headers: headers,
  			body: JSON.stringify({
@@ -28,6 +28,7 @@ class ActivationPage extends Component {
  			err => err
  		)
  		.then (json => {
+ 			console.log(json)
  			return json.status === 'success' ? json.message : null
  		})
  		console.log(user)

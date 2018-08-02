@@ -56,11 +56,13 @@
     "react-router-dom": "^4.3.1",
     "react-router-redux": "^4.0.8",
     "react-tabs": "^2.2.2",
+    "react-telegram-login": "^1.0.2-beta-6",
     "react-twitter-auth": "0.0.12",
     "react-twitter-share-link": "^1.0.2",
     "redux": "^4.0.0",
     "redux-state-sync": "^1.1.1",
     "redux-thunk": "^2.3.0",
+    "twitter-login-client": "^1.0.3",
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.4",
     "webpack-hot-middleware": "^2.22.2"

@@ -14,7 +14,7 @@ import style              from './style.css'
 class SocialLogin extends Component {
 
  
-handleTelegramResponse (response) {
+async handleTelegramResponse (response) {
   console.log(response);
   let cookies = new Cookies;
 			let user  = await fetch(`${API_URL}/api/v1/auth-social`,{

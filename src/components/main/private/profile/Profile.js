@@ -20,7 +20,7 @@ class Profile extends Component {
           <div className="greed__sec">
             <div className="blc">
               <div className="profile">
-                <div className="profile__img"><img src={this.props.user.img ? decodeURIComponent(this.props.user.img) : "/src/img/example/ava-big.png"} alt /></div>
+                <div className="profile__img"><img src={this.props.user.avatar ? decodeURIComponent(this.props.user.avatar).replace('sz=50', 'sz=160') : "/src/img/example/ava-big.png"} alt /></div>
                 <div className="profile__main">
                   <div className="profile__title">Nickname:</div>
                   <div className="profile__name">{this.props.user.name || `LuckyBlock user ${this.props.user.id}`}</div>

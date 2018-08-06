@@ -69,7 +69,7 @@ class Header extends Component {
 			        { this.props.user
 			        	?	[
 			        			<Link to='/profile' class="user-btn">
-									  	<img src={this.props.user && this.props.user.img ? decodeURIComponent(this.props.user.img) : "/src/img/example/ava-big.png"}/>
+									  	<img src={this.props.user && this.props.user.avatar ? decodeURIComponent(this.props.user.avatar) : "/src/img/example/ava-big.png"}/>
 										</Link>,
 										<Logout />
 

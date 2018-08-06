@@ -52,7 +52,7 @@ class GoogleRedirect extends Component {
 		 		})	
 		 		console.log(user)
 
-		 		return user && this.props.userActions.getProfile(user.user) 
+		 		return user && this.props.userActions.getProfile(user) 
 		 	} 		
 	}
 

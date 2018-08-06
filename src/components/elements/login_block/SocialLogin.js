@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import React, {Component} from 'react'
 import  {Cookies}            from "react-cookie"
-import TwitterLogin             from 'react-twitter-auth'
+import TwitterLogin from 'react-twitter-auth/lib/react-twitter-auth-component.js';
 import {fbAppId}             from './../../../constants/constantsApp' 
 import {API_URL}     from './../../../constants/constantsAPI' 
 
@@ -94,12 +94,12 @@ class SocialLogin extends Component {
 				            <img src="/src/img/icons/fb2.png" className='popup__button_fb'/>
 				          </a>    
 				          <a className="login100-social-item social-login__twitter" target='_blank'>
-										<TwitterLogin loginUrl="https://api.twitter.com/oauth/request_token"
+										<TwitterLogin loginUrl={`${API_URL}/api/v1/auth/twitter`}
 										              onFailure={this.onFailed}
 										              onSuccess={this.onSuccess}
-										              requestTokenUrl={`${API_URL}/auth/twitter`}
+										              requestTokenUrl={`${API_URL}/api/v1/auth/twitter/reverse`}
 										              showIcon={true}
-										              customHeaders={'customHeader'}>
+										              >
 											<svg fill="#fff" preserveAspectRatio="xMidYMid meet" height={25} width={25} viewBox="0 0 40 40" style={{verticalAlign: 'middle', color: 'rgb(0, 172, 237)'}}><g><path d="m37.7 9.1q-1.5 2.2-3.7 3.7 0.1 0.3 0.1 1 0 2.9-0.9 5.8t-2.6 5.5-4.1 4.7-5.7 3.3-7.2 1.2q-6.1 0-11.1-3.3 0.8 0.1 1.7 0.1 5 0 9-3-2.4-0.1-4.2-1.5t-2.6-3.5q0.8 0.1 1.4 0.1 1 0 1.9-0.3-2.5-0.5-4.1-2.5t-1.7-4.6v0q1.5 0.8 3.3 0.9-1.5-1-2.4-2.6t-0.8-3.4q0-2 0.9-3.7 2.7 3.4 6.6 5.4t8.3 2.2q-0.2-0.9-0.2-1.7 0-3 2.1-5.1t5.1-2.1q3.2 0 5.3 2.3 2.4-0.5 4.6-1.7-0.8 2.5-3.2 3.9 2.1-0.2 4.2-1.1z" /></g></svg>
 										</TwitterLogin>				          
 									</a>       

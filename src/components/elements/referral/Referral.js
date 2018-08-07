@@ -39,7 +39,7 @@ class Referral extends Component {
     )
     .then (json => {
       console.log(json)
-      return json.status === 'success' ? 1 : 0
+      return json.message === 'success send' ? 1 : 0
     })
 
     if (sentRef){

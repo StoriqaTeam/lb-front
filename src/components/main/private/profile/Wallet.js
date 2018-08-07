@@ -12,14 +12,16 @@ class Wallet extends Component {
 		this.state = {}
 	}
 	async getWallet(){
- 		e.preventDefault()
+		console.log(this.props.user.id)
  		let headers = new Headers();
  		headers.append('Content-Type', 'application/json')
- 		 		headers.append('Content-Type', 'application/json')
 
  		let response  = await fetch(`${API_URL}/api/v1/user/deposit-address`,{
- 			method: 'GET',
+ 			method: 'POST',
  			headers: headers,
+ 			body:JSON.stringify({
+ 				"user_id": this.props.user.id
+ 			})
  		})
  		.then(
  			res => res.json(),
@@ -27,7 +29,9 @@ class Wallet extends Component {
  		)
  		.then (json => {
  			console.log(json)
- 			return json
+ 			return json.address && this.setState({
+ 				address: json.address
+ 			})
  		})/*
 		user = response && response.token ? await GET_USER(response.token) : this.refs.error.innerHTML = response.error
  		return response.token ? this.props.userActions.getProfile(user) : null
@@ -42,7 +46,7 @@ class Wallet extends Component {
     return  (
         <div className="profile__row">
           <div className="profile__title profile__title--row">Wallet:</div>
-          <div className="profile__val">0x7cB57B5A97eAbe94205Cv63h67</div>
+          <div className="profile__val">{this.state.address || 'Requesting wallet address...'}</div>
         </div>
     )
   }

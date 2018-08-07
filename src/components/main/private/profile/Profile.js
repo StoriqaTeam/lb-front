@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import {Cookies}            from "react-cookie"
 import CurrencyIframe       from './CurrencyIframe';
 import Referral             from './../../../elements/referral/Referral'
+import Wallet               from './Wallet'
 import css                  from './style.css'
 
 class Profile extends Component {
@@ -25,10 +26,7 @@ class Profile extends Component {
                   <div className="profile__title">Nickname:</div>
                   <div className="profile__name">{this.props.user.name || `LuckyBlock user ${this.props.user.id}`}</div>
                   <div className="profile__balance">Balance: <strong>${this.props.user ? '0,00' : '1,274'}</strong></div>
-                  <div className="profile__row">
-                    <div className="profile__title profile__title--row">Wallet:</div>
-                    <div className="profile__val">0x7cB57B5A97eAbe94205Cv63h67</div>
-                  </div>
+                  <Wallet user={this.props.user}/>
                   <div className="profile__row">
                     <div className="profile__title profile__title--row">Join date:</div>
                     <div className="profile__val">{date ? `${date[2]}.${date[1]}.${date[0]}`: ''}</div>

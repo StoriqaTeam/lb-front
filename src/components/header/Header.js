@@ -13,7 +13,9 @@ class Header extends Component {
 
 	constructor(){
 		super()
-		this.state = {}
+		this.state = {
+			jackpot: 'week'
+		}
 	}
 
 	toggleMenu(){
@@ -48,6 +50,14 @@ class Header extends Component {
 	render(){
 		let cookies = new Cookies,
 		token = cookies.get('token');
+		let jackpots = {
+			hour:  '10,000', 
+			day:   '50,000', 
+			week:  '300,000',
+			month: '1,000,000', 
+			year:  '100,000,000', 
+			super: '1,000,000,000'
+		}
 		return 	(
 			<header className="header header--main">
 			  <div className="container">
@@ -107,11 +117,14 @@ class Header extends Component {
 			      </div>
 			      <div className="header-main__middle">
 			        <div className="header-main__slider">
+			                          {this.state.jackpot != 'hour' &&
 
+                            <button className="btn header-main__prev" title="Prev" onClick={() => this.setState({jackpot: Object.keys(jackpots)[Object.keys(jackpots).indexOf(this.state.jackpot) - 1]})}>Prev</button>
+                          }
 			          <div className="header-main__slide">
 			            <div className="header-main__slide-current"><img src="/src/img/header/current.svg" alt="Current" /></div>
-			            <div className="header-main__slide-jackpot"><img src="/src/img/header/WeekJackpot.svg" alt="Week Jackpot" /></div>
-			            <div className="header-main__slide-s600k"><span>$</span> 1,000,000,000</div>
+			            <div className="header-main__slide-jackpot"><img className='jackpot' src={`/src/img/header/${this.state.jackpot}.png`} alt="Week Jackpot" /></div>
+			            <div className="header-main__slide-s600k"><span>$</span>{ jackpots[this.state.jackpot]}</div>
 			            <div className="header-main__timer">
 			              <div className="header-main__timer-title">NEXT ROUND IN</div>
 			              <div className="header-main__timer-wrap">
@@ -137,7 +150,9 @@ class Header extends Component {
 			              </div>
 			            </div>
 			          </div>
-
+                  {this.state.jackpot != 'super' &&
+                  	<button className="btn header-main__next" title="Next" onClick={() => this.setState({jackpot: Object.keys(jackpots)[Object.keys(jackpots).indexOf(this.state.jackpot) + 1]})}>Next</button>
+                  }
 			        </div>
 			      </div>
 			      <div className="header-main__right">

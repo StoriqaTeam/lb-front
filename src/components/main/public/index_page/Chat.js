@@ -34,7 +34,7 @@ class Chat extends Component {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json')
 
-    let user  = await fetch(`${API_URL}/api/v1/get_messages`,{
+    let user  = await fetch(`${API_URL}/api/v1/messages?limit=8&offset=0`,{
       method: 'GET'
     })
     .then(
@@ -42,8 +42,10 @@ class Chat extends Component {
       err => err
     )
     .then (json => {
+              console.log(json)
+
       this.setState({
-        messages: json.message.reverse()
+        messages: json.reverse()
       })
     })
   }
@@ -56,13 +58,13 @@ class Chat extends Component {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json')
 
-    let user  = await fetch(`${API_URL}/api/v1/create_message`,{
+    let user  = await fetch(`${API_URL}/api/v1/message`,{
       method: 'POST',
       headers: headers,
       body: JSON.stringify({
         user_name: this.props.user.name || `LuckyBlock user #${this.props.user.id}`, 
         content:   encodeURIComponent(this.refs.message.value),
-        img:       this.props.user.img  || ''
+        user_id:       this.props.user.id  || ''
       })
     })
     .then(
@@ -71,9 +73,10 @@ class Chat extends Component {
     )
     .then (json => {
       console.log(json)
-      this.setState({
-        messages: json.message.reverse()
-      })
+      if (json.status){
+
+      }
+      this.getChat()
       this.refs.message.value = ''
     })
   }
@@ -97,12 +100,12 @@ class Chat extends Component {
                 : this.state.messages.map((message, i) => {
                     return (
                       <div className="chat__item" key={message.id}>
-                        <div className="chat__icn"><img src={message.img ? decodeURIComponent(message.img) : "/src/img/example/ava.png"} alt /></div>
+                        <div className="chat__icn"><img src={message.avatar ? decodeURIComponent(message.avatar) : "/src/img/example/ava.png"} alt /></div>
                         <div className="chat__main">
                           <div className="chat__name chat__name--green">{message.user_name} <img src="/src/img/icons/cup-yello.svg" alt /></div>
                           <div className="chat__txt">{decodeURIComponent(message.content)}</div>
                         </div>
-                        <div className="chat__time">{message.created_at}</div>
+                        <div className="chat__time">{message.createdAt.split('T')[1].split('.')[0]}</div>
                       </div>
                     )
                   })

@@ -174,6 +174,13 @@ class Header extends Component {
 			      </div>
 			    </div>
 			  </div>
+			  <img className='jackpot' src={`/src/img/header/year.png`} alt="Week Jackpot" className='d-none' />
+			  <img className='jackpot' src={`/src/img/header/month.png`} alt="Week Jackpot" className='d-none' />
+			  <img className='jackpot' src={`/src/img/header/week.png`} alt="Week Jackpot" />
+			  <img className='jackpot' src={`/src/img/header/day.png`} alt="Week Jackpot"  className='d-none'/>
+			  <img className='jackpot' src={`/src/img/header/hour.png`} alt="Week Jackpot"  className='d-none'/>
+			  <img className='jackpot' src={`/src/img/header/super.png`} alt="Week Jackpot" className='d-none' />
+
 			</header>
 
 		)			

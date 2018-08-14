@@ -3,6 +3,7 @@ import {Cookies}            from "react-cookie"
 import CurrencyIframe       from './CurrencyIframe';
 import Referral             from './../../../elements/referral/Referral'
 import Wallet               from './Wallet'
+import { Scrollbars }       from 'react-custom-scrollbars';
 import css                  from './style.css'
 
 class Profile extends Component {
@@ -57,7 +58,7 @@ class Profile extends Component {
             <h2 className="greed__sec-title">Game history</h2>
             <div className="blc blc--table">
               <div className="table-overlay">
-                <table className="table">
+                <table className="table profile__table_game">
                   <thead>
                     <tr>
                       <th><span>Date</span></th>
@@ -66,8 +67,22 @@ class Profile extends Component {
                       <th><span>Prize</span></th>
                     </tr>
                   </thead>
-                  <tbody>
-                   {Array(5).fill(0).map((item, i) =>  {
+                  <tbody style={{display: 'none'}}/>
+                  </table>
+                  <Scrollbars style={{ height: 240 }}   >
+
+                   <table className="table ">
+                    <thead style={{display: 'none'}}>
+                      <tr>
+                        <th><span>Date</span></th>
+                        <th><span>Value of jackpot</span></th>
+                        <th><span>My bet</span></th>
+                        <th><span>Prize</span></th>
+                      </tr>
+                    </thead>
+                    <tbody >
+
+                   {Array(15).fill(0).map((item, i) =>  {
                       let jackpot = (Math.random()  * (250 - 100) + 50).toFixed(0),
                       bet         = (Math.random()  * (250 - 100) + 50).toFixed(0),
                       won         = Number(bet) + Number((Math.random()  * (250 - 100) + 50))
@@ -82,6 +97,7 @@ class Profile extends Component {
                     })}
                   </tbody>
                 </table>
+                 </Scrollbars>
               </div>
             </div>
           </div>
@@ -90,7 +106,7 @@ class Profile extends Component {
             <h2 className="greed__sec-title">Referral history</h2>
             <div className="blc blc--table">
               <div className="table-overlay">
-                <table className="table">
+                <table className="table profile__table_ref">
                   <thead>
                     <tr>
                       <th><span>Nickname</span></th>
@@ -98,8 +114,20 @@ class Profile extends Component {
                       <th><span>My bonus</span></th>
                     </tr>
                   </thead>
-                  <tbody>
-                    {Array(5).fill(0).map((item, i) =>  {
+                  <tbody style={{display: 'none'}}/>
+                  </table>
+                 <Scrollbars style={{ height: 240 }}   >
+                    <table className="table">
+
+                  <thead style={{display: 'none'}}>
+                    <tr>
+                      <th><span>Nickname</span></th>
+                      <th><span>Bet</span></th>
+                      <th><span>My bonus</span></th>
+                    </tr>
+                  </thead>
+                  <tbody >
+                    {Array(15).fill(0).map((item, i) =>  {
                       let bet =   (Math.random()  * (400 - 100) + 50).toFixed(0),
                       bonus         = bet / 25
                       return (
@@ -117,6 +145,7 @@ class Profile extends Component {
                     })}
                   </tbody>
                 </table>
+                </Scrollbars>
               </div>
             </div>
           </div>

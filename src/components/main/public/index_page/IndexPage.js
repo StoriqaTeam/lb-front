@@ -4,6 +4,7 @@ import { Widget }           from 'react-chat-widget';
 import 'react-chat-widget/lib/styles.css';
 import Referral             from './../../../elements/referral/Referral'
 import Chat                 from './Chat'
+import { Scrollbars } from 'react-custom-scrollbars';
 import css                  from './style.css'
 
 class IndexPage extends Component {
@@ -13,6 +14,8 @@ class IndexPage extends Component {
     console.log(button, this.props)
     button && !this.props.user && button.click()
   }
+
+
 
   render(){
     let cookies = new Cookies,
@@ -45,7 +48,8 @@ class IndexPage extends Component {
                 </div>
               </div>
               <div className="table-overlay">
-                <table className="table">
+                     
+                <table className="table index-page__table">
                   <thead>
                     <tr>
                       <th><span>Nickname</span></th>
@@ -54,8 +58,16 @@ class IndexPage extends Component {
                       <th />
                     </tr>
                   </thead>
-                  <tbody>
-                    {Array(16).fill(0).map((item, i) =>  {
+                  <tbody style={{display: "none"}} />
+                  </table>
+                  <Scrollbars style={{ height: 775 }}   >
+            
+                  <table className="table">
+                    <thead>
+                     
+                    </thead>
+                    <tbody>
+                      {Array(24).fill(0).map((item, i) =>  {
                       let percent = (Math.random()  * (10 - 0.1)  + 10).toFixed(0),
                       cash        = (Math.random()  * (1000 - 50) + 50).toFixed(0)
                       return (
@@ -72,8 +84,11 @@ class IndexPage extends Component {
                         </tr>
                       )
                     })}
-                  </tbody>
-                </table>
+                    </tbody>
+                                    </table>
+
+                  </Scrollbars>
+
               </div>
             </div>
           </div>  

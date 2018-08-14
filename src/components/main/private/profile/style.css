@@ -183,3 +183,29 @@
 		display: none;
 	}
 }
+
+.profile__table_game > thead tr th:first-child {
+	    width: 187px;
+
+}
+
+.profile__table_game > thead tr th:nth-child(2) {
+	    width: 100px;
+
+}
+
+.profile__table_game > thead tr th:nth-child(3) {
+	    width: 124px;
+
+}
+
+.profile__table_ref  > thead tr th:first-child {
+	    width: 337px;
+
+}
+
+
+.profile__table_ref  > thead tr th:nth-child(2)  {
+	    width: 123px;
+
+}

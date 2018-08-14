@@ -3,6 +3,8 @@ import {Cookies}            from "react-cookie"
 import { Widget } from 'react-chat-widget';
 import 'react-chat-widget/lib/styles.css';
 import {API_URL}            from './../../../../constants/constantsAPI' 
+import { Scrollbars }       from 'react-custom-scrollbars';
+
 import css from './style.css'
 class Chat extends Component {
 
@@ -29,12 +31,16 @@ class Chat extends Component {
     this.getChat()
   }
 
+  componentDidUpdate(){
+    this.state.messages != 0 && this.refs.scrollbars.scrollToBottom()
+  }
+
 
   async getChat(){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json')
 
-    let user  = await fetch(`${API_URL}/api/v1/messages?limit=8&offset=0`,{
+    let user  = await fetch(`${API_URL}/api/v1/messages?limit=20&offset=0`,{
       method: 'GET'
     })
     .then(
@@ -93,23 +99,25 @@ class Chat extends Component {
           <div className="chat__wrap">
             <h3 className="chat__title">CHAT</h3>
             <div className="chat__list">
-              { this.state.messages == 0
-                ? <div className="chat__item">
-                    There're no messages here
-                  </div>
-                : this.state.messages.map((message, i) => {
-                    return (
-                      <div className="chat__item" key={message.id}>
-                        <div className="chat__icn"><img src={message.avatar ? decodeURIComponent(message.avatar) : "/src/img/example/ava.png"} alt /></div>
-                        <div className="chat__main">
-                          <div className="chat__name chat__name--green">{message.user_name} <img src="/src/img/icons/cup-yello.svg" alt /></div>
-                          <div className="chat__txt">{decodeURIComponent(message.content)}</div>
+              <Scrollbars style={{ height: 510 }} ref='scrollbars' >
+                { this.state.messages == 0
+                  ? <div className="chat__item">
+                      There're no messages here
+                    </div>
+                  : this.state.messages.map((message, i) => {
+                      return (
+                        <div className="chat__item" key={message.id}>
+                          <div className="chat__icn"><img src={message.avatar ? decodeURIComponent(message.avatar) : "/src/img/example/ava.png"} alt /></div>
+                          <div className="chat__main">
+                            <div className="chat__name chat__name--green">{message.user_name} <img src="/src/img/icons/cup-yello.svg" alt /></div>
+                            <div className="chat__txt">{decodeURIComponent(message.content)}</div>
+                          </div>
+                          <div className="chat__time">{message.createdAt.split('T')[1].split('.')[0]}</div>
                         </div>
-                        <div className="chat__time">{message.createdAt.split('T')[1].split('.')[0]}</div>
-                      </div>
-                    )
-                  })
-              } 
+                      )
+                    })
+                } 
+              </Scrollbars>
             </div>
           </div>
           { this.props.user

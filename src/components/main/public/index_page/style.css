@@ -1,3 +1,11 @@
+.table-overlay > div > div:last-child{
+	    right: 14px !important;
+
+}
+
+.chat__form{
+	padding-bottom: 37px !important;
+}
 .blc_referral{
 	margin-bottom: 25px;
 }
@@ -17,6 +25,13 @@
 	    overflow-wrap: break-word;
 
 }
+
+.chat__list > div:first-child > div:first-child {
+	padding-right: 30px;
+}
+.chat__list > div:first-child > div:nth-child(3) {
+	 right: 9px;
+}
 @media screen and (max-width: 420px){
 	.chat__form{
 		display: block !important;
@@ -30,3 +45,13 @@
 
 	}
 }
+
+.index-page__table thead tr th:first-child{
+	width: 305px;
+}
+
+.index-page__table thead tr th:nth-child(2){
+	width: 115px;
+}
+
+

@@ -5,6 +5,9 @@ import css                  from './style.css'
 
 class Withdraw extends Component {
 
+  myCallback(){
+    
+  }
 
   render(){
     return (

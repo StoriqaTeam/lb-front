@@ -4,16 +4,22 @@ import CurrencyIframe       from './CurrencyIframe';
 import Referral             from './../../../elements/referral/Referral'
 import Wallet               from './Wallet'
 import { Scrollbars }       from 'react-custom-scrollbars';
+import Withdraw             from './../../../elements/withdraw/Withdraw'
 import css                  from './style.css'
 
 class Profile extends Component {
 
+  constructor(){
+    super()
+    this.state = {}
+  }
 
   render(){
-    let  date = this.props.user.createdAt && this.props.user.createdAt.split('T')[0].split('-')  
-
+    let  date = this.props.user.createdAt && this.props.user.createdAt.split('T')[0].split('-') ; 
+    if (this.state.withdraw) {
+      return (        <Withdraw close={() => this.setState({withdraw: false})} />  )
+    }
     return  (
-
       <div className="container profile">
         <div className="main__header profile__header">
           <h1>PROFILE</h1>
@@ -36,7 +42,7 @@ class Profile extends Component {
                     <div className="profile__title profile__title--row">Email:</div>
                     <div className="profile__val">{this.props.user.email}</div>
                   </div>
-                  <button className="btn btn--green profile__btn">Withdraw</button>
+                  <button className="btn btn--green profile__btn" onClick={()=> this.setState({withdraw: true})}>Withdraw</button>
                 </div>
               </div>
             </div>
@@ -151,7 +157,8 @@ class Profile extends Component {
           </div>
         </div>
       </div>
-  )}
+    )
+  }
 }
 
 export default Profile

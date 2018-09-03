@@ -262,3 +262,19 @@ position: absolute;
     position: relative;
     margin-top: -19px;
     }
+
+    .m-auto{
+    	margin: auto;
+    }
+
+    .mt-2{
+    	margin-top: 20px;
+    }
+
+    .two-fa__code{
+    	width: 210px;
+    }
+
+    .p-0{
+    	padding: 0;
+    }

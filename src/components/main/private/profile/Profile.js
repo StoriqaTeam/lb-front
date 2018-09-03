@@ -6,7 +6,7 @@ import Wallet               from './Wallet'
 import { Scrollbars }       from 'react-custom-scrollbars';
 import Withdraw             from './../../../elements/withdraw/Withdraw'
 import css                  from './style.css'
-
+import TwoFA                from './TwoFA'
 class Profile extends Component {
 
   constructor(){
@@ -43,6 +43,7 @@ class Profile extends Component {
                     <div className="profile__val">{this.props.user.email}</div>
                   </div>
                   <button className="btn btn--green profile__btn" onClick={()=> this.setState({withdraw: true})}>Withdraw</button>
+                  <TwoFA user={this.props.user} />
                 </div>
               </div>
             </div>

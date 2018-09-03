@@ -1,6 +1,8 @@
 import ReactDOM from 'react-dom';
 import React, {Component} from 'react'
 import  {Cookies}            from "react-cookie"
+import Popup             from './../../../elements/popup/Popup'
+
 import {API_URL}     from './../../../../constants/constantsAPI' 
 import style              from './style.css'
 

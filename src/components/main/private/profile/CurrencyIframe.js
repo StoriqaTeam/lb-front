@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import {Cookies}            from "react-cookie"
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import Shapeshift           from './Shapeshift'
 import css                  from './style.css'
 
 class CurrencyIframe extends Component {
@@ -20,6 +21,8 @@ class CurrencyIframe extends Component {
       window.open(link, 'Changelly', 'width=600,height=470,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=0,left=0,top=0');
       return false;
   }
+
+
 
 
   render(){
@@ -63,44 +66,7 @@ class CurrencyIframe extends Component {
 		    	</Tabs>	  
 				</TabPanel>
 				<TabPanel className='currency__tab-panel'>
-					<Tabs>
-					  <TabList className='currency__tab currency__tab-list_crypt'>
-				      <Tab className='position-relative currency__tab_small'>
-				      	<i className='position-relative currency__marker currency__marker_crypt'/>
-				      	<img src="/src/img/profile/bit.png" className='currency__tab_img' alt />
-				      </Tab>
-				      <Tab className='position-relative currency__tab_small'>
-				      	<i className='position-relative currency__marker currency__marker_crypt'/>
-				      	<img src="/src/img/profile/cash.png"className='currency__tab_img'  alt />
-				      </Tab>
-				      <Tab className='position-relative currency__tab_small'>
-				      	<i className='position-relative currency__marker currency__marker_crypt'/>
-				      	<img src="/src/img/profile/dash.png"className='currency__tab_img'  alt />
-				      </Tab>				      
-				    </TabList>
-
-		    		<TabPanel className='currency__tab-panel_small currency__gray'>
-							<img src="/src/img/profile/code.png"className='currency__tab_img'  alt />
-							<div className='currency__text'>Contract address to participate:</div>
-							<div className='currency__address'><b>3fc2e9a9-7f6d-4f0d-b201-df103e7ef240</b></div>
-							<button class="btn btn--green profile__btn currency__btn" ref='copyBitcoin'onClick={()=> this.copy('copyBitcoin')}>Copy address</button>
-              <input style={{opacity: 0, height: 0}} id='copyBitcoin' value='3fc2e9a9-7f6d-4f0d-b201-df103e7ef240'/>
-						</TabPanel>	
-						<TabPanel className='currency__tab-panel_small currency__gray'>
-						<img src="/src/img/profile/code.png"className='currency__tab_img'  alt />
-							<div className='currency__text'>Contract address to participate:</div>
-							<div className='currency__address'><b>3fc2e9a9-7f6d-4f0d-b201-df103e7ef241</b></div>
-							<button class="btn btn--green profile__btn currency__btn" ref='copyCash'onClick={()=> this.copy('copyCash')}>Copy address</button>
-              <input style={{opacity: 0, height: 0}} id='copyCash' value='3fc2e9a9-7f6d-4f0d-b201-df103e7ef241'/>
-		    		</TabPanel>	 
-						<TabPanel className='currency__tab-panel_small currency__gray'>
-						<img src="/src/img/profile/code.png"className='currency__tab_img'  alt />
-							<div className='currency__text'>Contract address to participate:</div>
-							<div className='currency__address'><b>3fc2e9a9-7f6d-4f0d-b201-df103e7ef242</b></div>
-							<button class="btn btn--green profile__btn currency__btn" ref='copyDash'onClick={()=> this.copy('copyDash')}>Copy address</button>
-              <input style={{opacity: 0, height: 0}} id='copyDash' value='3fc2e9a9-7f6d-4f0d-b201-df103e7ef242'/>
-		    		</TabPanel>		    		 
-		    	</Tabs>	
+					 <Shapeshift  user={this.props.user}/>	
 				 </TabPanel>
 		  </Tabs>
 		)

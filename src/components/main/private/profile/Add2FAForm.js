@@ -52,8 +52,8 @@ class Add2FAForm extends Component {
  		FASet = await fetch(`${API_URL}/api/v1/2fa`,{
  			method: 'POST',
  			headers: new Headers({
-				'Content-Type': 'application/json',
-				'X-Auth-Token': cookies.get('token') 				
+ 				'X-Auth-Token': cookies.get('token'),
+				'Content-Type': 'application/json'				
  			}),
  			body:JSON.stringify({
  				secret: this.state.twoFAData.secret, 
@@ -66,9 +66,9 @@ class Add2FAForm extends Component {
  		)
  		.then (async json => {
  			console.log(json)
- 			if (json.error){
+ 			if (json.error || json.message === 'token not equal'){
  				return this.setState({
-	 				error: json.error
+	 				error: json.error || json.message
 	 			})
  			}
 			let user = FASet && await GET_USER(cookies.get('token'))

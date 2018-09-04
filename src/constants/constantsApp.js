@@ -1,4 +1,6 @@
 
+import {Cookies}            from "react-cookie"
+
 
  const  getCodeFromUrl = function( prop, separator = '#' )  {
 	  var params = {};
@@ -24,6 +26,11 @@ const addOneYear = () => {
    return date
 }
 
+
+const setTokenCookie = (token) => {
+	let cookies = new Cookies
+	return token && cookies.set('token', token, {path: '/', expires: addOneYear()})
+}
 const copyToClipboard = (id) => {
 	if (document.selection) { 
 	    var range = document.body.createTextRange();
@@ -39,4 +46,4 @@ const copyToClipboard = (id) => {
 	}
 }
 
-export  {getCodeFromUrl, openSocAuthModal, fbAppId, addOneYear, copyToClipboard}
+export  {getCodeFromUrl, openSocAuthModal, fbAppId, addOneYear, copyToClipboard, setTokenCookie}

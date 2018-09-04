@@ -1,3 +1,5 @@
+import {Cookies}            from "react-cookie"
+import {setTokenCookie}     from './constantsApp'
 
 
 const API_URL = ({
@@ -22,6 +24,7 @@ const GET_USER = async (code) => {
 		)
 		.then(json => {
 			console.log(json)
+			setTokenCookie(json.token)
 			return json	
 		})
 		return user

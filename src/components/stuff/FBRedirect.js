@@ -3,7 +3,7 @@ import {Cookies}            from "react-cookie"
 import { connect }            from 'react-redux'
 import * as userActions       from './../../actions/userActions'
 import { bindActionCreators } from 'redux'
-import {getCodeFromUrl}         from './../../constants/constantsApp'
+import {getCodeFromUrl, setTokenCookie}         from './../../constants/constantsApp'
 import {API_URL}               from './../../constants/constantsAPI' 
 
 class FBRedirect extends Component {
@@ -49,6 +49,7 @@ class FBRedirect extends Component {
 		 		)
 		 		.then (json => {
 		 			console.log(json)
+		 			setTokenCookie(json.token)
 		 			return json.user || null
 		 		})	
 		 		console.log(user)

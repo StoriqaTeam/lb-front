@@ -7,6 +7,9 @@ import { Scrollbars }       from 'react-custom-scrollbars';
 import Withdraw             from './../../../elements/withdraw/Withdraw'
 import css                  from './style.css'
 import TwoFA                from './TwoFA'
+import AddWallet            from './AddWallet'
+import KYC                  from './KYC'
+
 class Profile extends Component {
 
   constructor(){
@@ -16,9 +19,6 @@ class Profile extends Component {
 
   render(){
     let  date = this.props.user.createdAt && this.props.user.createdAt.split('T')[0].split('-') ; 
-    if (this.state.withdraw) {
-      return (        <Withdraw close={() => this.setState({withdraw: false})} />  )
-    }
     return  (
       <div className="container profile">
         <div className="main__header profile__header">
@@ -32,7 +32,6 @@ class Profile extends Component {
                 <div className="profile__main">
                   <div className="profile__title">Nickname:</div>
                   <div className="profile__name">{this.props.user.name || `LuckyBlock user ${this.props.user.id}`}</div>
-                  <div className="profile__balance">Balance: <strong>${this.props.user ? '0,00' : '1,274'}</strong></div>
                   <Wallet user={this.props.user}/>
                   <div className="profile__row">
                     <div className="profile__title profile__title--row">Join date:</div>
@@ -42,8 +41,9 @@ class Profile extends Component {
                     <div className="profile__title profile__title--row">Email:</div>
                     <div className="profile__val">{this.props.user.email}</div>
                   </div>
-                  <button className="btn btn--green profile__btn" onClick={()=> this.setState({withdraw: true})}>Withdraw</button>
+                   <KYC user={this.props.user} />  
                   <TwoFA user={this.props.user} />
+                  <AddWallet user={this.props.user} />                 
                 </div>
               </div>
             </div>

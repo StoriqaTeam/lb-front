@@ -13,6 +13,8 @@ class Wallet extends Component {
 		super()
 		this.state = {}
 	}
+
+
 	async getWallet(){
 		console.log(this.props.user.id)
  		let headers = new Headers();
@@ -31,13 +33,49 @@ class Wallet extends Component {
  		)
  		.then (json => {
  			console.log(json)
- 			return json.address && this.setState({
- 				address: json.address
- 			})
+ 			if (json.address) {
+ 				this.setState({
+ 					address: json.address
+ 				})
+ 				this.convertBalance(json.balance || 0)
+ 			} else {
+
+ 			}
  		})/*
 		user = response && response.token ? await GET_USER(response.token) : this.refs.error.innerHTML = response.error
  		return response.token ? this.props.userActions.getProfile(user) : null
  	*/
+	}
+
+
+	async convertBalance(ETH ){
+
+		console.log(ETH)
+
+
+ 		return ETH 
+ 		? await fetch(`${API_URL}/api/v1/price`,{
+ 			method: 'GET'
+ 		})
+ 		.then(
+ 			res => res.json(),
+ 			err => err
+ 		)
+ 		.then (json => {
+ 			console.log(json)
+ 			return this.setState({
+ 				balance: {
+ 					USD: (ETH / 1000000000000000000 * json.eth).toFixed(2),
+ 					ETH: ETH / 1000000000000000000
+ 				}
+ 			})
+ 		})
+ 		: this.setState({
+ 			 balance: {
+ 			 	USD: 0,
+ 			 	ETH: 0
+ 			 }
+ 		})		
 	}
 
 	componentDidMount(){
@@ -45,12 +83,13 @@ class Wallet extends Component {
 	}
 
   render(){
-    return  (
-        <div className="profile__row">
-          <div className="profile__title profile__title--row">Wallet:</div>
-          <div className="profile__val">{this.state.address || 'Requesting wallet address...'}</div>
-        </div>
-    )
+    return  ([
+  	  <div className="profile__balance">Balance: {this.state.balance  ? <strong>${this.state.balance.USD} (ETH {this.state.balance.ETH})</strong> : 'Requesting balance...'}</div>,
+      <div className="profile__row">
+        <div className="profile__title profile__title--row">Wallet:</div>
+        <div className="profile__val">{this.state.address || 'Requesting wallet address...'}</div>
+      </div>
+    ])
   }
 }
 

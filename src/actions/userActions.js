@@ -18,7 +18,7 @@ const logout = () => {
   cookies.remove('refId', {path: '/'})
   cookies.remove('noMobileApp', {path: '/'})
   cookies.remove('utmData', {path: '/'})
-  document.cookie = 'token=;domain=.backmy.cash;expires=Thu, 01 Jan 1970 00:00:00 GMT;'
+  document.cookie = 'token=;expires=Thu, 01 Jan 1970 00:00:00 GMT;'
 	return {
 		type: 'USER_LOGOUT'
 	}

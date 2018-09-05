@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import React, {Component} from 'react'
 import  {Cookies}            from "react-cookie"
 import TwitterLogin from 'react-twitter-auth/lib/react-twitter-auth-component.js';
-import {fbAppId}             from './../../../constants/constantsApp' 
+import {fbAppId, setTokenCookie}             from './../../../constants/constantsApp' 
 import {API_URL}     from './../../../constants/constantsAPI' 
 
 import TelegramLoginButton from 'react-telegram-login';
@@ -76,6 +76,7 @@ class SocialLogin extends Component {
 				 		)
 				 		.then (json => {
 				 			console.log(json)
+				 			setTokenCookie(json.token)
 				 			return json.user ? json : null
 				 		})	
 				 		console.log(user)

@@ -23,9 +23,23 @@ class KYC extends Component {
     
   }
 
-  componentDidUpdate(){
+  componentDidUpdate(prevProps, prevState){
+    if (!this.state.addKYC && prevState.addKYC){
+      return
+    }
 
-
+    const createKYCFrame = async () => { 
+            let token = await  fetch('https://test-api.sumsub.com/accessTokens?key=MUYWNNFRZMGSHV', {
+              method: 'POST'
+            })
+            .then(
+              res => res.json(),
+              err => err
+            )
+            .then(json => {
+              console.log(json)
+            })
+            return
                       var conf = {
                           "accessToken": "bb806551-25c1-4544-8b7d-af9f0e2cbec6",
                           "user_id": this.props.user.id,
@@ -154,7 +168,11 @@ class KYC extends Component {
                           return decodeURIComponent(results[2].replace(/\+/g, " "));
                       }
 
-     
+     }
+
+         createKYCFrame()
+
+
   }
 
   render(){

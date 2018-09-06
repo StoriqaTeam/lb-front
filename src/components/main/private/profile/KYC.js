@@ -23,11 +23,33 @@ class KYC extends Component {
     
   }
 
+    async getAccessToken(){
+        let token  = await fetch('https://test-api.sumsub.com/accessTokens?key=MUYWNNFRZMGSHV',{
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Access-Control-Allow-Origin": "http://localhost:3000",
+                "Access-Control-Allow-Credentials": "true"
+            },
+            body: JSON.stringify({
+                "userId": this.props.user.id ,
+                "key": "MUYWNNFRZMGSHV"
+            })
+        })
+            .then(
+                res => res.json(),
+                err => err
+            )
+            .then (json => {
+                console.log(json);
+                return json.token;
+
+            })
+    }
+
   componentDidUpdate(){
-
-
                       var conf = {
-                          "accessToken": "bb806551-25c1-4544-8b7d-af9f0e2cbec6",
+                          "accessToken": this.getAccessToken(),
                           "user_id": this.props.user.id,
                           "lang": "en",
                           "applicantDataPage": {

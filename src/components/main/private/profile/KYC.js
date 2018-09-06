@@ -27,9 +27,7 @@ class KYC extends Component {
         let token  = await fetch('https://test-api.sumsub.com/accessTokens?key=MUYWNNFRZMGSHV',{
             method: 'POST',
             headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
-                "Access-Control-Allow-Origin": "http://localhost:3000",
-                "Access-Control-Allow-Credentials": "true"
+                "Content-Type": "application/x-www-form-urlencoded"
             },
             body: JSON.stringify({
                 "userId": this.props.user.id ,

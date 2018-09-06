@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
+    "ethjs": "^0.4.0",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.4.1",
     "react": "^16.4.1",
@@ -66,6 +67,7 @@
     "redux-state-sync": "^1.1.1",
     "redux-thunk": "^2.3.0",
     "twitter-login-client": "^1.0.3",
+    "web3": "^1.0.0-beta.35",
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.4",
     "webpack-hot-middleware": "^2.22.2"

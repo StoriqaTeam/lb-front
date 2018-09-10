@@ -99,10 +99,7 @@ class AddWallet extends Component {
                 <div className='text-center'>
                   { this.state.message
                     || <form className='text-center' onSubmit={(e) => this.validateAddress(e)}>
-                      <div> Add your Ethereum wallet. Pay attention to the details of the wallet address.</div>  
-                      <div className="mt-2 wrap-input100 validate-input m-b-23 m-auto   text-center"  >
-                        <input className="input100 p-0 text-center" type="text" ref="sum" maxLength={42} placeholder="Enter sum" autoComplete="off"  />
-                      </div>                        
+                      <div> Add your Ethereum wallet. Pay attention to the details of the wallet address.</div>                          
                       <div className="mt-2 wrap-input100 validate-input m-b-23 m-auto   text-center"  >
                         <input className="input100 p-0 text-center" type="text" ref="address" maxLength={42} placeholder="Enter your address" autoComplete="off"  />
                       </div>

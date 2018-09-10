@@ -4,6 +4,7 @@ import { Widget }           from 'react-chat-widget';
 import 'react-chat-widget/lib/styles.css';
 import Referral             from './../../../elements/referral/Referral'
 import Chat                 from './Chat'
+import Metamask             from './Metamask'
 import { Scrollbars } from 'react-custom-scrollbars';
 import css                  from './style.css'
 
@@ -15,18 +16,6 @@ class IndexPage extends Component {
     button && !this.props.user && button.click()
   }
 
-    async sendTransaction() {
-        let currentAccount = await window.metamask.eth.getAccounts();
-        console.log("acc= ", currentAccount[0]);
-        let tx = {
-            to: '0x5f2f6e9d1de9820d26752a8dac3ff802db507f21', //change to smartcontract
-            from: currentAccount[0],
-            value: window.metamask.utils.toWei('1', 'ether') //change to count
-        };
-        let transaction = await window.metamask.eth.sendTransaction(tx);
-        console.log(transaction);
-    }
-
 
 
   render(){
@@ -36,9 +25,7 @@ class IndexPage extends Component {
 
     return (
       <div className="container index-page">
-          <div className="wrap_metamask">
-              <button className="btn btn_metamask" onClick={() => this.sendTransaction()}><img src="/src/img/metamask.png" alt=""/></button>
-          </div>
+        <Metamask />
         <div className="greed">
           <div className="greed__sec">
             <div className="blc blc--table">

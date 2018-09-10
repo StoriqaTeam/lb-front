@@ -27,8 +27,8 @@ window.addEventListener('load', function() {
     }
     // this.props.web3Found = web3Found;
 
-    store.dispatch({ type: 'ETH_LOADED', value: web3 });
-    store.dispatch({ type: 'WEB3_FOUND', value: web3Found });
+    // store.dispatch({ type: 'ETH_LOADED', value: web3 });
+    // store.dispatch({ type: 'WEB3_FOUND', value: web3Found });
 
     // console.log(web3)
     // Now you can start your app & access web3 freely:

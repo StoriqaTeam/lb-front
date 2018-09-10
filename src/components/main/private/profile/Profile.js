@@ -4,11 +4,11 @@ import CurrencyIframe       from './CurrencyIframe';
 import Referral             from './../../../elements/referral/Referral'
 import Wallet               from './Wallet'
 import { Scrollbars }       from 'react-custom-scrollbars';
-import Withdraw             from './../../../elements/withdraw/Withdraw'
 import css                  from './style.css'
 import TwoFA                from './TwoFA'
 import AddWallet            from './AddWallet'
 import KYC                  from './KYC'
+import Withdraw             from './Withdraw'
 
 class Profile extends Component {
 
@@ -43,7 +43,8 @@ class Profile extends Component {
                   </div>
                    <KYC user={this.props.user} />  
                   <TwoFA user={this.props.user} />
-                  <AddWallet user={this.props.user} />                 
+                  <AddWallet user={this.props.user} />  
+                  <Withdraw user={this.props.user} />               
                 </div>
               </div>
             </div>

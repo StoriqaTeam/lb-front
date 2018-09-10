@@ -5,6 +5,7 @@ import {copyToClipboard}    from './../../constants/constantsApp'
 import LoginBlock           from './../elements/login_block/LoginBlock'
 import Popup                from './../elements/popup/Popup'
 import Logout               from './../elements/logout/Logout'
+import VerifyEmail          from './../elements/verify_email/VerifyEmail'
 import css                  from './style.css'
 
 
@@ -180,7 +181,7 @@ class Header extends Component {
 			  <img className='jackpot' src={`/src/img/header/day.png`} alt="Week Jackpot"  className='d-none'/>
 			  <img className='jackpot' src={`/src/img/header/hour.png`} alt="Week Jackpot"  className='d-none'/>
 			  <img className='jackpot' src={`/src/img/header/super.png`} alt="Week Jackpot" className='d-none' />
-
+				{ this.props.user && <VerifyEmail user={this.props.user} /> }
 			</header>
 
 		)			

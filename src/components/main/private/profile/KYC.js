@@ -186,7 +186,7 @@ class KYC extends Component {
 
               <div className="login100-form validate-form" >
                 <span className="login100-form-title p-b-49">
-                  Add wallet
+                  Pass KYC
                 </span>
                 <div className='text-center'>
                  <div id="idensic"></div>

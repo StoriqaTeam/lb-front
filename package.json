@@ -67,7 +67,7 @@
     "redux-state-sync": "^1.1.1",
     "redux-thunk": "^2.3.0",
     "twitter-login-client": "^1.0.3",
-    "web3": "^1.0.0-beta.35",
+    "web3": "^1.0.0-beta.36",
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.4",
     "webpack-hot-middleware": "^2.22.2"

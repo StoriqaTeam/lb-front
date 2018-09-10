@@ -4,6 +4,7 @@ import { Widget }           from 'react-chat-widget';
 import 'react-chat-widget/lib/styles.css';
 import Referral             from './../../../elements/referral/Referral'
 import Chat                 from './Chat'
+import Metamask             from './Metamask'
 import { Scrollbars } from 'react-custom-scrollbars';
 import css                  from './style.css'
 
@@ -24,12 +25,13 @@ class IndexPage extends Component {
 
     return (
       <div className="container index-page">
+        <Metamask />
         <div className="greed">
           <div className="greed__sec">
             <div className="blc blc--table">
               <div className="current">
                 <div className="current__main">
-                  <h3 className="current__title">CURRENT ROUND PARTICIPANTS</h3>                                
+                  <h3 className="current__title">CURRENT ROUND PARTICIPANTS</h3>
                   <div className="winners-counters">
                     <div className="winners-counter">
                       <div className="winners-counter__name">Total players:</div>
@@ -43,12 +45,12 @@ class IndexPage extends Component {
                       <div className="winners-counter__name">Date of the draw:</div>
                       <div className="winners-counter__val">{date.getFullYear()}.{(date.getMonth() + 1).toString().length === 1 ? `0${date.getMonth() + 1}` : date.getMonth()}.{date.getDate() + 1}</div>
                     </div>
-                  </div>                                
+                  </div>
                   <div className="rainbow" />
                 </div>
               </div>
               <div className="table-overlay">
-                     
+
                 <table className="table index-page__table">
                   <thead>
                     <tr>
@@ -61,10 +63,10 @@ class IndexPage extends Component {
                   <tbody style={{display: "none"}} />
                   </table>
                   <Scrollbars style={{ height: 775 }}   >
-            
+
                   <table className="table">
                     <thead>
-                     
+
                     </thead>
                     <tbody>
                       {Array(24).fill(0).map((item, i) =>  {
@@ -91,19 +93,19 @@ class IndexPage extends Component {
 
               </div>
             </div>
-          </div>  
+          </div>
          <div className="greed__sec">
-           { this.props.user 
+           { this.props.user
               ? <div className="blc blc_referral">
                 <Referral user={this.props.user} />
-              </div> 
+              </div>
               : <div className="register">
                   <div className="register__main">REGISTER FOR GET YOUR REFERRAL BONUSES</div>,
                   <button className="btn register__btn" onClick={() => this.openSignModal()}>Join</button>
                 </div>
-            }  
-          <Chat user={this.props.user}/> 
-         </div>                 
+            }
+          <Chat user={this.props.user}/>
+         </div>
         </div>
       </div>
 

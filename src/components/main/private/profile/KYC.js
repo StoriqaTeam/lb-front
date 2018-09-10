@@ -23,29 +23,23 @@ class KYC extends Component {
     
   }
 
-    async getAccessToken(){
-        let token  = await fetch('https://test-api.sumsub.com/accessTokens?key=MUYWNNFRZMGSHV',{
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            },
-            body: JSON.stringify({
-                "userId": this.props.user.id ,
-                "key": "MUYWNNFRZMGSHV"
-            })
-        })
-            .then(
-                res => res.json(),
-                err => err
-            )
-            .then (json => {
-                console.log(json);
-                return json.token;
-
-            })
+  componentDidUpdate(prevProps, prevState){
+    if (!this.state.addKYC && prevState.addKYC){
+      return
     }
 
-  componentDidUpdate(){
+    const createKYCFrame = async () => { 
+            let token = await  fetch('https://test-api.sumsub.com/accessTokens?key=MUYWNNFRZMGSHV', {
+              method: 'POST'
+            })
+            .then(
+              res => res.json(),
+              err => err
+            )
+            .then(json => {
+              console.log(json)
+            })
+            return
                       var conf = {
                           "accessToken": this.getAccessToken(),
                           "user_id": this.props.user.id,
@@ -174,7 +168,11 @@ class KYC extends Component {
                           return decodeURIComponent(results[2].replace(/\+/g, " "));
                       }
 
-     
+     }
+
+         createKYCFrame()
+
+
   }
 
   render(){
@@ -188,7 +186,7 @@ class KYC extends Component {
 
               <div className="login100-form validate-form" >
                 <span className="login100-form-title p-b-49">
-                  Add wallet
+                  Pass KYC
                 </span>
                 <div className='text-center'>
                  <div id="idensic"></div>

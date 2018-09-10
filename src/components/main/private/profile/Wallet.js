@@ -16,6 +16,7 @@ class Wallet extends Component {
 
 
 	async getWallet(){
+
 		console.log(this.props.user.id)
  		let headers = new Headers();
  		headers.append('Content-Type', 'application/json')
@@ -39,7 +40,6 @@ class Wallet extends Component {
  				})
  				this.convertBalance(json.balance || 0)
  			} else {
-
  			}
  		})/*
 		user = response && response.token ? await GET_USER(response.token) : this.refs.error.innerHTML = response.error

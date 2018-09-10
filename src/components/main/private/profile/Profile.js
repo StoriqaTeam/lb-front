@@ -15,6 +15,13 @@ class Profile extends Component {
   constructor(){
     super()
     this.state = {}
+   this.setBalance = this.setBalance.bind(this)
+  }
+
+  setBalance(ETH = 0){
+    this.setState({
+      balance: ETH
+    })
   }
 
   render(){
@@ -32,7 +39,7 @@ class Profile extends Component {
                 <div className="profile__main">
                   <div className="profile__title">Nickname:</div>
                   <div className="profile__name">{this.props.user.name || `LuckyBlock user ${this.props.user.id}`}</div>
-                  <Wallet user={this.props.user}/>
+                  <Wallet user={this.props.user} setBalance={ this.setBalance}/>
                   <div className="profile__row">
                     <div className="profile__title profile__title--row">Join date:</div>
                     <div className="profile__val">{date ? `${date[2]}.${date[1]}.${date[0]}`: ''}</div>
@@ -43,8 +50,8 @@ class Profile extends Component {
                   </div>
                    <KYC user={this.props.user} />  
                   <TwoFA user={this.props.user} />
-                  <AddWallet user={this.props.user} />  
-                  <Withdraw user={this.props.user} />               
+                  <AddWallet user={this.props.user}  />  
+                  <Withdraw user={this.props.user} balance={this.state.balance}/>               
                 </div>
               </div>
             </div>

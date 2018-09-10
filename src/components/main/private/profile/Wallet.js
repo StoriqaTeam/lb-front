@@ -75,11 +75,15 @@ class Wallet extends Component {
  			 	USD: 0,
  			 	ETH: 0
  			 }
- 		})		
+ 		})	
 	}
 
 	componentDidMount(){
 		this.getWallet()
+	}
+
+	componentDidUpdate(prevProps, prevState){
+		return this.state.balance && !prevState.balance && this.props.setBalance(this.state.balance.ETH)	
 	}
 
   render(){

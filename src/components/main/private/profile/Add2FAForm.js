@@ -21,10 +21,13 @@ class Add2FAForm extends Component {
 	}
 
 	async getTwoFAData(){
-		let headers = new Headers();
+		let cookies = new Cookies;
 
  		let TwoFAData  = await fetch(`${API_URL}/api/v1/2fa`,{
- 			method: 'GET'
+ 			method: 'GET',
+ 			headers: new Headers({
+ 				'X-Auth-Token': cookies.get('token')
+ 			})
  		})
  		.then(
  			res => res.json(),

@@ -181,7 +181,7 @@ class Header extends Component {
 			  <img className='jackpot' src={`/src/img/header/day.png`} alt="Week Jackpot"  className='d-none'/>
 			  <img className='jackpot' src={`/src/img/header/hour.png`} alt="Week Jackpot"  className='d-none'/>
 			  <img className='jackpot' src={`/src/img/header/super.png`} alt="Week Jackpot" className='d-none' />
-				{ this.props.user && <VerifyEmail user={this.props.user} /> }
+				{ this.props.test && <VerifyEmail user={this.props.user} /> }
 			</header>
 
 		)			

@@ -54,7 +54,8 @@ class AddWallet extends Component {
       body:JSON.stringify({
         currency: 'eth', 
         address: this.refs.address.value,
-        user_id: this.props.user.id       
+        user_id: this.props.user.id,
+        twofatoken: this.refs.twofa.value       
       })
     })
     .then(
@@ -63,7 +64,12 @@ class AddWallet extends Component {
     )
     .then (async json => {
       console.log(json)
-      // if (json.error || json.message === 'token not equal'){
+       if (json.error || json.message === 'token not equal'){
+
+        return this.setState({
+          error: json.error
+        })
+       }
         this.setState({
           error: null,
           wallets: [...this.state.wallets, json],
@@ -82,7 +88,7 @@ class AddWallet extends Component {
 
     return this.state.wallets
     ? [ <div className='profile__val profile__btn'>My wallets</div>,
-        this.state.wallets.map(w => {
+        this.state.wallets.map((w, i) => {
          return <div className='profile__val w-auto'>{w.address}</div>
         }),
         <button className="btn btn--green profile__btn" onClick={()=> this.setState({addWallet: true})}>Add wallet</button>,
@@ -99,10 +105,14 @@ class AddWallet extends Component {
                 <div className='text-center'>
                   { this.state.message
                     || <form className='text-center' onSubmit={(e) => this.validateAddress(e)}>
-                      <div> Add your Ethereum wallet. Pay attention to the details of the wallet address.</div>                          
+                      <div> Add your Ethereum wallet. Pay attention to the details of the wallet address.</div>  
+                        
                       <div className="mt-2 wrap-input100 validate-input m-b-23 m-auto   text-center"  >
-                        <input className="input100 p-0 text-center" type="text" ref="address" maxLength={42} placeholder="Enter your address" autoComplete="off"  />
+                        <input className="input100 p-0 text-center" type="text" ref="address" maxLength={42} placeholder="Enter your ETH address" autoComplete="off"  />
                       </div>
+                       <div className="mt-2 wrap-input100 validate-input m-b-23 m-auto   text-center"  >
+                        <input className="input50 mt-2  p-0 text-center" type="text" ref="twofa" maxLength={6} placeholder="Enter  your 2-FA code" required   autoComplete="off" onChange={() => this.refs.twofa.value = this.refs.twofa.value.replace(/[^0-9]/g, '')} />
+                      </div>           
                       <input type="submit" className=" mt-2 btn btn--green header-main__right-btn popup__confirm" value="Add" />
                       <small className="text-danger d-block error" data-symbol="">{this.state.error }</small>
 

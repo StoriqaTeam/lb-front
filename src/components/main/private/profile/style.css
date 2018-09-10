@@ -25,6 +25,14 @@
 
 }
 
+.d-inline-block{
+	display: inline-block !important;
+}
+
+.w-50{
+	width: 50% !important;
+}
+
 .currency__marker{
 
       display: inline-block;

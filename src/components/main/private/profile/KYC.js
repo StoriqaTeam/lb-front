@@ -41,7 +41,7 @@ class KYC extends Component {
             })
             return
                       var conf = {
-                          "accessToken": "bb806551-25c1-4544-8b7d-af9f0e2cbec6",
+                          "accessToken": this.getAccessToken(),
                           "user_id": this.props.user.id,
                           "lang": "en",
                           "applicantDataPage": {

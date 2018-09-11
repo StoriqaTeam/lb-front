@@ -17,7 +17,6 @@ class Wallet extends Component {
 
 	async getWallet(){
 
-		console.log(this.props.user.id)
  		let headers = new Headers();
  		headers.append('Content-Type', 'application/json')
 

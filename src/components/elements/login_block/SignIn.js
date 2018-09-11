@@ -3,6 +3,9 @@ import { connect }            from 'react-redux'
 import * as userActions       from './../../../actions/userActions'
 import { bindActionCreators } from 'redux'
 import style                  from './style.css'
+
+import {setTokenCookie}              from './../../../constants/constantsApp' 
+
 import {API_URL, GET_USER}              from './../../../constants/constantsAPI' 
 import SocialLogin            from './SocialLogin'
 
@@ -35,6 +38,7 @@ class SignIn extends Component {
  			return json
  		}),
 		user = response && response.token ? await GET_USER(response.token) : this.refs.error.innerHTML = response.error
+		 setTokenCookie(response.token)
  		return response.token ? this.props.userActions.getProfile(user) : null
  	}
 

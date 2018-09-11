@@ -2,9 +2,8 @@
 import { connect }            from 'react-redux'
 import * as userActions       from './../../../../actions/userActions'
 import { bindActionCreators } from 'redux'
-import {API_URL, GET_USER}    from './../../../../constants/constantsAPI' 
-
-
+import {API_URL, GET_USER}    from './../../../../constants/constantsAPI'
+import axios from 'axios';
 
 import ReactDOM           from 'react-dom';
 import React, {Component} from 'react'
@@ -28,10 +27,25 @@ class KYC extends Component {
       return
     }
 
-    const createKYCFrame = async () => {
+    const createKYCFrame = () => {
             let url = `https://test-api.sumsub.com/resources/accessTokens?key=MUYWNNFRZMGSHV&userId=${this.props.user.id}`;
-            let token = await fetch(url, {method: 'POST'});
-            console.log('token',token.token);
+            let token = axios.post(url,  {
+                headers: {'Access-Control-Allow-Origin': '*'}
+            })
+                .then(result => {
+                    console.log(result);
+                })
+                .catch(error => {console.log(error)});
+            // let token = fetch(url, {method: 'POST', headers: {
+            //     'Access-Control-Allow': '*'
+            //     }})
+            // .then(
+            //   res => {console.log(res.json());return res.json()}
+            // )
+            // .catch(err => {
+            //   console.log(err);
+            // });
+            console.log('token',token);
             return
                       var conf = {
                           "accessToken": token.token,

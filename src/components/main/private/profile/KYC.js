@@ -30,16 +30,7 @@ class KYC extends Component {
 
     const createKYCFrame = async () => {
             let url = `https://test-api.sumsub.com/resources/accessTokens?key=MUYWNNFRZMGSHV&userId=${this.props.user.id}`;
-            let token = await fetch(url, {
-              method: 'POST'
-            })
-            .then(
-              res => res.json(),
-              err => err
-            )
-            .then(json => {
-              console.log(json)
-            });
+            let token = await fetch(url, {method: 'POST'});
             console.log('token',token.token);
             return
                       var conf = {

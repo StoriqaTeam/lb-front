@@ -27,10 +27,13 @@ class KYC extends Component {
     if (!this.state.addKYC && prevState.addKYC){
       return
     }
-
-    const createKYCFrame = async () => { 
-            let token = await  fetch('https://test-api.sumsub.com/accessTokens?key=MUYWNNFRZMGSHV', {
-              method: 'POST'
+          let cookies = new Cookies;
+          const createKYCFrame = async () => { 
+            let token = await  fetch(`${API_URL}/api/v1/accessToken`, {
+              method: 'GET',
+              headers: new Headers({
+                'X-Auth-Token': cookies.get('token')
+              })
             })
             .then(
               res => res.json(),
@@ -38,10 +41,10 @@ class KYC extends Component {
             )
             .then(json => {
               console.log(json)
+              return json.token
             })
-            return
                       var conf = {
-                          "accessToken": this.getAccessToken(),
+                          "accessToken": token,
                           "user_id": this.props.user.id,
                           "lang": "en",
                           "applicantDataPage": {

@@ -43,13 +43,13 @@ class Add2FAForm extends Component {
 
 	validateCode(){
 		let code = this.refs.code.value.replace(/\D/g, '')
-		return code.length < 6 
-		? this.refs.code.value = code
-		: this.setTwoFA(code)
+		this.refs.code.value = code
+	
 
 	}
 
-	async setTwoFA(code){
+	async setTwoFA(e, code){
+		e.preventDefault()
 		let cookies = new Cookies,
 		component = this,
  		FASet = await fetch(`${API_URL}/api/v1/2fa`,{
@@ -70,13 +70,17 @@ class Add2FAForm extends Component {
  		.then (async json => {
  			console.log(json)
  			if (json.error || json.message === 'token not equal'){
- 				return this.setState({
+ 				 this.setState({
 	 				error: json.error || json.message
 	 			})
+ 				 return false
  			}
-			let user = FASet && await GET_USER(cookies.get('token'))
- 			return  user && component.props.userActions.getProfile(user)
- 		})		
+ 			return true
+			
+ 		})	
+
+ 		let user = FASet && await GET_USER(cookies.get('token'))
+ 			return  user && component.props.userActions.getProfile(user)	
 	}
 
 	componentDidMount(){
@@ -94,7 +98,7 @@ class Add2FAForm extends Component {
 		          Add 2-factor auth.
 		        </span>
 			      {this.state.twoFAData 
-			      	? <div className='text-center'>
+			      	? <form className='text-center' onSubmit={(e) => this.setTwoFA(e, this.refs.code.value)}>
 			      			<div> Scan this QR-code with Google Authenticator and enter the code below </div>
 				          < img src={this.state.twoFAData.image} className='m-auto' />
 				          <div className='mt-2 text-center'>
@@ -105,8 +109,9 @@ class Add2FAForm extends Component {
 					          <input className="input100 p-0 text-center" type="text" ref="code" maxLength={6} placeholder="Type your code" autoComplete="off" onChange={() => this.validateCode()} />
 				          </div>
 					        <small className="text-danger d-block error" data-symbol="">{this.state.error}</small>
+									   <input type="submit" className=" mt-2 btn btn--green header-main__right-btn popup__confirm" value="Add" />
 
-				        </div> 
+				        </form> 
 					   
 					    : 'Getting 2-factor authentication data'	
 					  }

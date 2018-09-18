@@ -290,3 +290,25 @@ position: absolute;
     .p-0{
     	padding: 0;
     }
+
+    .profile__modals{
+	    position: absolute;
+	    top: 31px;
+	    right: 23px;
+	    width: 300px;    	
+	    z-index: 3;
+    }
+
+    .profile__item{
+	    border: 1px solid #eaeaea;
+	    background: #fff;
+	    text-align: center;
+	    padding: 40px 15px;
+	    border-radius: 7px;
+	    margin-bottom: 5px;
+
+    }
+
+    .p-0{
+    	padding: 0 !important;
+    }

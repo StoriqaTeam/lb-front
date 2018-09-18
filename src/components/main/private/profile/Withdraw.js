@@ -72,7 +72,7 @@ class Withdraw extends Component {
   render(){
     return(
       [
-        <button className="btn btn--green profile__btn" onClick={()=> this.setState({addWallet: true})}>Withdraw</button>,
+        <button className="btn btn--green profile__btn"  disabled={this.props.user.kyc_status < 1 || !this.props.user.google2fa_secret} onClick={()=> this.setState({addWallet: true})}>Withdraw</button>,
     		 this.state.addWallet &&
       		<Popup closePopup={() => this.setState({addWallet: false})} scrollable>
             <div className="container-login100">

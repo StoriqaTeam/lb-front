@@ -4,6 +4,7 @@ import { withCookies, Cookies }     from 'react-cookie'
 import FBRedirect                   from './../components/stuff/FBRedirect'
 import TwRedirect                   from './../components/stuff/TwRedirect'
 import GoogleRedirect               from './../components/stuff/GoogleRedirect'
+import InstagramRedirect            from './../components/stuff/InstagramRedirect'
 import Main                         from './../components/main/Main'
 import IndexPage                    from './../components/main/public/index_page/IndexPage'
 import Policy                       from './../components/main/public/policy/Policy'
@@ -18,9 +19,10 @@ class Routes extends Component {
     let cookies = new Cookies;
     return (
     	<Switch>
-            < Route path='/fb'       render={(props)  => < FBRedirect      {...props}  {...this.props} /> }  key='FBRedirect'/ >
-            < Route path='/tw'       render={(props)  => < TwRedirect      {...props}  {...this.props} /> }  key='TwRedirect'/ >           
-            < Route path='/google'   render={(props)  => < GoogleRedirect  {...props}  {...this.props} /> }  key='GoogleRedirect'/ >           
+            < Route path='/fb'         render={(props)  => < FBRedirect        {...props}  {...this.props} /> }  key='FBRedirect'/ >
+            < Route path='/tw'         render={(props)  => < TwRedirect        {...props}  {...this.props} /> }  key='TwRedirect'/ >           
+            < Route path='/google'     render={(props)  => < GoogleRedirect    {...props}  {...this.props} /> }  key='GoogleRedirect'/ >           
+            < Route path='/instagram'  render={(props)  => < InstagramRedirect {...props}  {...this.props} /> }  key='InstagramRedirect'/ >           
             <Main {...this.props}>
     			< Route exact path='/'        render={(props)  => < IndexPage {...props}  {...this.props} /> } key='IndexPage'/ >
 	 			< Route       path='/winners' render={(props)  => < Winners   {...props}  {...this.props} /> } key='Winners'/ >                              

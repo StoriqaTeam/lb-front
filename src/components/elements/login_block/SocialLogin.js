@@ -91,27 +91,19 @@ class SocialLogin extends Component {
 				          </span>
 				        </div>
 				        <div className="flex-c-m">
-				          <a href={`https://www.facebook.com/v3.0/dialog/oauth?client_id=${fbAppId}&&response_type=token&redirect_uri=${window.location.origin}/fb&state=testString`} className="login100-social-item" target='_blank'>
+				          <a  title='Login with Facebook' href={`https://www.facebook.com/v3.0/dialog/oauth?client_id=${fbAppId}&&response_type=token&redirect_uri=${window.location.origin}/fb&state=testString`} className="login100-social-item" target='_blank'>
 				            <img src="/src/img/icons/fb2.png" className='popup__button_fb'/>
 				          </a>    
-				          <a className="login100-social-item social-login__twitter h__disabled" target='_blank'>
-										<TwitterLogin loginUrl={`${API_URL}/api/v1/auth/twitter`}
-										              onFailure={this.onFailed}
-										              onSuccess={this.onSuccess}
-								              requestTokenUrl={`${API_URL}/api/v1/auth/twitter/reverse`}
-
-										              showIcon={true}
-										              >
-											<svg fill="#fff" preserveAspectRatio="xMidYMid meet" height={25} width={25} viewBox="0 0 40 40" style={{verticalAlign: 'middle', color: 'rgb(0, 172, 237)'}}><g><path d="m37.7 9.1q-1.5 2.2-3.7 3.7 0.1 0.3 0.1 1 0 2.9-0.9 5.8t-2.6 5.5-4.1 4.7-5.7 3.3-7.2 1.2q-6.1 0-11.1-3.3 0.8 0.1 1.7 0.1 5 0 9-3-2.4-0.1-4.2-1.5t-2.6-3.5q0.8 0.1 1.4 0.1 1 0 1.9-0.3-2.5-0.5-4.1-2.5t-1.7-4.6v0q1.5 0.8 3.3 0.9-1.5-1-2.4-2.6t-0.8-3.4q0-2 0.9-3.7 2.7 3.4 6.6 5.4t8.3 2.2q-0.2-0.9-0.2-1.7 0-3 2.1-5.1t5.1-2.1q3.2 0 5.3 2.3 2.4-0.5 4.6-1.7-0.8 2.5-3.2 3.9 2.1-0.2 4.2-1.1z" /></g></svg>
-										</TwitterLogin>				          
-									</a>       
+				          <a  title='Login with Instagram' href={`https://api.instagram.com/oauth/authorize/?client_id=0155d8ff02cf4cc3b7ce344a0047a243&redirect_uri=${window.location.origin}/instagram&response_type=token`} className="login100-social-item" target='_blank'>
+				            <img src="/src/img/icons/instagram.png"/>
+				          </a>       
    								
-				           <a href={`https://accounts.google.com/o/oauth2/v2/auth?scope=openid%20email&include_granted_scopes=${true}&redirect_uri=${window.location.origin}/google&response_type=token&client_id=836131905097-k989bkib5nu42ksclkqgr05q97g62b33.apps.googleusercontent.com`} target='_blank' className="login100-social-item">
+				           <a title='Login with Google'  href={`https://accounts.google.com/o/oauth2/v2/auth?scope=openid%20email&include_granted_scopes=${true}&redirect_uri=${window.location.origin}/google&response_type=token&client_id=836131905097-k989bkib5nu42ksclkqgr05q97g62b33.apps.googleusercontent.com`} target='_blank' className="login100-social-item">
 				            <img src="/src/img/icons/google.svg" />
 				          </a>
 				          
 			        	</div>
-			        	<a  target='_blank' className="login100-social-item social-login__telegram" id='telegramButton'>	
+			        	<a   title='Login with Telegram' target='_blank' className="login100-social-item social-login__telegram" id='telegramButton'>	
  									<TelegramLoginButton dataOnauth={handleTelegramResponse} botName="LBPassportTestBot" />
 				        </a>
 			        </div>	

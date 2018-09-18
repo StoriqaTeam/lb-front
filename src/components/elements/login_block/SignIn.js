@@ -75,7 +75,7 @@ class SignIn extends Component {
 			          <span className="txt1 p-b-17">
 			            or sign up
 			          </span>
-			          <a  className="txt2" onClick={() => this.props.switch()}>
+			          <a  className="txt2 link" onClick={() => this.props.switch()}>
 			            Sign up
 			          </a>
 			        </div>

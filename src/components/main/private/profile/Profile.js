@@ -9,6 +9,8 @@ import TwoFA                from './TwoFA'
 import AddWallet            from './AddWallet'
 import KYC                  from './KYC'
 import Withdraw             from './Withdraw'
+import AddEmail             from './AddEmail'
+
 
 class Profile extends Component {
 
@@ -29,6 +31,16 @@ class Profile extends Component {
     console.log('status: ', this.props.user.kyc_status)
     return  (
       <div className="container profile">
+        <div className='profile__modals'>
+          { this.props.user.kyc_status < 1 &&
+           <div className='profile__item referal__txt'>
+            Please pass the KYC verification to add wallets or to withdraw funds
+           </div>  
+          }
+          { !this.props.user.email   &&
+           <AddEmail user={this.props.user} />  
+          }          
+        </div>
         <div className="main__header profile__header">
           <h1>PROFILE</h1>
         </div>

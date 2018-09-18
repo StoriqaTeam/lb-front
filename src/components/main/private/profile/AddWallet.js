@@ -91,7 +91,7 @@ class AddWallet extends Component {
         this.state.wallets.map((w, i) => {
          return <div className='profile__val w-auto'>{w.address}</div>
         }),
-        <button className="btn btn--green profile__btn" onClick={()=> this.setState({addWallet: true})}>Add wallet</button>,
+        this.state.wallets.length < 5 && <button className="btn btn--green profile__btn" disabled={this.props.user.kyc_status < 1 || !this.props.user.google2fa_secret}  onClick={()=> this.setState({addWallet: true})}>Add wallet</button>,
     		 this.state.addWallet &&
       		<Popup closePopup={() => this.setState({addWallet: false})} scrollable>
             <div className="container-login100">

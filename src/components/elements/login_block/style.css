@@ -38,3 +38,12 @@ height: unset !important;
 .text-danger{
 	color: #e02b2b;
 }
+
+.signup__label{
+	vertical-align: text-top;
+  margin-left: 10px;	
+}
+
+.link{
+	cursor: pointer;
+}

@@ -64,6 +64,18 @@ class SignUp extends Component {
 			          <input className="input100" type="password" name="pass" placeholder="Type your password" ref='password'  required autoComplete="off"/>
 			          <span className="focus-input100" data-symbol="" />
 			        </div>
+
+					    <div className='mt-2'>
+					        <input 
+					        	type="checkbox" 
+					        	id="scales" 
+					        	name="feature"
+					        	required
+					          value="scales"  />
+					        <label for="scales" className='signup__label'>
+					        	<small>I accept the Terms and Conditions and confirm that I am over 18 years old.</small>
+					        </label>
+					    </div>			        
 			        <small className='text-danger d-block error' ref='error'></small>
 
 			        <div className="container-login100-form-btn">
@@ -80,7 +92,7 @@ class SignUp extends Component {
 			          <span className="txt1 p-b-17">
 			            already have an account?
 			          </span>
-			          <a  className="txt2" onClick={() => this.props.switch()}>
+			          <a  className="txt2 link" onClick={() => this.props.switch()}>
 			            Sign in
 			          </a>
 			        </div>

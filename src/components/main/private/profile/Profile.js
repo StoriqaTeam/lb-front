@@ -26,6 +26,7 @@ class Profile extends Component {
 
   render(){
     let  date = this.props.user.createdAt && this.props.user.createdAt.split('T')[0].split('-') ; 
+    console.log('status: ', this.props.user.kyc_status)
     return  (
       <div className="container profile">
         <div className="main__header profile__header">
@@ -48,7 +49,21 @@ class Profile extends Component {
                     <div className="profile__title profile__title--row">Email:</div>
                     <div className="profile__val">{this.props.user.email}</div>
                   </div>
+                  { this.props.user.kyc_status >= 1 &&
+                    <div className="profile__row">
+                      <div className="profile__title profile__title--row">KYC status:</div>
+                      <div className="profile__val">{this.props.user.kyc_status == 1 ? 'waiting for approve' : 'passed'}</div>
+                    </div> 
+                  }  
+                  { this.props.user.google2fa_secret  &&
+                    <div className="profile__row">
+                      <div className="profile__title profile__title--row">2-FA:</div>
+                      <div className="profile__val">activated</div>
+                    </div> 
+                  }                                       
+                  { this.props.user.kyc_status < 1 &&
                    <KYC user={this.props.user} />  
+                  }
                   <TwoFA user={this.props.user} />
                   <AddWallet user={this.props.user}  />  
                   <Withdraw user={this.props.user} balance={this.state.balance}/>               

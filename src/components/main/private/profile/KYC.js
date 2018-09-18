@@ -25,7 +25,10 @@ class KYC extends Component {
     if (!this.state.addKYC && prevState.addKYC){
       return
     }
+
+    if (this.state.addKYC && !prevState.addKYC){
           let cookies = new Cookies;
+          let component = this;
           const createKYCFrame = async () => { 
             let token = await  fetch(`${API_URL}/api/v1/accessToken`, {
               method: 'GET',
@@ -64,21 +67,24 @@ class KYC extends Component {
                           "requiredDocuments": "IDENTITY:PASSPORT,ID_CARD,DRIVERS;SELFIE:SELFIE"
                       };
                       if (!conf.accessToken) {
-                          alert('Please, provide an access token in query parameters');
+                        //  alert('Please, provide an access token in query parameters');
                       } else {
                           var id = idensic.init(
                               '#idensic',
                               conf,
-                              function (messageType, payload) {
+                              async function (messageType, payload) {
                                   // idCheck.onReady, idCheck.onResize, idCheck.onCancel, idCheck.onSuccess, idCheck.onApplicantCreated
                                   console.log('[IDENSIC DEMO] Idensic message:', messageType, payload);
                                   // resizing iframe to the inner content size
 
                                   if (messageType == 'idCheck.onCancel') {
-                                      alert('User canceled the wizard');
+                                     // alert('User canceled the wizard');
                                   }
                                   if (messageType == 'idCheck.onSuccess') {
-                                      alert('User completed photo verification!');
+                                    //  alert('User completed photo verification!');
+                                    let user  = await GET_USER(cookies.get('token'))
+
+                                    component.props.getProfile(user.user)
                                   }
                                   if (messageType == 'idCheck.onApplicantCreated') {
                                       var conf = getJsonFromUrl(window.location.href.split('?')[1]);
@@ -172,7 +178,7 @@ class KYC extends Component {
      }
 
          createKYCFrame()
-
+       }
 
   }
 
@@ -201,4 +207,18 @@ class KYC extends Component {
   }
 }
 
-export default KYC
+
+function mapStateToProps(state) {
+  return {
+    
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    userActions:   bindActionCreators(userActions, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(KYC)
+

@@ -60,7 +60,9 @@ class Add2FAForm extends Component {
  			}),
  			body:JSON.stringify({
  				secret: this.state.twoFAData.secret, 
- 				token: code  			
+ 				token: code,
+ 				time: Date.now(),
+ 				offset:   new Date().getTimezoneOffset()
  			})
  		})
  		.then(
@@ -75,12 +77,12 @@ class Add2FAForm extends Component {
 	 			})
  				 return false
  			}
- 			return true
+ 			return json.message
 			
  		})	
 
- 		let user = FASet && await GET_USER(cookies.get('token'))
- 			return  user && component.props.userActions.getProfile(user)	
+ 		let user = FASet && { ...this.props.user, google2fa_secret: FASet }
+ 		return  user && component.props.userActions.getProfile(user)	
 	}
 
 	componentDidMount(){

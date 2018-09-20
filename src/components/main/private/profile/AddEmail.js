@@ -26,17 +26,18 @@ class AddEmail extends Component {
 
   async addEmail(e){
   	e.preventDefault()
-		let user  = await fetch(`${API_URL}/api/v1/auth-social`, {
-			method: 'POST',
+  	let cookies = new Cookies;
+		let user  = await fetch(`${API_URL}/api/v1/users/${this.props.user.id}`, {
+			method: 'PUT',
 			headers: new Headers({
-				'Content-Type': 'application/json'		 				
+				'Content-Type': 'application/json'	,
+				'X-Auth-Token': cookies.get('token')
+	 				
 			}),
 			body: JSON.stringify({	
-				profile:   {
-					...this.props.user,
+					name:  this.props.user.name ,
 					email: this.refs.email.value
-				},
-				provider: this.props.user.provider_type
+
 			})
 		})
 		.then(
@@ -45,12 +46,11 @@ class AddEmail extends Component {
 		)
 		.then (json => {
 			console.log(json)
-			setTokenCookie(json.token)
-			return json.user || null
+			return json || null
 		})	
 		console.log(user)
 
-		//	return user && this.props.userActions.getProfile(user)   	
+		 return user.id && this.props.userActions.getProfile(user)   	
   }
 
 

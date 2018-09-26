@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import {Cookies}            from "react-cookie"
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import crypto               from 'crypto'
 import Shapeshift           from './Shapeshift'
 import css                  from './style.css'
 
@@ -21,7 +22,6 @@ class CurrencyIframe extends Component {
       window.open(link, 'Changelly', 'width=600,height=470,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=0,left=0,top=0');
       return false;
   }
-
 
 
 

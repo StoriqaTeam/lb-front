@@ -10,7 +10,7 @@ import AddWallet            from './AddWallet'
 import KYC                  from './KYC'
 import Withdraw             from './Withdraw'
 import AddEmail             from './AddEmail'
-
+import Cloudpayments        from './Cloudpayments'
 
 class Profile extends Component {
 
@@ -77,6 +77,7 @@ class Profile extends Component {
                    <KYC user={this.props.user} />  
                   }
                   <TwoFA user={this.props.user} />
+                  < Cloudpayments user={this.props.user}/>
                   <AddWallet user={this.props.user}  />  
                   <Withdraw user={this.props.user} balance={this.state.balance}/>               
                 </div>

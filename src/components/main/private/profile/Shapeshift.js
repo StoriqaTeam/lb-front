@@ -118,19 +118,21 @@ class Shapeshift extends Component {
 							      	<img src={coin.image} className='currency__tab_img' alt />
 							      	{
 												ii == 3 &&
-									       <Scrollbars style={{ height: 240, width: 250 }} autoHide={false}  >
 
 												<DropdownButton
 										      title='select currency &#9662;'
 										      className='position-relative'
+										      id='drop'
 										      onSelect={(e) => component.setState({selected: e})}
 										    >
+										     <Scrollbars style={{ height: 240, width: 250 }} autoHide={false}  >
+
 
 										    	{
 										    		Object.values(this.state.coins).map(c =>{
 											    		return [
 											    		 	<Tab>{c.symbol}</Tab>,
-											    		 	<MenuItem eventKey={c}  className='shapeshift__item'>
+											    		 	<MenuItem eventKey={c}  className='shapeshift__item' onClick={() => {component.setState({selected: c});document.getElementById('drop').click()}}>
 											    		 		<div className='d-inline-block coin__name_short'> {c.name.toUpperCase()}</div>
 											    		 		<img src={c.image} className='currency__tab_img' /> 
 											    		 		<div className='d-inline-block coin__name'>  {c.fullName}</div>
@@ -138,8 +140,9 @@ class Shapeshift extends Component {
 											    		]
 											    	})
 										    	}
+										    					    				    	</Scrollbars>												
+
 										    </DropdownButton>  
-				    				    	</Scrollbars>												
 							      	}
 							      </Tab>
 							     )

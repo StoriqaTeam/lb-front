@@ -192,9 +192,8 @@
 .shapeshift__item a{
 	    display: flex;
     justify-content: space-around;
-    margin-bottom: 10px;
     border-bottom: 1px solid #c3bfbf;
-    padding-bottom: 3px;
+    padding: 3px;
 }
 .dropdown-menu   > div > div:last-child{
 
@@ -228,19 +227,25 @@
 }
 
 
+
+
 .dropdown-menu li:last-of-type a{
 	border-bottom: none !important;
 }
-.dropdown-menu   > div > div:last-child{
+.dropdown-menu   > div > div:last-child div{
 	width: 4px !important;
-	position: absolute;
-	right: 2px;
+	right: -2px;
 }
 .shapeshift__item a .currency__tab_img {
     display: inline-block;
-    height: 26px;
-    margin-top: -4px;
+    height: 20px;
 }
+
+.shapeshift__item:hover{
+    background-color: #eee;
+
+}
+
 .coin__name{
 	width: 140px;
 	font-size: 12px;

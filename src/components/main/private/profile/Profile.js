@@ -18,6 +18,7 @@ class Profile extends Component {
     super()
     this.state = {}
    this.setBalance = this.setBalance.bind(this)
+   this.setWallet = this.setWallet.bind(this)
   }
 
   setBalance(ETH = 0){
@@ -25,6 +26,13 @@ class Profile extends Component {
       balance: ETH
     })
   }
+
+  setWallet(wallets){
+    this.setState({
+      wallets: wallets
+    })
+  }
+
 
   render(){
     let  date = this.props.user.createdAt && this.props.user.createdAt.split('T')[0].split('-') ; 
@@ -78,7 +86,7 @@ class Profile extends Component {
                   }
                   <TwoFA user={this.props.user} />
                   < Cloudpayments user={this.props.user}/>
-                  <AddWallet user={this.props.user}  />  
+                  <AddWallet user={this.props.user} setWallet={this.setWallet} />  
                   <Withdraw user={this.props.user} balance={this.state.balance}/>               
                 </div>
               </div>
@@ -93,7 +101,7 @@ class Profile extends Component {
             <div className="blc">
               <div className="referal">
                 <div className="referal__title">DEPOSIT</div>
-                <CurrencyIframe/>
+                <CurrencyIframe user={this.props.user} wallets={this.state.wallets} />
               </div>
             </div>
           </div> 

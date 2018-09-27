@@ -5,6 +5,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
  import  {DropdownButton, MenuItem} from  'react-bootstrap'
 import 'react-dropdown/style.css'
 import crypto               from 'crypto'
+import { Scrollbars }       from 'react-custom-scrollbars';
 
 import css                  from './style.css'
 
@@ -93,15 +94,15 @@ class Shapeshift extends Component {
  
 
   render(){
-
+  	let component = this
   	if (!this.state.coins){
   		return (<div>Requesting coins...</div>)
   	}
 
   						let top = [
-  							this.state.coins.find(i => i.name  == 'btc'),
-  						  this.state.coins.find(i => i.name  == 'dash'),  
-  						  this.state.coins.find(i => i.name  == 'xmr'),  
+  							{...this.state.coins.find(i => i.name  == 'btc'), qty: 0.05},
+  						  {...this.state.coins.find(i => i.name  == 'dash'), qty: 5},
+  						  {...this.state.coins.find(i => i.name  == 'xmr'),  qty: 10},
   						  this.state.selected
   						 ]
 
@@ -109,41 +110,53 @@ class Shapeshift extends Component {
     return  (
 					<Tabs>
 					  <TabList className='currency__tab currency__tab-list_crypt'>
-					  	{ top.map(coin => {
+					  	{ top.map((coin, ii) => {
 					  		console.log(coin)
 									return(
 										<Tab className='position-relative currency__tab_small'>
 							      	<i className='position-relative currency__marker currency__marker_crypt'/>
 							      	<img src={coin.image} className='currency__tab_img' alt />
+							      	{
+												ii == 3 &&
+									       <Scrollbars style={{ height: 240, width: 250 }} autoHide={false}  >
+
+												<DropdownButton
+										      title='select currency &#9662;'
+										      className='position-relative'
+										      onSelect={(e) => component.setState({selected: e})}
+										    >
+
+										    	{
+										    		Object.values(this.state.coins).map(c =>{
+											    		return [
+											    		 	<Tab>{c.symbol}</Tab>,
+											    		 	<MenuItem eventKey={c}  className='shapeshift__item'>
+											    		 		<div className='d-inline-block coin__name_short'> {c.name.toUpperCase()}</div>
+											    		 		<img src={c.image} className='currency__tab_img' /> 
+											    		 		<div className='d-inline-block coin__name'>  {c.fullName}</div>
+											    		 	</MenuItem>
+											    		]
+											    	})
+										    	}
+										    </DropdownButton>  
+				    				    	</Scrollbars>												
+							      	}
 							      </Tab>
 							     )
 					  		})
 				
 					  	}	
+	
 
-						<DropdownButton
-				      title='select currency'
-				      className='position-relative'
-				      onSelect={(e) => this.setState({selected: e})}
-				    >
-				    	{
-				    		Object.values(this.state.coins).map(c =>{
-					    		return [
-					    		 	<Tab>{c.symbol}</Tab>,
-					    		 	<MenuItem eventKey={c}  className='shapeshift__item'>{c.name.toUpperCase()}</MenuItem>
-					    		]
-					    	})
-				    	}
-				    </DropdownButton>  
 				    </TabList>
 						{ top.map(coin => {
 								return(
 					    		<TabPanel className='currency__tab-panel_small currency__gray'>
-											<a className='currency__exchange' target='_blank' href={`https://changelly.com/widget/v1?auth=email&from=${coin.name.toUpperCase()}&to=ETH&merchant_id=aba39711a80e&address=&amount=1&ref_id=aba39711a80e&color=00cf70`}>
+											<a className='currency__exchange' target='_blank' href={`https://changelly.com/widget/v1?auth=email&from=${coin.name.toUpperCase()}&to=ETH&merchant_id=aba39711a80e&address=&amount=${coin.qty || 50}&ref_id=aba39711a80e&color=00cf70&address=${this.props.wallets[0] && this.props.wallets[0].address}`}>
 											  <img src="https://changelly.com/pay_button_exchange.png" alt="Changelly" />
 											</a>
 
-										<iframe src={`https://changelly.com/widget/v1?auth=email&from=${coin.name.toUpperCase()}&to=ETH&merchant_id=17cd70c57129&address=0xfa06f1dc467f3398374b59afe92103580115877d&amount=50&ref_id=17cd70c57129&color=48d9a7`} width={600} height={400} className="changelly currency__iframe" scrolling="no" style={{overflowY: 'hidden', border: 'none'}}>
+										<iframe src={`https://changelly.com/widget/v1?auth=email&from=${coin.name.toUpperCase()}&to=ETH&merchant_id=17cd70c57129&address=${this.props.wallets[0] && this.props.wallets[0].address}&amount=${coin.qty || 50}&ref_id=17cd70c57129&color=48d9a7`} width={600} height={400} className="changelly currency__iframe" scrolling="no" style={{overflowY: 'hidden', border: 'none'}}>
 										  Can't load widget
 										</iframe>
 									</TabPanel>	

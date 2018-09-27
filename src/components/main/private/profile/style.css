@@ -189,15 +189,75 @@
 		display: inline-block;
 	}
 }
+.shapeshift__item a{
+	    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #c3bfbf;
+    padding-bottom: 3px;
+}
+.dropdown-menu   > div > div:last-child{
+
+    right: 0 !important;
+    width: 8px !important;
+    background: #fff !important;
+    bottom: 0 !important;
+    top: 0 !important;
+
+}
+
+.currency__tab_small > img + div > div:last-child{
+    right: 23px !important;
+    width: 8px !important;
+    background: #fff !important;
+    bottom: 0 !important;
+		z-index: 9999;
+    top: 20px !important;
+
+}
 
 
+.currency__tab_small > img + div > div:last-child > div:last-child{
+		width: 4px !important;
+	position: absolute;
+	right: -2px;
+}
 
+
+.dropdown-menu li:last-of-type a{
+	border-bottom: none !important;
+}
+.dropdown-menu   > div > div:last-child{
+	width: 4px !important;
+	position: absolute;
+	right: 2px;
+}
+.shapeshift__item a .currency__tab_img {
+    display: inline-block;
+    height: 26px;
+    margin-top: -4px;
+}
+.coin__name{
+	width: 140px;
+	font-size: 12px;
+	padding-right:  10px;
+	padding-left: 10px;
+}
+.coin__name_short{
+	font-size: 12px;
+	width: 60px;
+		font-weight: bold;
+
+	padding-left:  10px;
+}
 @media screen  and (max-width: 420px) {
 	.currency__tab_li > img{
 		display: none;
 	}
 }
-
+.d-inline-block{
+	display: inline-block !important;
+}
 .profile__table_game > thead tr th:first-child {
 	    width: 187px;
 

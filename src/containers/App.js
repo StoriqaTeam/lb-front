@@ -6,7 +6,8 @@ import { bindActionCreators }    from 'redux'
 import * as userActions          from './../actions/userActions'
 import {getCodeFromUrl, addOneYear}        from './../constants/constantsApp'
 import Routes               from './routes'
-import css                  from './style.css'
+//import css                  from './style.css'
+import css2                 from './css.css'
 
 class App extends Component {
 

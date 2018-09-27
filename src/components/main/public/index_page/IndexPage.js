@@ -24,90 +24,124 @@ class IndexPage extends Component {
     date        = new Date()
 
     return (
-      <div className="container index-page">
-        <Metamask />
-        <div className="greed">
-          <div className="greed__sec">
-            <div className="blc blc--table">
-              <div className="current">
-                <div className="current__main">
-                  <h3 className="current__title">CURRENT ROUND PARTICIPANTS</h3>
-                  <div className="winners-counters">
-                    <div className="winners-counter">
-                      <div className="winners-counter__name">Total players:</div>
-                      <div className="winners-counter__val">4,734</div>
-                    </div>
-                    <div className="winners-counter">
-                      <div className="winners-counter__name">Value of jackpot:</div>
-                      <div className="winners-counter__val">8,323,455 ETH</div>
-                    </div>
-                    <div className="winners-counter">
-                      <div className="winners-counter__name">Date of the draw:</div>
-                      <div className="winners-counter__val">{date.getFullYear()}.{(date.getMonth() + 1).toString().length === 1 ? `0${date.getMonth() + 1}` : date.getMonth()}.{date.getDate() + 1}</div>
+<div>
+  <div className="bg" id="js-bg">
+  </div>
+  <div className="stars" id="particles-js" />
+  <div className="show" id="js-show">
+    <div className="show__banner">
+      <img src="/src/img/show/sweet-kitten.gif" alt className="show__banner-pic" />
+      <img src="/src/img/show/coints.png" alt className="show__coints" />
+      <div className="banner__shine banner__shine--1" />
+      <div className="banner__shine banner__shine--2" />
+      <div className="banner__shine banner__shine--3" />
+      <div className="banner__shine banner__shine--4" />
+      <div className="banner__shine banner__shine--5" />
+      <div className="banner__shine banner__shine--6" />
+      <div className="banner__shine banner__shine--7" />
+    </div>
+    {/*            <img src="/src/img/show/5.png" alt="" class="show__img" style="opacity: 1">*/}
+    <img src="/src/img/show/0.png" alt className="show__img show__img--0" />
+    <img src="/src/img/show/1.png" alt className="show__img show__img--1" />
+    <img src="/src/img/show/2.png" alt className="show__img show__img--2" />
+    <img src="/src/img/show/3.png" alt className="show__img show__img--3" />
+    <img src="/src/img/show/4.png" alt className="show__img show__img--4" />
+  </div>
+  <main className="main">
+    <div className="main-sec">                
+      <div className="container">
+        <div className="main-sec__middle">
+          <button className="btn main-sec__btn"><span>GET LUCKY</span></button>
+          <div className="timer">
+            <div className="timer__main">
+              <div className="timer__title">HOUR ROUND</div>
+              <div className="timer__summ grad"><span>$10 000</span><span>$10 000</span></div>
+            </div>
+            <div className="ring">
+              <div className="circle">
+                <div className="circle__blc circle__cart">
+                  <div className="circle__revers" id="circle-revers">
+                    <div id="circle-readout">
+                      <svg viewBox="0 0 100 100">
+                        <circle r={25} cx={50} cy={50} className="circle__pie" id="circle-pie" />
+                      </svg>
                     </div>
                   </div>
-                  <div className="rainbow" />
                 </div>
-              </div>
-              <div className="table-overlay">
-
-                <table className="table index-page__table">
-                  <thead>
-                    <tr>
-                      <th><span>Nickname</span></th>
-                      <th><span>Deposit</span></th>
-                      <th><span>Win rate</span></th>
-                      <th />
-                    </tr>
-                  </thead>
-                  <tbody style={{display: "none"}} />
-                  </table>
-                  <Scrollbars style={{ height: 775 }}   >
-
-                  <table className="table">
-                    <thead>
-
-                    </thead>
-                    <tbody>
-                      {Array(24).fill(0).map((item, i) =>  {
-                      let percent = (Math.random()  * (10 - 0.1)  + 10).toFixed(0),
-                      cash        = (Math.random()  * (1000 - 50) + 50).toFixed(0)
-                      return (
-                          <tr key={i}>
-                          <td>
-                            <div className="table__user">
-                              <div className="table__user-icn"><img src="/src/img/example/ava.png" alt /></div>
-                              <div className="table__user-nane">LuckyBlock user {(Math.random()  * (1000 - 50)).toFixed(0)}</div>
-                            </div>
-                          </td>
-                          <td>${cash}</td>
-                          <td>{percent}%</td>
-                          <td><div className="table__circle table__circle--viol" /></td>
-                        </tr>
-                      )
-                    })}
-                    </tbody>
-                                    </table>
-
-                  </Scrollbars>
-
+                <div className="circle__blc circle__line">
+                  <svg viewBox="0 0 100 100">
+                    <circle r={50} cx={50} cy={50} className="circle__strok" id="circle-strok" />
+                  </svg>
+                  <div className="circle__arrow" id="js-arrow" />
+                </div>
+                <div className="circle__timer">
+                  <span className="circle__hour" id="hour">59</span>:<span className="circle__minut" id="minut" />
+                </div>
               </div>
             </div>
           </div>
-         <div className="greed__sec">
-           { this.props.user
-              ? <div className="blc blc_referral">
-                <Referral user={this.props.user} />
+        </div>
+        <div className="main-sec__left">
+          <div className="main-sec-title">
+            The <br />
+            BIGGEST <br />
+            <span>PROOF-of-HONEST</span>
+            BLOCKCHAIN <br />
+            LOTTERY
+          </div>
+        </div>
+        <div className="main-sec__right">
+          <div className="frame">
+            <div className="frame__title">
+              <div className="frame__title-top">
+                <div className="frame__title-gold grad"><span>ONE</span></div>
+                <div className="frame__title-middle">BET<br />FOR</div>
+                <div className="frame__title-gold grad"><span>SIX</span></div>
               </div>
-              : <div className="register">
-                  <div className="register__main">REGISTER FOR GET YOUR REFERRAL BONUSES</div>,
-                  <button className="btn register__btn" onClick={() => this.openSignModal()}>Join</button>
-                </div>
-            }
-          <Chat user={this.props.user}/>
-         </div>
+              <div className="frame__title-bottom">LOTTERY</div>
+            </div>
+            <div className="qr"><img src="/src/img/qr.png" alt /></div>
+            <button className="btn copy-code">COPY CODE</button>
+            <button className="btn metamasc"><span>METAMASC</span></button>
+          </div>
         </div>
       </div>
+    </div>
+    <div className="row container">
+      <div className="row__wrap">
+        <div className="row__item">
+          <div className="row__val grad"><span>$19 780</span><span>$19 780</span></div>
+          <div className="row__time-txt">DAY</div>
+          <div className="row__time-txt">12:31:59</div>
+        </div>
+        <div className="row__item">
+          <div className="row__val grad"><span>$59 087</span><span>$59 087</span></div>
+          <div className="row__time-txt">WEEK</div>
+          <div className="row__time-txt">4D | 12:31</div>
+        </div>
+        <div className="row__item">
+          <div className="row__val grad"><span>$84 980</span><span>$84 980</span></div>
+          <div className="row__time-txt">MONTH</div>
+          <div className="row__time-txt">28D | 24:47</div>
+        </div>
+        <div className="row__item">
+          <div className="row__val grad"><span>$169 460</span><span>$169 460</span></div>
+          <div className="row__time-txt">YEAR</div>
+          <div className="row__time-txt">179D | 32:36</div>
+        </div>                        
+      </div>
+    </div>
+    {/*
+      <div class="content">
+          <div class="container">
+              <div class="tables">
+                  <div class="tables__col"></div>
+              </div>
+          </div>
+      </div>
+*/}
+  </main>
+</div>
 
     )
   }

@@ -26,6 +26,7 @@ class AddWallet extends Component {
     )
     .then (json => {
       console.log(json)
+      this.props.setWallet( json.filter(w => w.user_id == this.props.user.id ))
       return  this.setState({
         wallets: json.filter(w => w.user_id == this.props.user.id )
       })

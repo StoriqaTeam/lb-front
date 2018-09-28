@@ -125,7 +125,7 @@ class Shapeshift extends Component {
 										      id='drop'
 										      onSelect={(e) => component.setState({selected: e})}
 										    >
-										     <Scrollbars style={{ height: 240, width: 250 }} autoHide={false}  >
+										     <Scrollbars style={{ height: 240, width: 210 }} autoHide={false}  >
 
 
 										    	{

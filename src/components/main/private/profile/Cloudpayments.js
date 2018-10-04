@@ -45,7 +45,7 @@ class Cloudpayments extends Component {
       description: 'Payment luckyblock',
       amount: 100, //сумма
       currency: 'RUB', //валюта
-      invoiceId: '1234567',
+      invoiceId: `${this.props.user.id}${Math.random()}`,
       accountId: this.props.user.id
     },
     function (options) { // success

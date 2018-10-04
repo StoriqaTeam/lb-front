@@ -14,7 +14,7 @@ class Cloudpayments extends Component {
     
   }
 
-    async successCallback(){
+    async successCallback(options){
         let cookies = new Cookies,
             component = this,
             successCall = await fetch(`${API_URL}/api/v1/cloud/success`,{
@@ -23,7 +23,7 @@ class Cloudpayments extends Component {
                     'X-Auth-Token': cookies.get('token'),
                     'Content-Type': 'application/json'
                 }),
-                body:{}
+                body:JSON.stringify(options)
             })
                 .then(
                     res => res.json ? res.json() : res,
@@ -50,7 +50,7 @@ class Cloudpayments extends Component {
     },
     function (options) { // success
       console.log("cloud success", options);
-        successCallback(options);
+        this.successCallback(options);
     },
     function (reason, options) { // fail
         //действие при неуспешной оплате

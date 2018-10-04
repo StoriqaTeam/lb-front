@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import Popup              from './../../../elements/popup/Popup'
-import {API_URL}    from './../../../../constants/constantsAPI'
-import {Cookies} from "react-cookie/index";
+import Popup from './../../../elements/popup/Popup'
+import {API_URL} from './../../../../constants/constantsAPI'
+import {Cookies} from "react-cookie"
 
 class Cloudpayments extends Component {
 

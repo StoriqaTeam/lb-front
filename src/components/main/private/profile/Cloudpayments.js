@@ -40,6 +40,7 @@ class Cloudpayments extends Component {
 
   callThePayment () {
     const widget = new cp.CloudPayments();
+    let self = this;
     widget.charge({ // options
       publicId: 'pk_e71a0cfec105f2c031cda42c6f4e2',  //id из личного кабинета
       description: 'Payment luckyblock',
@@ -50,7 +51,7 @@ class Cloudpayments extends Component {
     },
     function (options) { // success
       console.log("cloud success", options);
-        this.successCallback(options);
+        self.successCallback(options);
     },
     function (reason, options) { // fail
         //действие при неуспешной оплате
